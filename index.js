@@ -53,6 +53,9 @@ async function getCryptoPrices() {
   }
 }
 
+// Cargar precios de criptomonedas al inicio
+document.addEventListener('DOMContentLoaded', getCryptoPrices);
+
 function toggleAudio() {
   const audio = document.getElementById('bg-music');
   if (audio.paused) {
