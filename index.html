@@ -109,123 +109,7 @@
     </div>
   </section>
 
-  <!-- MODELOS 3D -->
-  <section id="3dmodels" class="modelos3d-section-fullscreen d-flex flex-column align-items-center justify-content-center text-center" style="min-height:80vh; padding:0; margin:0;">
-    <div class="w-100 d-flex flex-column align-items-center justify-content-center" style="min-height:70vh;">
-      <h2 class="mb-3 mt-4 display-4 fw-bold" style="font-family: 'Playfair Display', serif;">
-        EXPLORA NUESTRO MODELADO 3D
-      </h2>
-      <model-viewer 
-        src="assets/VORIA.glb" 
-        ar 
-        ar-modes="webxr scene-viewer quick-look" 
-        camera-controls 
-        tone-mapping="neutral" 
-        poster="assets/showroom-3.jpg" 
-        shadow-intensity="1" 
-        exposure="1"
-        style="width:65vw; height:65vh; max-width:100vw; background:#222; border-radius:24px; display:block;">
-        <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
-        </div>
-        <button slot="ar-button" class="btn btn-primary btn-lg mt-3">Ver en tu espacio</button>
-      </model-viewer>
-    </div>
-  </section>
-
-    <div class="separator my-5" data-aos="zoom-in"></div>
-  <section class="container my-5 py-5" id="crypto-payment">
-  <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;" data-aos="fade-up">Pago Fácil con Criptomonedas</h2>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="crypto-display-card p-5 rounded-lg shadow-lg text-center" data-aos="zoom-in" style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 24px;">
-        <p class="lead mb-4" style="font-family: 'Inter', sans-serif; color: #bfa14a;">Consulta el valor estimado de nuestros muebles en Bitcoin y Ethereum al instante:</p>
-        <div class="input-group mb-4">
-          <span class="input-group-text bg-dark text-gold border-gold" style="font-family: 'Inter', sans-serif; border-radius: 12px 0 0 12px; border: 1px solid #bfa14a;">Precio Base (€)</span>
-          <input type="number" id="basePriceInput" class="form-control bg-dark text-light border-gold" style="font-family: 'Inter', sans-serif; border: 1px solid #bfa14a;" value="6900" min="100" step="100">
-        </div>
-        <button class="btn btn-gold btn-lg mb-4 pulse" style="font-family: 'Inter', sans-serif; background: linear-gradient(90deg, #bfa14a 0%, #ffd700 100%); color: #111; border-radius: 30px; border: none;" onclick="getCryptoPrices()">
-          <i class="fas fa-sync-alt me-2"></i> Actualizar Precios Cripto
-        </button>
-        <div id="cryptoPrices" class="text-warning display-6 fw-bold" style="font-family: 'Inter', sans-serif;">
-          Cargando...
-        </div>
-        <p class="text-muted mt-3" style="font-family: 'Inter', sans-serif;">Datos proporcionados por CoinGecko. Los precios pueden variar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <div class="separator my-5" data-aos="zoom-in"></div>
-
-  <section class="container my-5 py-5" id="virtual-demo">
-    <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;" data-aos="fade-up">Experimenta tu Mueble Virtualmente</h2>
-    <div class="crypto-static-card p-5 rounded-lg shadow-lg text-center" style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 24px;">
-      <p class="lead mb-4" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
-        Utiliza nuestra demo para previsualizar y simular el pago de tu mueble autónomo. ¡Sin el gráfico de precios para una experiencia más limpia!
-      </p>
-      <div class="embed-responsive embed-responsive-16by9 mb-4" style="height: 600px; border-radius: 16px; overflow: hidden; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
-        <iframe class="embed-responsive-item" src="demovirtual/index.html" width="100%" height="100%" style="border:none;" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
-      </div>
-     <p class="text-center mt-3 text-muted" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
-  Asegúrate de tener la carpeta 'demovirtual' con sus archivos en la raíz de tu proyecto.
-</p>
-    </div>
-  </section>
-
-   <section class="container my-5 py-5" id="pricing">
-    <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;" data-aos="fade-up">Nuestros Planes Adaptados a Ti</h2>
-    <div class="row justify-content-center g-4">
-      <!-- Plan Básico -->
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="pricing-card-corp h-100 d-flex flex-column align-items-center text-center p-5">
-          <div class="plan-icon mb-3"><i class="fas fa-cube"></i></div>
-          <h3 class="mb-3">Básico</h3>
-          <p class="price-corp mb-4">3.200€</p>
-          <ul class="list-unstyled mb-4">
-            <li><i class="fas fa-check-circle me-2 text-gold"></i>Instalación Estándar</li>
-            <li><i class="fas fa-times-circle me-2 text-muted"></i>Sin Personalización</li>
-            <li><i class="fas fa-headset me-2 text-gold"></i>Soporte 1 año</li>
-            <li><i class="fas fa-calendar-alt me-2 text-muted"></i>Sin Asesoría Presencial</li>
-          </ul>
-          <button class="btn btn-gold-corp mt-auto">Elegir Plan</button>
-        </div>
-      </div>
-      <!-- Plan Pro -->
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="pricing-card-corp h-100 d-flex flex-column align-items-center text-center p-5 highlighted-corp">
-          <div class="plan-icon mb-3"><i class="fas fa-gem"></i></div>
-          <h3 class="mb-3">Pro</h3>
-          <p class="price-corp mb-4">4.800€</p>
-          <ul class="list-unstyled mb-4">
-            <li><i class="fas fa-check-circle me-2 text-gold"></i>Instalación Avanzada</li>
-            <li><i class="fas fa-palette me-2 text-gold"></i>Colores Personalizados</li>
-            <li><i class="fas fa-headset me-2 text-gold"></i>Soporte 2 años</li>
-            <li><i class="fas fa-calendar-check me-2 text-gold"></i>1 Asesoría Presencial</li>
-          </ul>
-          <button class="btn btn-gold-corp mt-auto">Elegir Plan</button>
-        </div>
-      </div>
-      <!-- Plan Elite -->
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="pricing-card-corp h-100 d-flex flex-column align-items-center text-center p-5">
-          <div class="plan-icon mb-3"><i class="fas fa-crown"></i></div>
-          <h3 class="mb-3">Elite</h3>
-          <p class="price-corp mb-4">6.900€</p>
-          <ul class="list-unstyled mb-4">
-            <li><i class="fas fa-check-circle me-2 text-gold"></i>Instalación Premium</li>
-            <li><i class="fas fa-ruler-combined me-2 text-gold"></i>Diseño a Medida</li>
-            <li><i class="fas fa-headset me-2 text-gold"></i>Soporte Vitalicio</li>
-            <li><i class="fas fa-star me-2 text-gold"></i>Asesoría Ilimitada</li>
-          </ul>
-          <button class="btn btn-gold-corp mt-auto">Elegir Plan</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="separator my-5" data-aos="zoom-in"></div>
-
+  
   <section class="container my-5 py-5" id="showroom">
     <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;" data-aos="fade-up">Visita Nuestro Showroom</h2>
     <p class="lead text-center mb-4">Encuéntranos en Valdemoro, Madrid, y explora la innovación de VORIA. ¡Descubre nuestro espacio!</p>
@@ -260,6 +144,104 @@
       </div>
     </div>
   </section>
+
+  <!-- MODELOS 3D -->
+  <section id="3dmodels" class="modelos3d-section-fullscreen d-flex flex-column align-items-center justify-content-center text-center" style="min-height:80vh; padding:0; margin:0;">
+    <div class="w-100 d-flex flex-column align-items-center justify-content-center" style="min-height:70vh;">
+      <h2 class="mb-3 mt-4 display-4 fw-bold" style="font-family: 'Playfair Display', serif;">
+        EXPLORA NUESTRO MODELADO 3D
+      </h2>
+      <model-viewer 
+        src="assets/VORIA.glb" 
+        ar 
+        ar-modes="webxr scene-viewer quick-look" 
+        camera-controls 
+        tone-mapping="neutral" 
+        poster="assets/showroom-3.jpg" 
+        shadow-intensity="1" 
+        exposure="1"
+        style="width:65vw; height:65vh; max-width:100vw; background:#222; border-radius:24px; display:block;">
+        <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+        </div>
+        <button slot="ar-button" class="btn btn-primary btn-lg mt-3">Ver en tu espacio</button>
+      </model-viewer>
+    </div>
+  </section>
+
+    <div class="container d-none d-lg-block my-5">
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <!-- Crypto Payment Section -->
+      <section id="crypto-payment-desktop" class="h-100">
+        <div class="crypto-display-card p-4 rounded-lg shadow-lg text-center" style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 24px;">
+          <h2 class="mb-4 display-6 fw-bold" style="font-family: 'Playfair Display', serif;">Pago Fácil con Criptomonedas</h2>
+          <p class="lead mb-3" style="font-family: 'Inter', sans-serif; color: #bfa14a;">Consulta el valor estimado de nuestros muebles en Bitcoin y Ethereum al instante:</p>
+          <div class="input-group mb-3">
+            <span class="input-group-text bg-dark text-gold border-gold" style="font-family: 'Inter', sans-serif; border-radius: 12px 0 0 12px; border: 1px solid #bfa14a;">Precio Base (€)</span>
+            <input type="number" id="basePriceInputDesktop" class="form-control bg-dark text-light border-gold" style="font-family: 'Inter', sans-serif; border: 1px solid #bfa14a;" value="6900" min="100" step="100">
+          </div>
+          <button class="btn btn-gold btn-lg mb-3 pulse" style="font-family: 'Inter', sans-serif; background: linear-gradient(90deg, #bfa14a 0%, #ffd700 100%); color: #111; border-radius: 30px; border: none;" onclick="getCryptoPricesDesktop()">
+            <i class="fas fa-sync-alt me-2"></i> Actualizar Precios Cripto
+          </button>
+          <div id="cryptoPricesDesktop" class="text-warning display-6 fw-bold" style="font-family: 'Inter', sans-serif;">
+            Cargando...
+          </div>
+          <p class="text-muted mt-2" style="font-family: 'Inter', sans-serif;">Datos proporcionados por CoinGecko. Los precios pueden variar.</p>
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-4">
+      <!-- Virtual Demo Section -->
+      <section id="virtual-demo-desktop" class="h-100">
+        <div class="crypto-static-card p-4 rounded-lg shadow-lg text-center" style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 24px;">
+          <h2 class="mb-4 display-6 fw-bold" style="font-family: 'Playfair Display', serif;">Experimenta tu Mueble Virtualmente</h2>
+          <p class="lead mb-3" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
+            Utiliza nuestra demo para previsualizar y simular el pago de tu mueble autónomo.
+          </p>
+          <div class="embed-responsive embed-responsive-16by9 mb-3" style="height: 250px; border-radius: 16px; overflow: hidden; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+            <iframe class="embed-responsive-item" src="demovirtual/index.html" width="100%" height="100%" style="border:none;" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+          </div>
+          <p class="text-center mt-2 text-muted" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
+            Asegúrate de tener la carpeta 'demovirtual' con sus archivos en la raíz de tu proyecto.
+          </p>
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-4">
+      <!-- Pricing Section -->
+      <section id="pricing-desktop" class="h-100">
+        <div class="p-4 rounded-lg shadow-lg text-center" style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 24px;">
+          <h2 class="mb-4 display-6 fw-bold" style="font-family: 'Playfair Display', serif;">Nuestros Planes</h2>
+          <div class="row g-2">
+            <div class="col-12">
+              <div class="pricing-card-corp d-flex flex-column align-items-center text-center p-3 mb-2">
+                <div class="plan-icon mb-2"><i class="fas fa-cube"></i></div>
+                <h4>Básico</h4>
+                <p class="price-corp mb-2">3.200€</p>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="pricing-card-corp d-flex flex-column align-items-center text-center p-3 mb-2 highlighted-corp">
+                <div class="plan-icon mb-2"><i class="fas fa-gem"></i></div>
+                <h4>Pro</h4>
+                <p class="price-corp mb-2">4.800€</p>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="pricing-card-corp d-flex flex-column align-items-center text-center p-3">
+                <div class="plan-icon mb-2"><i class="fas fa-crown"></i></div>
+                <h4>Elite</h4>
+                <p class="price-corp mb-2">6.900€</p>
+              </div>
+            </div>
+          </div>
+          <a href="#pricing" class="btn btn-gold-corp mt-3">Ver Detalles</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
 
   <div class="separator my-5" data-aos="zoom-in"></div>
 
