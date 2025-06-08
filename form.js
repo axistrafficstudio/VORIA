@@ -63,9 +63,6 @@ function updatePlaceholders() {
     }
 }
 
-// Detecta cambios en el tamaño de la ventana y ejecuta la función
-window.addEventListener("resize", updatePlaceholders);
-updatePlaceholders();
 
 // jQuery Card Flip Nuestros Valores
 
@@ -90,3 +87,7 @@ if (typeof $ !== 'undefined') { // Verificar si jQuery está cargado
         });
     });
 }
+
+// Detecta cambios en el tamaño de la ventana y ejecuta la función
+window.addEventListener("resize", updatePlaceholders);
+updatePlaceholders();
