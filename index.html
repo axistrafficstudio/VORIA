@@ -17,3 +17,75 @@
 
   <link rel="icon" href="assets/logo-voria.png">
 </head>
+
+<body class="bg-dark text-light" style="min-height:100vh; background: linear-gradient(rgba(255, 215, 130, 0.7), rgba(43, 43, 43, 0.7));">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background: linear-gradient(135deg, rgba(255, 215, 130, 0.7), rgba(43,43,43,0.8));">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand text-gold fw-bold" href="#">
+        <img src="assets/logo-voria.png" alt="VORIA Logo" style="width: 48px; height: auto;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#voriaNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="voriaNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#about">Sobre Nosotros</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#pricing">Precios</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#crypto-payment">Cripto Pago</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#virtual-demo">Demo Virtual</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#showroom">Showroom</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#contact">Contacto</a>
+          </li>
+          <li class="nav-item mx-2">
+            <button class="btn btn-gold nav-link" id="themeToggle">Modo Claro/Oscuro</button>
+          </li>
+          <li class="nav-item mx-2">
+            <button class="btn btn-gold nav-link" id="musicToggleBtn" type="button">
+              <i class="fas fa-music"></i> Música
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO HEADER CON VIDEO DE FONDO -->
+  <header class="hero-header d-flex align-items-center justify-content-center text-center position-relative overflow-hidden" style="min-height:75vh;">
+    <!-- Video de fondo -->
+    <video autoplay loop muted playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index:0; min-height:75vh; object-fit:cover;">
+      <source src="assets/introvideo.mp4" type="video/mp4">
+      Tu navegador no soporta el video en HTML5.
+    </video>
+    <!-- Capa de superposición para oscurecer y dar el efecto dorado -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(rgba(20,20,20,0.7), rgba(255, 215, 130, 0.7)); z-index:1;"></div>
+    <!-- Contenido principal -->
+    <div class="container position-relative" style="z-index:2;">
+      <img src="assets/logo-voria.png" alt="VORIA Logo" style="width:90px;" class="mb-4" data-aos="fade-down">
+      <h1 class="display-3 fw-bold mb-3" style="font-family: 'Playfair Display', serif;" data-aos="fade-up">El Mueble Autónomo<br>que Revoluciona tu Espacio</h1>
+      <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">Tecnología, diseño y funcionalidad en un solo mueble inteligente.<br>Descubre la nueva era del mobiliario automático.</p>
+      <a href="#pricing" class="btn btn-gold btn-lg px-5" data-aos="zoom-in" data-aos-delay="400">Ver Planes</a>
+    </div>
+  </header>
+
+  <audio id="bg-music" loop>
+    <source src="assets/voria-theme.mp3" type="audio/mp3">
+  </audio>
+
+  
+</header>
