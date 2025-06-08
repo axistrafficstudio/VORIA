@@ -1,0 +1,90 @@
+:root {
+  --gold: #d4af37;
+  --dark-bg: #1e1e1e;
+  --light-bg: #f8f9fa;
+  --dark-text: #f8f9fa;
+  --light-text: #111;
+}
+
+/* General body styles */
+body {
+  transition: background-color 0.5s, color 0.5s;
+  padding-top: 70px;
+}
+
+body.bg-dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.bg-light {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+/* Navbar styles */
+nav,
+.navbar,
+.navbar * {
+  font-family: 'Inter', sans-serif !important;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* Navbar modo oscuro */
+body.bg-dark .navbar.navbar-dark {
+  background-color: transparent !important;
+  color: var(--dark-text) !important;
+}
+body.bg-dark .navbar.navbar-dark .nav-link,
+body.bg-dark .navbar.navbar-dark .btn-gold {
+  color: var(--dark-text) !important;
+}
+body.bg-dark .navbar.navbar-dark .nav-link:hover,
+body.bg-dark .navbar.navbar-dark .btn-gold:hover {
+  background-color: var(--gold) !important;
+  color: #111 !important;
+}
+
+/* Navbar modo claro */
+body.bg-light .navbar.navbar-light {
+  background-color: rgba(255,255,255,0.95) !important;
+  color: var(--light-text) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+body.bg-light .navbar.navbar-light .nav-link,
+body.bg-light .navbar.navbar-light .btn-gold {
+  color: var(--light-text) !important;
+}
+body.bg-light .navbar.navbar-light .nav-link:hover,
+body.bg-light .navbar.navbar-light .btn-gold:hover {
+  background-color: var(--gold) !important;
+  color: #111 !important;
+}
+
+/* Navbar toggler icon */
+.navbar-toggler-icon {
+  filter: none;
+}
+body.bg-light .navbar-toggler-icon {
+  filter: invert(100%);
+}
+body.bg-dark .navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* Logo VORIA adaptativo */
+body.bg-dark .navbar-brand img {
+  filter: none;
+}
+body.bg-light .navbar-brand img {
+  filter: invert(100%);
+}
+
+/* General text and link color for light mode */
+body.bg-light,
+body.bg-light .text-light,
+body.bg-light a,
+body.bg-light p,
+body.bg-light h1, body.bg-light h2, body.bg-light h3, body.bg-light h4, body.bg-light h5, body.bg-light h6 {
+  color: var(--light-text) !important;
+}
