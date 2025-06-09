@@ -1,11 +1,51 @@
+:root {
+    --gold: #d4af37;
+    --gold-light: #ffe9a7;
+    --carbon: #181818;
+    --carbon-dark: #111214;
+    --carbon-light: #232323;
+    --offwhite: #f8f8f6;
+    --shadow-gold: 0 4px 32px rgba(212,175,55,0.13), 0 1.5px 8px rgba(212,175,55,0.08);
+    --radius-xl: 2.5rem;
+    --radius-lg: 1.5rem;
+    --radius-md: 1rem;
+    --transition: all 0.3s cubic-bezier(.4,2,.3,1);
+    --font-tech: 'Inter', sans-serif;
+    --font-elegant: 'Playfair Display', serif;
+}
+
+/* Fondo general */
+body {
+    background: linear-gradient(120deg, var(--carbon) 0%, var(--carbon-dark) 100%);
+    color: var(--offwhite);
+    font-family: var(--font-tech);
+    font-size: 1.08rem;
+    letter-spacing: 0.01em;
+    min-height: 100vh;
+}
+
+/* Tarjeta principal */
 .crypto-card {
-    transition: all 0.3s ease;
-    transform-style: preserve-3d;
+    background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-gold);
+    color: var(--offwhite);
+    font-family: var(--font-tech);
+    padding: 2.5rem 2rem;
+    margin: 2rem auto;
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--gold);
+    max-width: 480px;
 }
 .crypto-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-8px) scale(1.025);
+    box-shadow: 0 12px 48px #d4af37cc, 0 2px 16px #bfa14a44;
+    border-color: var(--gold-light);
 }
+
+/* Animación y microinteracción */
 .progress-ring__circle {
     transition: stroke-dashoffset 0.5s;
     transform: rotate(-90deg);
@@ -15,15 +55,102 @@
     animation: floating 3s ease-in-out infinite;
 }
 @keyframes floating {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0% { transform: translateY(0px);}
+    50% { transform: translateY(-15px);}
+    100% { transform: translateY(0px);}
 }
 .pulse {
     animation: pulse 2s infinite;
 }
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(212,175,55, 0.7);}
+    70% { box-shadow: 0 0 0 16px rgba(212,175,55, 0);}
+    100% { box-shadow: 0 0 0 0 rgba(212,175,55, 0);}
 }
+
+/* Botones premium */
+.btn-gold {
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--carbon-dark) !important;
+    border: none;
+    border-radius: 2rem;
+    font-family: var(--font-tech);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    box-shadow: 0 2px 16px #d4af3740;
+    transition: var(--transition);
+    padding: 0.7em 2.2em;
+    font-size: 1.18rem;
+    position: relative;
+    overflow: hidden;
+}
+.btn-gold:hover {
+    background: linear-gradient(90deg, var(--gold-light) 0%, var(--gold) 100%);
+    color: var(--carbon-dark) !important;
+    box-shadow: 0 4px 32px #d4af37a0;
+    transform: translateY(-2px) scale(1.04);
+}
+.btn-xl { font-size: 1.4rem; padding: 1.1em 2.8em; }
+.btn:active { transform: scale(0.98); }
+
+/* Inputs y formularios */
+input, select, textarea {
+    border-radius: var(--radius-md) !important;
+    border: 2px solid var(--gold) !important;
+    background: var(--carbon-light) !important;
+    color: var(--offwhite) !important;
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #d4af3710;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--gold-light) !important;
+    box-shadow: 0 0 0 2px #d4af3740;
+    background: var(--carbon) !important;
+    color: var(--gold) !important;
+}
+
+/* Iconos */
+.icon-gold {
+    color: var(--gold) !important;
+    filter: drop-shadow(0 2px 8px #d4af3740);
+}
+.icon-bg {
+    background: linear-gradient(135deg, #bfa14a22 0%, #ffd70022 100%);
+    border-radius: 50%;
+    padding: 0.7em;
+    box-shadow: 0 2px 8px #d4af3710;
+}
+
+/* Etiquetas y títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-elegant);
+    letter-spacing: 0.01em;
+    color: var(--gold);
+    font-weight: 700;
+}
+h2 { font-size: 2.1rem; }
+h3 { font-size: 1.5rem; }
+@media (max-width: 600px) {
+    .crypto-card { padding: 1.2rem 0.5rem; }
+    h2 { font-size: 1.3rem; }
+}
+
+/* Etiquetas auxiliares */
+.text-gold { color: var(--gold) !important; }
+.bg-gold { background: var(--gold) !important; color: var(--carbon-dark) !important; }
+.rounded-5 { border-radius: var(--radius-xl) !important; }
+.shadow-lg { box-shadow: var(--shadow-gold) !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    background: var(--carbon-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(120deg, var(--gold) 0%, var(--carbon-light) 100%);
+    border-radius: 8px;
+}
+
+/* --- FIN VORIA DEMO VIRTUAL PREMIUM UI/UX UPGRADE --- */

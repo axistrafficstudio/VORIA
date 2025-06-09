@@ -1,39 +1,79 @@
-// Variable para almacenar el precio actual del modelo seleccionado
-let currentModelPrice = 0; 
-let currentCryptoRate = {}; // Para almacenar las tasas de criptomonedas
+// --- VORIA DEMO VIRTUAL PREMIUM UX/INTERACTIVO ---
+// Mantiene toda la funcionalidad original, pero añade estructura modular, animaciones y feedback visual avanzado.
 
-// Función para obtener precios de criptomonedas para la DEMO
+// Estado global de la demo
+let currentModelPrice = 0;
+let currentCryptoRate = {};
+let selectedModelId = null;
+
+// --- ANIMACIÓN Y FEEDBACK VISUAL ---
+function animateButtonFeedback(btn) {
+    btn.classList.add('pulse');
+    setTimeout(() => btn.classList.remove('pulse'), 600);
+}
+
+function showHUDMessage(msg, type = "info") {
+    let hud = document.getElementById('demoHUD');
+    if (!hud) {
+        hud = document.createElement('div');
+        hud.id = 'demoHUD';
+        hud.style.position = 'fixed';
+        hud.style.top = '30px';
+        hud.style.left = '50%';
+        hud.style.transform = 'translateX(-50%)';
+        hud.style.zIndex = '9999';
+        hud.style.padding = '1.2em 2.5em';
+        hud.style.borderRadius = '2em';
+        hud.style.fontFamily = "'Inter',sans-serif";
+        hud.style.fontWeight = '600';
+        hud.style.fontSize = '1.15rem';
+        hud.style.boxShadow = '0 4px 32px #d4af3740';
+        hud.style.transition = 'opacity 0.4s';
+        document.body.appendChild(hud);
+    }
+    hud.style.background = type === "success"
+        ? "linear-gradient(90deg,#ffe9a7 0%,#d4af37 100%)"
+        : "linear-gradient(90deg,#232323 0%,#bfa14a22 100%)";
+    hud.style.color = type === "success" ? "#181818" : "#ffe9a7";
+    hud.textContent = msg;
+    hud.style.opacity = "1";
+    setTimeout(() => { hud.style.opacity = "0"; }, 1800);
+}
+
+// --- CRIPTO: API Y ACTUALIZACIÓN ---
 async function fetchCryptoPrices(cryptoId) {
     try {
         const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,litecoin,bitcoin-cash,ripple&vs_currencies=usd`);
         const data = await response.json();
-        currentCryptoRate = data; // Almacena todas las tasas
+        currentCryptoRate = data;
         updatePaymentDetails();
-        // updateChart(); // Eliminado: Ya no se necesita actualizar la gráfica
     } catch (error) {
         console.error("Error fetching crypto prices for demo:", error);
-        document.getElementById('exchangeRate').textContent = "Error fetching rate";
-        document.getElementById('cryptoAmount').textContent = "N/A";
-        document.getElementById('preciseAmount').textContent = "N/A";
-        document.getElementById('cryptoAddress').textContent = "N/A";
+        setCryptoError();
     }
 }
 
-// Función para actualizar los detalles de pago de la DEMO
+function setCryptoError() {
+    document.getElementById('exchangeRate').textContent = "Error fetching rate";
+    document.getElementById('cryptoAmount').textContent = "N/A";
+    document.getElementById('preciseAmount').textContent = "N/A";
+    document.getElementById('cryptoAddress').textContent = "N/A";
+}
+
+// --- ACTUALIZACIÓN DE DETALLES DE PAGO ---
 function updatePaymentDetails() {
     const selectedCrypto = document.getElementById('crypto').value;
     const rate = currentCryptoRate[selectedCrypto] ? currentCryptoRate[selectedCrypto].usd : 0;
 
     if (currentModelPrice > 0 && rate > 0) {
-        const cryptoAmount = (currentModelPrice / rate).toFixed(8); // Aumentar decimales para cripto
+        const cryptoAmount = (currentModelPrice / rate).toFixed(8);
         document.getElementById('cryptoAmount').textContent = `${cryptoAmount} ${selectedCrypto.toUpperCase().replace('-', '')}`;
         document.getElementById('exchangeRate').textContent = `1 ${selectedCrypto.toUpperCase().replace('-', '')} = $${rate.toLocaleString()}`;
         document.getElementById('preciseAmount').textContent = `${cryptoAmount} ${selectedCrypto.toUpperCase().replace('-', '')}`;
-
-        // Generar QR Code
-        const qrData = `bitcoin:${generateCryptoAddress(selectedCrypto)}?amount=${cryptoAmount}`; // Ejemplo
+        // QR Code
+        const qrData = `bitcoin:${generateCryptoAddress(selectedCrypto)}?amount=${cryptoAmount}`;
         document.getElementById('qrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
-        document.getElementById('cryptoAddress').textContent = generateCryptoAddress(selectedCrypto); // Generar dirección
+        document.getElementById('cryptoAddress').textContent = generateCryptoAddress(selectedCrypto);
     } else {
         document.getElementById('cryptoAmount').textContent = "0.0000 BTC";
         document.getElementById('exchangeRate').textContent = "1 BTC = $0.00";
@@ -43,95 +83,119 @@ function updatePaymentDetails() {
     }
 }
 
-// Función de ejemplo para generar direcciones (en un entorno real, esto sería gestionado por un backend)
+// --- GENERADOR DE DIRECCIONES (DEMO) ---
 function generateCryptoAddress(crypto) {
-    switch(crypto) {
-        case 'bitcoin': return 'bc1qxyzdemo...'; // Dummy address
-        case 'ethereum': return '0xAbcDemo...'; // Dummy address
-        case 'litecoin': return 'Ltc1defDemo...'; // Dummy address
-        case 'bitcoin-cash': return 'bitcoincash:qpqrDemo...'; // Dummy address
-        case 'ripple': return 'rG123Demo...'; // Dummy address
+    switch (crypto) {
+        case 'bitcoin': return 'bc1qxyzdemo...';
+        case 'ethereum': return '0xAbcDemo...';
+        case 'litecoin': return 'Ltc1defDemo...';
+        case 'bitcoin-cash': return 'bitcoincash:qpqrDemo...';
+        case 'ripple': return 'rG123Demo...';
         default: return '...';
     }
 }
 
-// Función para copiar al portapapeles
+// --- COPIAR AL PORTAPAPELES CON FEEDBACK ---
 function copyToClipboard(elementId) {
     const element = document.getElementById(elementId);
     const text = element.textContent;
     navigator.clipboard.writeText(text).then(() => {
-        alert('Copiado al portapapeles: ' + text);
+        showHUDMessage('Copiado al portapapeles: ' + text, "success");
     }).catch(err => {
+        showHUDMessage('Error al copiar', "error");
         console.error('Error al copiar: ', err);
     });
 }
 
-// Inicialización del gráfico (simulado) - Se queda comentado porque al hacer carga todo el rato en tiempo real la página web hace una especia de guiños
-// let cryptoChart;
-// function updateChart() {
-//     const ctx = document.getElementById('cryptoChart').getContext('2d');
-//     if (cryptoChart) {
-//         cryptoChart.destroy();
-//     }
-//     const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-//     const dataPoints = labels.map(() => Math.random() * (50000 - 40000) + 40000);
-//     cryptoChart = new Chart(ctx, {
-//         type: 'line',
-//         data: {
-//             labels: labels,
-//             datasets: [{
-//                 label: 'BTC Price (USD)',
-//                 data: dataPoints,
-//                 borderColor: 'rgb(245, 158, 11)',
-//                 tension: 0.1,
-//                 fill: false
-//             }]
-//         },
-//         options: {
-//             responsive: true,
-//             maintainAspectRatio: false,
-//             scales: {
-//                 y: {
-//                     beginAtZero: false
-//                 }
-//             }
-//         }
-//     });
-// }
+// --- INTERACCIÓN DE MODELOS (VISUAL Y LÓGICA) ---
+function selectModel(modelBtn) {
+    currentModelPrice = parseFloat(modelBtn.dataset.price);
+    document.querySelectorAll('[id^="model"]').forEach(btn => btn.classList.remove('border-amber-500', 'ring-2', 'selected-model'));
+    modelBtn.classList.add('border-amber-500', 'ring-2', 'selected-model');
+    animateButtonFeedback(modelBtn);
+    updatePaymentDetails();
+    showHUDMessage(`Modelo seleccionado: ${modelBtn.dataset.name || modelBtn.textContent}`, "info");
+}
 
-// Event Listeners de la DEMO
+// --- ANIMACIÓN DE OBJETOS (SIMULACIÓN DE ARRASTRAR/ESCALAR/ROTAR) ---
+function enableObjectInteraction() {
+    const demoObj = document.getElementById('demoObject');
+    if (!demoObj) return;
+
+    let dragging = false, offsetX = 0, offsetY = 0, startX = 0, startY = 0, scale = 1, rotation = 0;
+
+    // Touch/Mouse down
+    demoObj.addEventListener('mousedown', startDrag);
+    demoObj.addEventListener('touchstart', startDrag, { passive: false });
+
+    function startDrag(e) {
+        dragging = true;
+        demoObj.style.transition = "box-shadow 0.2s, transform 0.2s";
+        demoObj.style.boxShadow = "0 8px 32px #d4af37cc";
+        startX = (e.touches ? e.touches[0].clientX : e.clientX) - demoObj.offsetLeft;
+        startY = (e.touches ? e.touches[0].clientY : e.clientY) - demoObj.offsetTop;
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('touchmove', onDrag, { passive: false });
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchend', endDrag);
+    }
+
+    function onDrag(e) {
+        if (!dragging) return;
+        e.preventDefault && e.preventDefault();
+        let x = (e.touches ? e.touches[0].clientX : e.clientX) - startX;
+        let y = (e.touches ? e.touches[0].clientY : e.clientY) - startY;
+        demoObj.style.transform = `translate(${x}px,${y}px) scale(${scale}) rotate(${rotation}deg)`;
+    }
+
+    function endDrag() {
+        dragging = false;
+        demoObj.style.boxShadow = "";
+        document.removeEventListener('mousemove', onDrag);
+        document.removeEventListener('touchmove', onDrag);
+        document.removeEventListener('mouseup', endDrag);
+        document.removeEventListener('touchend', endDrag);
+    }
+
+    // Escalar con rueda o gesto pinch
+    demoObj.addEventListener('wheel', e => {
+        e.preventDefault();
+        scale += e.deltaY < 0 ? 0.05 : -0.05;
+        scale = Math.max(0.5, Math.min(2, scale));
+        demoObj.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
+        showHUDMessage(`Escala: ${(scale * 100).toFixed(0)}%`);
+    });
+
+    // Rotar con doble click/tap
+    demoObj.addEventListener('dblclick', () => {
+        rotation = (rotation + 45) % 360;
+        demoObj.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
+        showHUDMessage(`Rotación: ${rotation}°`);
+    });
+}
+
+// --- INICIALIZACIÓN Y EVENTOS ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Escuchar clics en los botones de modelo
-    document.getElementById('model1').addEventListener('click', function() {
-        currentModelPrice = parseFloat(this.dataset.price);
-        // Quitar la clase de 'selected' de todos los botones y añadirla al actual
-        document.querySelectorAll('[id^="model"]').forEach(btn => btn.classList.remove('border-amber-500', 'ring-2'));
-        this.classList.add('border-amber-500', 'ring-2');
-        updatePaymentDetails();
-    });
+    // Modelos
+    document.getElementById('model1').addEventListener('click', function () { selectModel(this); });
+    document.getElementById('model2').addEventListener('click', function () { selectModel(this); });
 
-    document.getElementById('model2').addEventListener('click', function() {
-        currentModelPrice = parseFloat(this.dataset.price);
-        document.querySelectorAll('[id^="model"]').forEach(btn => btn.classList.remove('border-amber-500', 'ring-2'));
-        this.classList.add('border-amber-500', 'ring-2');
-        updatePaymentDetails();
-    });
-
-    // Escuchar cambios en la selección de criptomoneda
+    // Criptomoneda
     document.getElementById('crypto').addEventListener('change', updatePaymentDetails);
 
-    // Cargar precios iniciales al cargar la página
-    fetchCryptoPrices('bitcoin'); // Carga inicial para Bitcoin
+    // Cargar precios iniciales
+    fetchCryptoPrices('bitcoin');
 
-    // Inicializar el gráfico al cargar la página - ELIMINADO
-    // updateChart();
-
-    // Evento del botón de pagar (simulado)
+    // Botón de pago simulado
     document.getElementById('payButton').addEventListener('click', () => {
-        alert('Pago simulado iniciado. Por favor, envía el monto a la dirección.');
-        // Aquí iría la lógica para monitorear la transacción real
+        showHUDMessage('Pago simulado iniciado. Por favor, envía el monto a la dirección.', "success");
     });
 
-    // Seleccionar el modelo 1 por defecto al cargar la página
-    document.getElementById('model1').click(); 
+    // Seleccionar modelo 1 por defecto
+    document.getElementById('model1').click();
+
+    // Activar interacción visual si existe objeto demo
+    enableObjectInteraction();
 });
+
+// --- FIN VORIA DEMO VIRTUAL PREMIUM UX ---
