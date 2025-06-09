@@ -64,3 +64,43 @@ function toggleAudio() {
     audio.pause();
   }
 }
+
+// --- Crypto API Mejorada y Responsive ---
+async function getCryptoPricesDesktop() {
+  const basePrice = parseFloat(document.getElementById('basePriceInputDesktop').value) || 0;
+  const pricesDiv = document.getElementById('cryptoPricesDesktop');
+  pricesDiv.innerHTML = 'Cargando...';
+
+  try {
+    // CoinGecko API para BTC, ETH, USDT
+    const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=eur');
+    if (!res.ok) throw new Error('No se pudo obtener datos de CoinGecko');
+    const data = await res.json();
+
+    const btc = data.bitcoin.eur;
+    const eth = data.ethereum.eur;
+    const usdt = data.tether.eur;
+
+    const btcValue = (basePrice / btc).toFixed(6);
+    const ethValue = (basePrice / eth).toFixed(6);
+    const usdtValue = (basePrice / usdt).toFixed(2);
+
+    pricesDiv.innerHTML = `
+      <div class="d-flex flex-column gap-2 align-items-center">
+        <span><img src="assets/bitcoin.png" alt="BTC" style="height:32px;"> <b>${btcValue} BTC</b></span>
+        <span><img src="assets/ethereum.png" alt="ETH" style="height:32px;"> <b>${ethValue} ETH</b></span>
+        <span><img src="assets/tether.png" alt="USDT" style="height:32px;"> <b>${usdtValue} USDT</b></span>
+      </div>
+    `;
+  } catch (err) {
+    pricesDiv.innerHTML = `<span class="text-danger">Error al obtener precios cripto. Intenta de nuevo.</span>`;
+  }
+}
+
+// Sugerencia de otras APIs útiles para tu proyecto:
+// - [OpenWeatherMap](https://openweathermap.org/api): muestra el clima en la ubicación del showroom.
+// - [Unsplash API](https://unsplash.com/developers): para fondos o imágenes de inspiración de interiores.
+// - [Google Maps Directions API]: para rutas al showroom.
+// - [Calendly API]: para reservas de visitas al showroom.
+// - [Stripe API]: para pagos reales con cripto o tarjeta.
+// - [Mailchimp API]: para suscripción a newsletter de novedades VORIA.

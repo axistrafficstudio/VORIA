@@ -30,7 +30,7 @@ function updatePaymentDetails() {
         document.getElementById('exchangeRate').textContent = `1 ${selectedCrypto.toUpperCase().replace('-', '')} = $${rate.toLocaleString()}`;
         document.getElementById('preciseAmount').textContent = `${cryptoAmount} ${selectedCrypto.toUpperCase().replace('-', '')}`;
 
-        // Generar QR Code - Puedes usar una URL de ejemplo o una API real
+        // Generar QR Code
         const qrData = `bitcoin:${generateCryptoAddress(selectedCrypto)}?amount=${cryptoAmount}`; // Ejemplo
         document.getElementById('qrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
         document.getElementById('cryptoAddress').textContent = generateCryptoAddress(selectedCrypto); // Generar dirección
@@ -66,7 +66,7 @@ function copyToClipboard(elementId) {
     });
 }
 
-// Inicialización del gráfico (simulado) - ELIMINADO: Ya no se necesita Chart.js
+// Inicialización del gráfico (simulado) - Se queda comentado porque al hacer carga todo el rato en tiempo real la página web hace una especia de guiños
 // let cryptoChart;
 // function updateChart() {
 //     const ctx = document.getElementById('cryptoChart').getContext('2d');
