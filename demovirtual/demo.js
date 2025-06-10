@@ -1,12 +1,9 @@
-// --- VORIA DEMO VIRTUAL PREMIUM UX/INTERACTIVO ---
-// Mantiene toda la funcionalidad original, pero añade estructura modular, animaciones y feedback visual avanzado.
 
-// Estado global de la demo
 let currentModelPrice = 0;
 let currentCryptoRate = {};
 let selectedModelId = null;
 
-// --- ANIMACIÓN Y FEEDBACK VISUAL ---
+
 function animateButtonFeedback(btn) {
     btn.classList.add('pulse');
     setTimeout(() => btn.classList.remove('pulse'), 600);
@@ -117,7 +114,7 @@ function selectModel(modelBtn) {
     showHUDMessage(`Modelo seleccionado: ${modelBtn.dataset.name || modelBtn.textContent}`, "info");
 }
 
-// --- ANIMACIÓN DE OBJETOS (SIMULACIÓN DE ARRASTRAR/ESCALAR/ROTAR) ---
+
 function enableObjectInteraction() {
     const demoObj = document.getElementById('demoObject');
     if (!demoObj) return;
@@ -157,7 +154,7 @@ function enableObjectInteraction() {
         document.removeEventListener('touchend', endDrag);
     }
 
-    // Escalar con rueda o gesto pinch
+    
     demoObj.addEventListener('wheel', e => {
         e.preventDefault();
         scale += e.deltaY < 0 ? 0.05 : -0.05;
@@ -166,7 +163,7 @@ function enableObjectInteraction() {
         showHUDMessage(`Escala: ${(scale * 100).toFixed(0)}%`);
     });
 
-    // Rotar con doble click/tap
+    
     demoObj.addEventListener('dblclick', () => {
         rotation = (rotation + 45) % 360;
         demoObj.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
@@ -183,19 +180,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Criptomoneda
     document.getElementById('crypto').addEventListener('change', updatePaymentDetails);
 
-    // Cargar precios iniciales
+ 
     fetchCryptoPrices('bitcoin');
 
-    // Botón de pago simulado
+
     document.getElementById('payButton').addEventListener('click', () => {
         showHUDMessage('Pago simulado iniciado. Por favor, envía el monto a la dirección.', "success");
     });
 
-    // Seleccionar modelo 1 por defecto
+
     document.getElementById('model1').click();
 
-    // Activar interacción visual si existe objeto demo
+    
     enableObjectInteraction();
 });
 
-// --- FIN VORIA DEMO VIRTUAL PREMIUM UX ---

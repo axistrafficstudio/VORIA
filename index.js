@@ -97,10 +97,3 @@ async function getCryptoPricesDesktop() {
   }
 }
 
-// Sugerencia de otras APIs útiles para tu proyecto:
-// - [OpenWeatherMap](https://openweathermap.org/api): muestra el clima en la ubicación del showroom.
-// - [Unsplash API](https://unsplash.com/developers): para fondos o imágenes de inspiración de interiores.
-// - [Google Maps Directions API]: para rutas al showroom.
-// - [Calendly API]: para reservas de visitas al showroom.
-// - [Stripe API]: para pagos reales con cripto o tarjeta.
-// - [Mailchimp API]: para suscripción a newsletter de novedades VORIA.
