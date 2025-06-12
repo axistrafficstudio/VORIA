@@ -167,6 +167,59 @@ function setupLevel() {
   drawGame();
 }
 
+$(document).ready(function() {
+  $('.navbar-nav a.nav-link').on('click', function(e) {
+    const target = $(this).attr('href');
+    if (target.startsWith('#') && $(target).length) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $(target).offset().top - 80 // Ajusta el offset según tu navbar
+      }, 700);
+    }
+  });
+});
+
+$(document).ready(function() {
+  $('.navbar-nav a.nav-link').on('click', function(e) {
+    const target = $(this).attr('href');
+    if (target.startsWith('#') && $(target).length) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $(target).offset().top - 80 // Ajusta el offset según tu navbar
+      }, 700);
+    }
+  });
+});
+
+$('[data-tooltip]').hover(function(e) {
+  const tip = $('<div class="custom-tooltip"></div>').text($(this).data('tooltip')).appendTo('body');
+  $(this).on('mousemove', function(e) {
+    tip.css({ left: e.pageX + 10, top: e.pageY + 10 });
+  });
+}, function() {
+  $('.custom-tooltip').remove();
+});
+
+$('.pricing-card').hover(
+  function() { $(this).addClass('shadow-lg').css('transform', 'scale(1.03)'); },
+  function() { $(this).removeClass('shadow-lg').css('transform', 'scale(1)'); }
+);
+
+$(window).on('scroll', function() {
+  $('.fade-section').each(function() {
+    if ($(this).offset().top < $(window).scrollTop() + $(window).height() - 100) {
+      $(this).addClass('visible');
+    }
+  });
+});
+
+
+
+$('.faq-question').on('click', function() {
+  $(this).next('.faq-answer').slideToggle();
+  $(this).toggleClass('open');
+});
+
 // Modifica startVoriaGame para usar setupLevel
 function startVoriaGame() {
   const canvas = document.getElementById('voriaGameCanvas');

@@ -205,6 +205,21 @@ input:focus, select:focus, textarea:focus {
   border-radius: var(--radius-md) 0 0 var(--radius-md) !important;
 }
 
+.fade-section { opacity: 0; transition: opacity 0.8s; }
+.fade-section.visible { opacity: 1; }
+
+
+.custom-tooltip {
+  position: absolute;
+  background: #181818;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.95em;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 12px #bfa14a55;
+}
 /* SECCIONES DESTACADAS */
 section, .section {
   border-radius: var(--radius-xl);
