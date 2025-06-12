@@ -97,3 +97,194 @@ async function getCryptoPricesDesktop() {
   }
 }
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Mostrar pop-up de cookies si no está aceptado
+  if (!localStorage.getItem('voriaCookiesAccepted')) {
+    document.getElementById('cookieConsent').style.display = 'block';
+  }
+  document.getElementById('acceptCookies').onclick = function () {
+    localStorage.setItem('voriaCookiesAccepted', 'yes');
+    document.getElementById('cookieConsent').style.display = 'none';
+  };
+  document.getElementById('moreInfoCookies').onclick = function () {
+    const modal = new bootstrap.Modal(document.getElementById('legalModal'));
+    modal.show();
+  };
+
+  // CTA pulse animación
+  document.querySelectorAll('.pulse').forEach(btn => {
+    btn.animate([
+      { boxShadow: '0 0 24px #bfa14a55' },
+      { boxShadow: '0 0 48px #bfa14a99' },
+      { boxShadow: '0 0 24px #bfa14a55' }
+    ], {
+      duration: 1800,
+      iterations: Infinity
+    });
+  });
+});
+
+
+// Juego VORIA: arrastra muebles a zonas objetivo
+let game, ctx, dragging = null, offsetX = 0, offsetY = 0, score = 0, targets = [];
+
+function randomPos(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function setupLevel() {
+  // Genera posiciones aleatorias para muebles y targets, evitando solapamientos básicos
+  const used = [];
+  function getFreePos(xmin, xmax, ymin, ymax, r) {
+    let tries = 0;
+    while (tries < 50) {
+      let x = randomPos(xmin, xmax), y = randomPos(ymin, ymax);
+      let overlap = used.some(u => Math.abs(u.x - x) < r*2 && Math.abs(u.y - y) < r*2);
+      if (!overlap) {
+        used.push({x, y});
+        return {x, y};
+      }
+      tries++;
+    }
+    return {x: randomPos(xmin, xmax), y: randomPos(ymin, ymax)};
+  }
+  game = {
+    muebles: Array.from({length: 3}, () => {
+      let pos = getFreePos(40, 180, 40, 320, 40);
+      return {
+        x: pos.x, y: pos.y, w: 70, h: 40, color: '#bfa14a', dragging: false, placed: false
+      }
+    }),
+    targets: Array.from({length: 3}, () => {
+      let pos = getFreePos(400, 540, 60, 340, 35);
+      return {
+        x: pos.x, y: pos.y, r: 35, filled: false
+      }
+    })
+  };
+  targets = game.targets;
+  drawGame();
+}
+
+// Modifica startVoriaGame para usar setupLevel
+function startVoriaGame() {
+  const canvas = document.getElementById('voriaGameCanvas');
+  ctx = canvas.getContext('2d');
+  score = 0;
+  if (document.getElementById('level')) {
+    document.getElementById('level').textContent = 'Nivel: 1';
+  }
+  document.getElementById('score').textContent = 'Puntuación: 0';
+  setupLevel();
+
+  // Eventos de drag
+  canvas.onmousedown = onMouseDown;
+  canvas.onmousemove = onMouseMove;
+  canvas.onmouseup = onMouseUp;
+  canvas.onmouseleave = onMouseUp;
+}
+
+function drawGame() {
+  ctx.clearRect(0, 0, 600, 400);
+  // Zonas objetivo
+  for (const t of game.targets) {
+    ctx.beginPath();
+    ctx.arc(t.x, t.y, t.r, 0, 2 * Math.PI);
+    ctx.fillStyle = t.filled ? '#bfa14a' : '#444';
+    ctx.globalAlpha = 0.25;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#bfa14a';
+    ctx.stroke();
+  }
+  // Muebles
+  for (const m of game.muebles) {
+    ctx.save();
+    ctx.fillStyle = m.color;
+    ctx.shadowColor = '#bfa14a';
+    ctx.shadowBlur = 12;
+    ctx.fillRect(m.x, m.y, m.w, m.h);
+    ctx.restore();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(m.x, m.y, m.w, m.h);
+    ctx.font = "bold 1.1rem 'Playfair Display', serif";
+    ctx.fillStyle = "#fff";
+    ctx.fillText("VORIA", m.x + 10, m.y + m.h/2 + 6);
+  }
+}
+
+function onMouseDown(e) {
+  const rect = e.target.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  for (const m of game.muebles) {
+    if (!m.placed && mx > m.x && mx < m.x + m.w && my > m.y && my < m.y + m.h) {
+      dragging = m;
+      offsetX = mx - m.x;
+      offsetY = my - m.y;
+      break;
+    }
+  }
+}
+
+function onMouseMove(e) {
+  if (!dragging) return;
+  const rect = e.target.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  dragging.x = mx - offsetX;
+  dragging.y = my - offsetY;
+  drawGame();
+}
+
+function onMouseUp(e) {
+  if (!dragging) return;
+  // ¿Está sobre una zona objetivo?
+  for (const t of game.targets) {
+    if (!t.filled && Math.abs((dragging.x + dragging.w/2) - t.x) < t.r && Math.abs((dragging.y + dragging.h/2) - t.y) < t.r) {
+      dragging.x = t.x - dragging.w/2;
+      dragging.y = t.y - dragging.h/2;
+      dragging.placed = true;
+      t.filled = true;
+      score += 100;
+      document.getElementById('score').textContent = 'Puntuación: ' + score;
+      break;
+    }
+  }
+  dragging = null;
+  drawGame();
+  // ¿Juego terminado?
+  if (game.muebles.every(m => m.placed)) {
+    setTimeout(() => {
+      // En vez de alert, sube de nivel y cambia posiciones
+      if (typeof window.level === 'undefined') window.level = 2;
+      else window.level++;
+      if (document.getElementById('level')) {
+        document.getElementById('level').textContent = 'Nivel: ' + window.level;
+      }
+      setupLevel();
+    }, 600);
+  }
+}
+
+// Iniciar juego al cargar la sección
+document.addEventListener('DOMContentLoaded', () => {
+  startVoriaGame();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById('musicToggleBtn');
+  const player = document.getElementById('spotify-player-container');
+  let visible = false;
+
+  btn.addEventListener('click', function () {
+    visible = !visible;
+    player.style.display = visible ? 'block' : 'none';
+    btn.classList.toggle('active', visible);
+    btn.innerHTML = visible
+      ? '<i class="fas fa-pause"></i> Música'
+      : '<i class="fas fa-music"></i> Música';
+  });
+});

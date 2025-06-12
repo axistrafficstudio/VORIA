@@ -990,121 +990,48 @@
   </div>
 </section>
 
-<script>
-// Juego VORIA: arrastra muebles a zonas objetivo
-let game, ctx, dragging = null, offsetX = 0, offsetY = 0, score = 0, targets = [];
+<!-- POP-UP COOKIES Y PRIVACIDAD -->
+<div id="cookieConsent" class="position-fixed bottom-0 start-0 w-100 bg-dark bg-opacity-90 text-light p-4 shadow-lg" style="z-index:2000; display:none;">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <div>
+      <strong style="color:#bfa14a;">VORIA</strong> utiliza cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Consulta nuestra
+      <a href="#privacidad" class="text-gold fw-bold" style="text-decoration:underline;">Política de Privacidad</a> y
+      <a href="#cookies" class="text-gold fw-bold" style="text-decoration:underline;">Política de Cookies</a>.
+    </div>
+    <div class="d-flex gap-2 mt-3 mt-md-0">
+      <button id="acceptCookies" class="btn btn-gold px-4">Aceptar</button>
+      <button id="moreInfoCookies" class="btn btn-outline-light px-4">Más información</button>
+    </div>
+  </div>
+</div>
 
-function startVoriaGame() {
-  const canvas = document.getElementById('voriaGameCanvas');
-  ctx = canvas.getContext('2d');
-  score = 0;
-  document.getElementById('score').textContent = 'Puntuación: 0';
+<!-- MODAL LEGAL -->
+<div class="modal fade" id="legalModal" tabindex="-1" aria-labelledby="legalModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-light rounded-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="legalModalLabel" style="color:#bfa14a;">Información Legal y Privacidad</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" style="font-family:'Inter',sans-serif;">
+        <h6 class="fw-bold">Política de Cookies</h6>
+        <p>Este sitio utiliza cookies para personalizar el contenido y los anuncios, ofrecer funciones de redes sociales y analizar el tráfico. Puedes aceptar o rechazar las cookies en cualquier momento.</p>
+        <h6 class="fw-bold mt-4">Política de Privacidad</h6>
+        <p>En VORIA nos comprometemos a proteger tus datos personales. Consulta nuestra política completa en la sección legal del sitio.</p>
+        <h6 class="fw-bold mt-4">Aviso Legal</h6>
+        <p>El uso de este sitio implica la aceptación de nuestras condiciones de uso y políticas legales.</p>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-gold" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-  // Definir muebles (rectángulos dorados) y zonas objetivo (círculos)
-  game = {
-    muebles: [
-      {x: 60, y: 60, w: 70, h: 40, color: '#bfa14a', dragging: false, placed: false},
-      {x: 60, y: 140, w: 70, h: 40, color: '#bfa14a', dragging: false, placed: false},
-      {x: 60, y: 220, w: 70, h: 40, color: '#bfa14a', dragging: false, placed: false}
-    ],
-    targets: [
-      {x: 500, y: 80, r: 35, filled: false},
-      {x: 500, y: 180, r: 35, filled: false},
-      {x: 500, y: 280, r: 35, filled: false}
-    ]
-  };
-  targets = game.targets;
-  drawGame();
-
-  // Eventos de drag
-  canvas.onmousedown = onMouseDown;
-  canvas.onmousemove = onMouseMove;
-  canvas.onmouseup = onMouseUp;
-  canvas.onmouseleave = onMouseUp;
-}
-
-function drawGame() {
-  ctx.clearRect(0, 0, 600, 400);
-  // Zonas objetivo
-  for (const t of game.targets) {
-    ctx.beginPath();
-    ctx.arc(t.x, t.y, t.r, 0, 2 * Math.PI);
-    ctx.fillStyle = t.filled ? '#bfa14a' : '#444';
-    ctx.globalAlpha = 0.25;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = '#bfa14a';
-    ctx.stroke();
-  }
-  // Muebles
-  for (const m of game.muebles) {
-    ctx.save();
-    ctx.fillStyle = m.color;
-    ctx.shadowColor = '#bfa14a';
-    ctx.shadowBlur = 12;
-    ctx.fillRect(m.x, m.y, m.w, m.h);
-    ctx.restore();
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(m.x, m.y, m.w, m.h);
-    ctx.font = "bold 1.1rem 'Playfair Display', serif";
-    ctx.fillStyle = "#fff";
-    ctx.fillText("VORIA", m.x + 10, m.y + m.h/2 + 6);
-  }
-}
-
-function onMouseDown(e) {
-  const rect = e.target.getBoundingClientRect();
-  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-  for (const m of game.muebles) {
-    if (!m.placed && mx > m.x && mx < m.x + m.w && my > m.y && my < m.y + m.h) {
-      dragging = m;
-      offsetX = mx - m.x;
-      offsetY = my - m.y;
-      break;
-    }
-  }
-}
-
-function onMouseMove(e) {
-  if (!dragging) return;
-  const rect = e.target.getBoundingClientRect();
-  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-  dragging.x = mx - offsetX;
-  dragging.y = my - offsetY;
-  drawGame();
-}
-
-function onMouseUp(e) {
-  if (!dragging) return;
-  // ¿Está sobre una zona objetivo?
-  for (const t of game.targets) {
-    if (!t.filled && Math.abs((dragging.x + dragging.w/2) - t.x) < t.r && Math.abs((dragging.y + dragging.h/2) - t.y) < t.r) {
-      dragging.x = t.x - dragging.w/2;
-      dragging.y = t.y - dragging.h/2;
-      dragging.placed = true;
-      t.filled = true;
-      score += 100;
-      document.getElementById('score').textContent = 'Puntuación: ' + score;
-      break;
-    }
-  }
-  dragging = null;
-  drawGame();
-  // ¿Juego terminado?
-  if (game.muebles.every(m => m.placed)) {
-    setTimeout(() => {
-      alert('¡Felicidades! Has optimizado el espacio VORIA. Puntuación: ' + score);
-    }, 300);
-  }
-}
-
-// Iniciar juego al cargar la sección
-document.addEventListener('DOMContentLoaded', () => {
-  startVoriaGame();
-});
-</script>
+<!-- CTA FLOTANTE FIJO -->
+<a href="#contact-voria" class="btn btn-gold btn-lg px-5 position-fixed pulse d-none d-md-block" style="bottom:120px;right:40px;z-index:1500;box-shadow:0 0 24px #bfa14a55;">
+  <i class="fas fa-comments me-2"></i>¡Solicita tu asesoría gratuita!
+</a>
 
 <!-- FOOTER CORPORATIVO -->
 <footer class="footer-voria mt-5 pt-5 pb-3" style="background: linear-gradient(rgba(61, 61, 61, 0.7), rgba(5, 5, 5, 0.7));">
@@ -1164,23 +1091,6 @@ document.addEventListener('DOMContentLoaded', () => {
     src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
     width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById('musicToggleBtn');
-  const player = document.getElementById('spotify-player-container');
-  let visible = false;
-
-  btn.addEventListener('click', function () {
-    visible = !visible;
-    player.style.display = visible ? 'block' : 'none';
-    btn.classList.toggle('active', visible);
-    btn.innerHTML = visible
-      ? '<i class="fas fa-pause"></i> Música'
-      : '<i class="fas fa-music"></i> Música';
-  });
-});
-</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
