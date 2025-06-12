@@ -110,7 +110,31 @@ h4, .display-4 { font-size: 1.6rem; }
 .navbar-toggler-icon {
   filter: invert(90%) drop-shadow(0 1px 2px #0006);
 }
-
+.nav-capsule {
+  background: rgba(191,161,74,0.10);
+  border-radius: 2rem;
+  padding: 0.5rem 1.2rem !important;
+  margin: 0 0.2rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+.nav-capsule:hover, .nav-capsule.active, .nav-capsule:focus {
+  background: linear-gradient(90deg, #bfa14a 0%, #ffd700 100%);
+  color: #181818 !important;
+  box-shadow: 0 2px 16px #bfa14a33;
+  text-decoration: none;
+}
+.nav-capsule i {
+  color: #bfa14a;
+  font-size: 1.1em;
+  transition: color 0.2s;
+}
+.nav-capsule:hover i, .nav-capsule.active i {
+  color: #181818;
+}
 /* BOTONES */
 .btn-gold, .btn-gold-adv, .btn-gold-corp {
   background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
