@@ -303,20 +303,18 @@
   </div>
 </section>
 
-<!-- SECCIÓN UNIFICADA: CRIPTO Y DEMO VIRTUAL -->
+
+
 <section class="container-fluid py-5 my-5 position-relative" id="crypto-demo-currency"
   style="border-radius: 2.5rem; overflow: hidden;">
-  <!-- Video de fondo -->
   <video autoplay loop muted playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index:0; min-height:100%; object-fit:cover;">
     <source src="assets/videointer.mp4" type="video/mp4">
     Tu navegador no soporta el video en HTML5.
   </video>
-  <!-- Overlay dorado y oscuro -->
   <div class="position-absolute top-0 start-0 w-100 h-100"
     style="background: linear-gradient(120deg, rgba(24,24,24,0.85) 60%, rgba(212,175,55,0.13) 100%); z-index:1;"></div>
   <div class="container position-relative" style="z-index:2; max-width: 1800px;">
     <div class="row justify-content-center align-items-stretch gx-5 gy-5">
-      <!-- Virtual Demo (70%) -->
       <div class="col-12 col-lg-8 d-flex align-items-stretch order-lg-1 order-2" style="min-width: 420px;">
         <div class="crypto-static-card p-5 rounded-5 shadow-lg text-center w-100 d-flex flex-column justify-content-between align-items-center mx-auto position-relative bg-gradient"
           data-aos="fade-right"
@@ -342,8 +340,6 @@
 
 
 
-
-      <!-- Crypto Gateway (30%) -->
       <div class="col-12 col-lg-4 d-flex align-items-stretch order-lg-2 order-1" style="min-width: 320px;">
         <div class="crypto-display-card p-5 rounded-5 shadow-lg text-center w-100 d-flex flex-column justify-content-between align-items-center mx-auto position-relative bg-gradient"
           data-aos="fade-left"
@@ -389,6 +385,27 @@
   </div>
 </section>
 
+<!-- SECCIÓN VIDEOJUEGO VORIA -->
+<section class="container-fluid py-5 my-5 position-relative" id="voria-game" style="background: #181818; border-radius: 2.5rem; overflow: hidden;">
+  <div class="container text-center">
+    <h2 class="display-4 fw-bold mb-4" style="font-family: 'Playfair Display', serif; color: var(--gold);">
+      Juego VORIA: ¡Optimiza tu Espacio!
+    </h2>
+    <p class="lead mb-4" style="font-family: 'Inter', sans-serif;">
+      ¿Eres capaz de organizar un espacio inteligente y eficiente? Arrastra los muebles VORIA y crea la mejor distribución posible. ¡Demuestra tu ingenio!
+    </p>
+    <div id="game-container" class="mx-auto mb-4" style="width: 600px; height: 400px; background: #e6e6e6; border-radius: 1.5rem; box-shadow: 0 0 32px #bfa14a55; position: relative; overflow: hidden;">
+      <canvas id="voriaGameCanvas" width="600" height="400" style="border-radius: 1.5rem; background: linear-gradient(135deg, #181818 80%, #bfa14a22 100%);"></canvas>
+      <div id="game-ui" style="position:absolute;top:10px;left:10px;z-index:2;">
+        <span id="score" style="color:#bfa14a;font-family:'Playfair Display',serif;font-size:1.3rem;">Puntuación: 0</span>
+      </div>
+    </div>
+    <button class="btn btn-gold btn-lg" style="color: #e6e6e6;" onclick="startVoriaGame()">
+      <i class="fas fa-play me-2"></i>Jugar de Nuevo
+    </button>
+    <p class="mt-3" style="font-family: 'Inter', sans-serif; color: #e6e6e6;">Arrastra los muebles dorados a las zonas óptimas y evita obstáculos. ¡Consigue la máxima puntuación!</p>
+  </div>
+</section>
 
 
 <!-- Pricing Section -->
@@ -657,26 +674,13 @@
 
 
 
-<!-- SECCIÓN PRICING AVANZADA VORIA -->
-<section class="container-fluid py-5 my-5 position-relative" id="pricing">
-  <div class="container position-relative" style="z-index:2;">
-    <div class="row mb-5">
-      <div class="col-12 text-center">
-        <h2 class="display-3 fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: var(--gold);" data-aos="fade-up">
-          Planes y Tarifas VORIA
-        </h2>
-        <p class="lead text-light mb-0" style="font-family: 'Inter', sans-serif;" data-aos="fade-up" data-aos-delay="100">
-          Elige el plan que mejor se adapta a tu espacio y necesidades. Todos incluyen asesoría personalizada y garantía premium.
-        </p>
-      </div>
-    </div>
-    <div class="row g-4 justify-content-center">
-      <!-- Plan 1 -->
-      <div class="col-12 col-md-6 col-xl-4 d-flex">
-        <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
+<div class="row g-4 justify-content-center">
+  <!-- Plan 1 -->
+  <div class="col-12 col-md-6 col-xl-4 d-flex">
+    <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
       data-aos="fade-up" data-aos-delay="100"
       style="backdrop-filter: blur(2px); background: linear-gradient(135deg, #232323 60%, #bfa14a22 100%);">
-      <img src="assets/pricing-essential.jpg" alt="VORIA Essential" class="card-img-top rounded-top-5" style="object-fit:cover; height:220px;">
+      <!-- <img src="assets/pricing-essential.jpg" alt="VORIA Essential" class="card-img-top rounded-top-5" style="object-fit:cover; height:220px;"> -->
       <div class="card-body d-flex flex-column align-items-center text-center p-5">
         <div class="icon-bg mb-3">
           <i class="fas fa-cube fa-2x icon-gold"></i>
@@ -695,13 +699,13 @@
         <a href="#contact-voria" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
       </div>
     </article>
-      </div>
-      <!-- Plan 2 -->
-      <div class="col-12 col-md-6 col-xl-4 d-flex">
-        <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
+  </div>
+  <!-- Plan 2 -->
+  <div class="col-12 col-md-6 col-xl-4 d-flex">
+    <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
       data-aos="fade-up" data-aos-delay="200"
       style="backdrop-filter: blur(2px); border: 2px solid #bfa14a; background: linear-gradient(135deg, #bfa14a 0%, #232323 90%);">
-      <img src="assets/pricing-premium.jpg" alt="VORIA Premium" class="card-img-top rounded-top-5" style="object-fit:cover; height:220px;">
+      <!-- <img src="assets/pricing-premium.jpg" alt="VORIA Premium" class="card-img-top rounded-top-5" style="object-fit:cover; height:220px;"> -->
       <div class="card-body d-flex flex-column align-items-center text-center p-5">
         <div class="icon-bg mb-3">
           <i class="fas fa-gem fa-2x icon-gold"></i>
@@ -720,13 +724,13 @@
         <a href="#contact-voria" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
       </div>
     </article>
-      </div>
-      <!-- Plan 3 -->
-      <div class="col-12 col-md-6 col-xl-4 d-flex">
-        <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
+  </div>
+  <!-- Plan 3 -->
+  <div class="col-12 col-md-6 col-xl-4 d-flex">
+    <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
       data-aos="fade-up" data-aos-delay="300"
       style="backdrop-filter: blur(2px); background: linear-gradient(135deg, #232323 60%, #bfa14a 100%);">
-      <img src="assets/pricing-bespoke.jpg" alt="VORIA Bespoke" class="card-img-top rounded-top-5" style="object-fit:cover; height:220px;">
+      <!-- <img src="assets/pricing-bespoke.jpg" alt="VORIA Bespoke" class="card-img-top rounded-top-5" style="object-fit:cover; height:220px;"> -->
       <div class="card-body d-flex flex-column align-items-center text-center p-5">
         <div class="icon-bg mb-3">
           <i class="fas fa-crown fa-2x icon-gold"></i>
@@ -745,17 +749,8 @@
         <a href="#contact-voria" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
       </div>
     </article>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col text-center">
-        <p class="text-light-50" style="font-family: 'Inter', sans-serif;">
-          ¿Buscas una solución diferente? <a href="#contact-voria" class="text-gold fw-bold">Contacta con nosotros</a> para un presupuesto personalizado.
-        </p>
-      </div>
-    </div>
   </div>
-</section>
+</div>
 
 
 
@@ -974,27 +969,6 @@
   </div>
 </section>
 
-<!-- SECCIÓN VIDEOJUEGO VORIA -->
-<section class="container-fluid py-5 my-5 position-relative" id="voria-game" style="background: #181818; border-radius: 2.5rem; overflow: hidden;">
-  <div class="container text-center">
-    <h2 class="display-4 fw-bold mb-4" style="font-family: 'Playfair Display', serif; color: var(--gold);">
-      Juego VORIA: ¡Optimiza tu Espacio!
-    </h2>
-    <p class="lead mb-4" style="font-family: 'Inter', sans-serif;">
-      ¿Eres capaz de organizar un espacio inteligente y eficiente? Arrastra los muebles VORIA y crea la mejor distribución posible. ¡Demuestra tu ingenio!
-    </p>
-    <div id="game-container" class="mx-auto mb-4" style="width: 600px; height: 400px; background: #e6e6e6; border-radius: 1.5rem; box-shadow: 0 0 32px #bfa14a55; position: relative; overflow: hidden;">
-      <canvas id="voriaGameCanvas" width="600" height="400" style="border-radius: 1.5rem; background: linear-gradient(135deg, #181818 80%, #bfa14a22 100%);"></canvas>
-      <div id="game-ui" style="position:absolute;top:10px;left:10px;z-index:2;">
-        <span id="score" style="color:#bfa14a;font-family:'Playfair Display',serif;font-size:1.3rem;">Puntuación: 0</span>
-      </div>
-    </div>
-    <button class="btn btn-gold btn-lg" style="color: #e6e6e6;" onclick="startVoriaGame()">
-      <i class="fas fa-play me-2"></i>Jugar de Nuevo
-    </button>
-    <p class="mt-3" style="font-family: 'Inter', sans-serif; color: #e6e6e6;">Arrastra los muebles dorados a las zonas óptimas y evita obstáculos. ¡Consigue la máxima puntuación!</p>
-  </div>
-</section>
 
 <!-- POP-UP COOKIES Y PRIVACIDAD -->
 <div id="cookieConsent" class="position-fixed bottom-0 start-0 w-100 bg-dark bg-opacity-90 text-light p-4 shadow-lg" style="z-index:2000; display:none;">
@@ -1035,7 +1009,7 @@
 </div>
 
 <!-- CTA FLOTANTE FIJO -->
-<a href="#contact-voria" class="btn btn-gold btn-lg px-5 position-fixed pulse d-none d-md-block" style="bottom:120px;right:40px;z-index:1500;box-shadow:0 0 24px #bfa14a55;">
+<a href="#contact-voria" class="btn btn-gold btn-lg px-5 position-fixed pulse d-none d-md-block" style="bottom:120px;right:40px;z-index:1500;box-shadow:0 0 24px #bfa14a55; color: #fff;">
   <i class="fas fa-comments me-2"></i>¡Solicita tu asesoría gratuita!
 </a>
 
