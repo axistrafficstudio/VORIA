@@ -238,34 +238,60 @@ function startVoriaGame() {
   canvas.onmouseleave = onMouseUp;
 }
 
+// Responsive canvas para el juego VORIA
+function resizeGameCanvas() {
+  const canvas = document.getElementById('voriaGameCanvas');
+  if (!canvas) return;
+  const parent = canvas.parentElement;
+  let width = parent.offsetWidth;
+  let height = width * 0.6667; // 16:9 ratio (600x400)
+  if (width > 600) { width = 600; height = 400; }
+  canvas.width = width;
+  canvas.height = height;
+  if (typeof drawGame === 'function') drawGame();
+}
+window.addEventListener('resize', resizeGameCanvas);
+document.addEventListener('DOMContentLoaded', resizeGameCanvas);
+
+// Asegúrate de que drawGame use canvas.width y canvas.height dinámicamente
 function drawGame() {
-  ctx.clearRect(0, 0, 600, 400);
-  // Zonas objetivo
+  const canvas = document.getElementById('voriaGameCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Calcula escalas respecto al tamaño original (600x400)
+  const scaleX = canvas.width / 600;
+  const scaleY = canvas.height / 400;
+
+  // Dibuja zonas objetivo
   for (const t of game.targets) {
+    ctx.save();
     ctx.beginPath();
-    ctx.arc(t.x, t.y, t.r, 0, 2 * Math.PI);
+    ctx.arc(t.x * scaleX, t.y * scaleY, t.r * scaleX, 0, 2 * Math.PI);
     ctx.fillStyle = t.filled ? '#bfa14a' : '#444';
     ctx.globalAlpha = 0.25;
     ctx.fill();
     ctx.globalAlpha = 1;
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 4 * scaleX;
     ctx.strokeStyle = '#bfa14a';
     ctx.stroke();
+    ctx.restore();
   }
-  // Muebles
+  // Dibuja muebles
   for (const m of game.muebles) {
     ctx.save();
     ctx.fillStyle = m.color;
     ctx.shadowColor = '#bfa14a';
-    ctx.shadowBlur = 12;
-    ctx.fillRect(m.x, m.y, m.w, m.h);
+    ctx.shadowBlur = 12 * scaleX;
+    ctx.fillRect(m.x * scaleX, m.y * scaleY, m.w * scaleX, m.h * scaleY);
     ctx.restore();
     ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(m.x, m.y, m.w, m.h);
-    ctx.font = "bold 1.1rem 'Playfair Display', serif";
+    ctx.lineWidth = 2 * scaleX;
+    ctx.strokeRect(m.x * scaleX, m.y * scaleY, m.w * scaleX, m.h * scaleY);
+    ctx.font = `${Math.round(1.1 * scaleY * 16)}px 'Playfair Display', serif`;
     ctx.fillStyle = "#fff";
-    ctx.fillText("VORIA", m.x + 10, m.y + m.h/2 + 6);
+    ctx.fillText("VORIA", (m.x + 10) * scaleX, (m.y + m.h / 2 + 6) * scaleY);
   }
 }
 

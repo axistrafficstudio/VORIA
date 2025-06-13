@@ -359,4 +359,30 @@ section, .section {
   .display-4 { font-size: 1.1rem !important; }
 }
 
+/* Añade esto a tu stylesheet.css para mejorar el responsive del canvas y evitar desbordes */
+#game-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+#voriaGameCanvas {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 600px;
+  display: block;
+  background: #181818;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px #bfa14a22;
+}
+@media (max-width: 600px) {
+  #game-container {
+    max-width: 100vw;
+    padding: 0;
+  }
+  #voriaGameCanvas {
+    max-width: 100vw;
+    border-radius: 1rem;
+  }
+}
+
 /* --- FIN VORIA PREMIUM UI/UX UPGRADE --- */
