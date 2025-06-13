@@ -369,11 +369,28 @@ section, .section {
 #voriaGameCanvas {
   width: 100% !important;
   height: auto !important;
-  max-width: 600px;
   display: block;
-  background: #181818;
   border-radius: 1.5rem;
-  box-shadow: 0 4px 32px #bfa14a22;
+}
+.video-background-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 100%;
+  min-width: 100%;
+}
+img, .img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 @media (max-width: 600px) {
   #game-container {
@@ -386,7 +403,7 @@ section, .section {
   }
 }
 
-/* --- FIN VORIA PREMIUM UI/UX UPGRADE --- */
+
 
 html, body {
   max-width: 100vw;
@@ -402,5 +419,92 @@ body {
 }
 .container, .container-fluid, .row, .col, [class^="col-"] {
   max-width: 100vw;
+  box-sizing: border-box;
+}
+
+
+/* ---------- RESPONSIVE FIXES PARA VORIA ---------- */
+
+@media (max-width: 991px) {
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
+
+  .crypto-display-card,
+  .crypto-static-card,
+  .gallery1-card,
+  .pricing-card-corp {
+    min-width: 100% !important;
+    min-height: auto !important;
+    padding: 2rem 1rem;
+  }
+
+  #visit-factory iframe {
+    min-width: 100% !important;
+    min-height: 400px !important;
+  }
+
+  #crypto-demo-currency iframe {
+    height: 480px !important;
+  }
+
+  .carousel-caption {
+    font-size: 0.95rem;
+  }
+
+  .navbar .nav-capsule {
+    margin: 0.5rem auto;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .hero-header h1 {
+    font-size: 2rem !important;
+  }
+
+  .hero-header .lead {
+    font-size: 1rem !important;
+  }
+
+  #game-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-header {
+    min-height: 70vh !important;
+  }
+
+  .hero-header video {
+    object-fit: cover !important;
+  }
+
+  section {
+    padding: 2rem 1rem;
+  }
+
+  .display-2,
+  .display-3,
+  .display-4 {
+    font-size: 1.5rem !important;
+  }
+
+  .btn-lg,
+  .btn-xl {
+    font-size: 1rem !important;
+    padding: 0.6em 1.6em !important;
+  }
+}
+
+#stats .row {
+  margin-right: 0;
+  margin-left: 0;
+}
+#stats .card {
+  width: 100%;
+  min-width: 0;
   box-sizing: border-box;
 }
