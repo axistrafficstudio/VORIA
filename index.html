@@ -464,11 +464,9 @@
     <p class="lead mb-4" style="font-family: 'Inter', sans-serif;">
       ¿Eres capaz de organizar un espacio inteligente y eficiente? Arrastra los muebles VORIA y crea la mejor distribución posible. ¡Demuestra tu ingenio!
     </p>
-    <div id="game-container" class="mx-auto mb-4" style="width: 600px; height: 400px; background: #e6e6e6; border-radius: 1.5rem; box-shadow: 0 0 32px #bfa14a55; position: relative; overflow: hidden;">
-      <canvas id="voriaGameCanvas" width="600" height="400" style="border-radius: 1.5rem; background: linear-gradient(135deg, #181818 80%, #bfa14a22 100%);"></canvas>
-      <div id="game-ui" style="position:absolute;top:10px;left:10px;z-index:2;">
-        <span id="score" style="color:#bfa14a;font-family:'Playfair Display',serif;font-size:1.3rem;">Puntuación: 0</span>
-      </div>
+    <div id="game-container" class="mx-auto mb-4"
+  style="max-width:600px; width:100%; background:#e6e6e6; border-radius:1.5rem; box-shadow:0 0 32px #bfa14a55; position:relative; overflow:hidden;">
+      <!-- canvas aquí -->
     </div>
     <button class="btn btn-gold btn-lg" style="color: #e6e6e6;" onclick="startVoriaGame()">
       <i class="fas fa-play me-2"></i>Jugar de Nuevo
