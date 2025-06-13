@@ -809,17 +809,22 @@
 
 
 
-<!-- POP-UP COOKIES Y PRIVACIDAD -->
-<div id="cookieConsent" class="position-fixed bottom-0 start-0 w-100 bg-dark bg-opacity-90 text-light p-4 shadow-lg" style="z-index:2000; display:none;">
-  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
-    <div>
-      <strong style="color:#bfa14a;">VORIA</strong> utiliza cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Consulta nuestra
-      <a href="#privacidad" class="text-gold fw-bold" style="text-decoration:underline;">Política de Privacidad</a> y
-      <a href="#cookies" class="text-gold fw-bold" style="text-decoration:underline;">Política de Cookies</a>.
-    </div>
-    <div class="d-flex gap-2 mt-3 mt-md-0">
-      <button id="acceptCookies" class="btn btn-gold px-4">Aceptar</button>
-      <button id="moreInfoCookies" class="btn btn-outline-light px-4">Más información</button>
+<div id="cookieConsent" class="position-fixed bottom-0 start-50 translate-middle-x w-100 bg-dark bg-opacity-90 text-light p-3 shadow-lg"
+     style="z-index:2000; max-width: 98vw; box-sizing: border-box; display: block;">
+  <div class="container-fluid px-2">
+    <div class="row align-items-center justify-content-between g-2">
+      <div class="col-12 col-md text-center text-md-start mb-2 mb-md-0" style="font-size:1rem;">
+        <strong style="color:#bfa14a;">VORIA</strong> utiliza cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico.
+        Consulta nuestra
+        <a href="#privacidad" class="text-gold fw-bold" style="text-decoration:underline;">Política de Privacidad</a> y
+        <a href="#cookies" class="text-gold fw-bold" style="text-decoration:underline;">Política de Cookies</a>.
+      </div>
+      <div class="col-12 col-md-auto text-center text-md-end">
+        <div class="d-flex flex-column flex-md-row gap-2 justify-content-center">
+          <button id="acceptCookies" class="btn btn-gold px-4">Aceptar</button>
+          <button id="moreInfoCookies" class="btn btn-outline-light px-4">Más información</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

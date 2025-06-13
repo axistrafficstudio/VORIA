@@ -532,35 +532,28 @@ body {
   }
 }
 
-@media (max-width: 767.98px) {
-  #pricing .col-12, #pricing .col-md-6, #pricing .col-xl-4 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .voria-gradient-card {
-    padding: 1.5rem 0.5rem !important;
-    border-radius: 1.2rem !important;
-  }
-}
-
 #stats .row {
   margin-right: 0;
   margin-left: 0;
 }
-#stats .card {
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-}
 
-<section class="container py-5" id="pricing">
-  <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;">Planes VORIA</h2>
-  <div class="row g-4">
-    <div class="col-12 col-md-6 col-xl-4 d-flex">
-      <article class="card voria-gradient-card h-100 w-100 shadow-lg p-3">
-        <!-- ...contenido... -->
-      </article>
-    </div>
-    <!-- ...más planes... -->
-  </div>
-</section>
+#cookieConsent {
+  max-width: 98vw;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  font-size: 1rem;
+  overflow-x: auto;
+  border-radius: 1rem 1rem 0 0;
+}
+@media (max-width: 576px) {
+  #cookieConsent {
+    font-size: 0.97rem;
+    padding: 0.7rem 0.3rem !important;
+  }
+  #cookieConsent .btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
