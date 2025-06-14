@@ -20,11 +20,11 @@
 
 <body class="bg-dark text-light" style="min-height:100vh; background: linear-gradient(rgba(255, 215, 130, 0.7), rgba(43, 43, 43, 0.7));">
 
-  <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background: linear-gradient(135deg, rgba(255, 215, 130, 0.7), rgba(43,43,43,0.8));">
-  <div class="container-fluid px-4">
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background: linear-gradient(135deg, rgba(255, 215, 130, 0.7), rgba(43,43,43,0.8));">
+  <div class="container">
     <!-- Logo a la izquierda -->
     <a class="navbar-brand text-gold fw-bold me-3" href="#hero-header">
-      <img src="assets/logo-voria.png" alt="VORIA Logo" style="width: 48px; height: auto;">
+      <img src="assets/logo-voria.png" alt="VORIA Logo" style="max-width: 48px; height: auto;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#voriaNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -32,42 +32,42 @@
     <!-- Links centrados -->
     <div class="collapse navbar-collapse justify-content-center" id="voriaNavbar">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <a class="nav-link nav-capsule" href="#">
             <i class="fas fa-home me-2"></i>Inicio
           </a>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <a class="nav-link nav-capsule" href="#about-3dmodels-row">
             <i class="fas fa-info-circle me-2"></i>Sobre Nosotros
           </a>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <a class="nav-link nav-capsule" href="#pricing">
             <i class="fas fa-tags me-2"></i>Precios
           </a>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <a class="nav-link nav-capsule" href="#crypto-demo-currency">
             <i class="fab fa-bitcoin me-2"></i>Cripto Pago
           </a>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <a class="nav-link nav-capsule" href="#crypto-demo-currency">
             <i class="fas fa-vr-cardboard me-2"></i>Demo Virtual
           </a>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <a class="nav-link nav-capsule" href="#showroom">
             <i class="fas fa-store-alt me-2"></i>Showroom
           </a>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <a class="nav-link nav-capsule" href="#contact-voria">
             <i class="fas fa-envelope me-2"></i>Contacto
           </a>
         </li>
-        <li class="nav-item mx-2">
+        <li class="nav-item">
           <button class="btn btn-gold nav-link nav-capsule" id="themeToggle" type="button">
             <i class="fas fa-adjust me-2"></i>Modo Claro/Oscuro
           </button>
@@ -75,7 +75,7 @@
       </ul>
     </div>
     <!-- Botón de música a la derecha SIEMPRE -->
-    <div class="d-flex align-items-center ms-auto">
+    <div class="d-flex align-items-center">
       <button class="btn btn-gold nav-link nav-capsule" id="musicToggleBtn" type="button">
         <i class="fas fa-music"></i> Música
       </button>
@@ -86,12 +86,16 @@
 
 <header class="hero-header d-flex align-items-center justify-content-center text-center position-relative overflow-hidden" style="min-height:75vh;">
   <!-- Video de fondo -->
-  <video autoplay loop muted playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index:0; min-height:75vh; object-fit:cover;">
-    <source src="assets/recortado.mp4" type="video/mp4">
-  </video>
-  <!-- Contenido principal SIN capa de superposición -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index:0;">
+    <div class="ratio ratio-16x9 w-100 h-100">
+      <video autoplay loop muted playsinline class="w-100 h-100 object-fit-cover" style="object-fit:cover;">
+        <source src="assets/recortado.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <!-- Contenido principal -->
   <div class="container position-relative" style="z-index:2;">
-    <img src="assets/logo-voria.png" alt="VORIA Logo" style="width:90px;" class="mb-4" data-aos="fade-down">
+    <img src="assets/logo-voria.png" alt="VORIA Logo" style="max-width:90px; width:100%;" class="mb-4" data-aos="fade-down">
     <h1 class="display-3 fw-bold mb-3" style="font-family: 'Playfair Display', serif;" data-aos="fade-up">
       El Mueble Autónomo<br>que Revoluciona tu Espacio
     </h1>
@@ -102,21 +106,19 @@
   </div>
 </header>
 
-  <audio id="bg-music" loop>
-    <source src="assets/voria-theme.mp3" type="audio/mp3">
-  </audio>
+<audio id="bg-music" loop>
+  <source src="assets/voria-theme.mp3" type="audio/mp3">
+</audio>
 
-  
-</header>
-
-<section class="text-center py-5 text-light border-bottom border-secondary" >
-  <h1 class="display-5 fw-bold" style="font-family: 'Playfair Display', serif;">VORIA — Ingeniería Multifuncional</h1>
-  <p class="lead">Espacios inteligentes. Diseño elegante. Tecnología avanzada.</p>
+<section class="text-center py-5 text-light border-bottom border-secondary">
+  <div class="container">
+    <h1 class="display-5 fw-bold" style="font-family: 'Playfair Display', serif;">VORIA — Ingeniería Multifuncional</h1>
+    <p class="lead">Espacios inteligentes. Diseño elegante. Tecnología avanzada.</p>
+  </div>
 </section>
 
-<!-- SECCIÓN DESTACADA: CARACTERÍSTICAS VORIA -->
 <section class="container-fluid py-5 my-5 position-relative" id="voria-features"
-  style="background: linear-gradient(120deg, rgba(24,24,24,0.96) 60%, rgba(212,175,55,0.10) 100%), url('assets/gallery1/gallery13.jpg') center center/cover no-repeat; min-height: 600px; border-radius: 2.5rem;">
+  style="background: linear-gradient(120deg, rgba(24,24,24,0.96) 60%, rgba(212,175,55,0.10) 100%), url('assets/gallery1/gallery13.jpg') center center/cover no-repeat; min-height: 60vh; border-radius: 2.5rem;">
   <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(120deg, rgba(24,24,24,0.82) 60%, rgba(212,175,55,0.13) 100%); border-radius: 2.5rem; z-index:1;"></div>
   <div class="container position-relative" style="z-index:2;">
     <div class="row justify-content-center mb-5">
@@ -131,7 +133,7 @@
     </div>
     <div class="row g-4 justify-content-center">
       <!-- Carta 1 -->
-      <div class="col-12 col-md-6 col-xl-3 d-flex">
+      <div class="col-12 col-sm-6 col-xl-3 d-flex">
         <article class="card h-100 shadow-lg border-0 rounded-5 bg-dark bg-opacity-75 text-light feature-card" data-aos="fade-up" data-aos-delay="100"
           style="backdrop-filter: blur(2px);">
           <div class="card-body d-flex flex-column align-items-center text-center p-4">
@@ -146,7 +148,7 @@
         </article>
       </div>
       <!-- Carta 2 -->
-      <div class="col-12 col-md-6 col-xl-3 d-flex">
+      <div class="col-12 col-sm-6 col-xl-3 d-flex">
         <article class="card h-100 shadow-lg border-0 rounded-5 bg-dark bg-opacity-75 text-light feature-card" data-aos="fade-up" data-aos-delay="200"
           style="backdrop-filter: blur(2px);">
           <div class="card-body d-flex flex-column align-items-center text-center p-4">
@@ -161,7 +163,7 @@
         </article>
       </div>
       <!-- Carta 3 -->
-      <div class="col-12 col-md-6 col-xl-3 d-flex">
+      <div class="col-12 col-sm-6 col-xl-3 d-flex">
         <article class="card h-100 shadow-lg border-0 rounded-5 bg-dark bg-opacity-75 text-light feature-card" data-aos="fade-up" data-aos-delay="300"
           style="backdrop-filter: blur(2px);">
           <div class="card-body d-flex flex-column align-items-center text-center p-4">
@@ -176,7 +178,7 @@
         </article>
       </div>
       <!-- Carta 4 -->
-      <div class="col-12 col-md-6 col-xl-3 d-flex">
+      <div class="col-12 col-sm-6 col-xl-3 d-flex">
         <article class="card h-100 shadow-lg border-0 rounded-5 bg-dark bg-opacity-75 text-light feature-card" data-aos="fade-up" data-aos-delay="400"
           style="backdrop-filter: blur(2px);">
           <div class="card-body d-flex flex-column align-items-center text-center p-4">
@@ -196,10 +198,10 @@
 
 
 
-  <section class="container my-5 py-5" id="about-3dmodels-row">
+<section class="container my-5 py-5" id="about-3dmodels-row">
   <div class="row align-items-center">
     <!-- About Section (izquierda) -->
-    <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+    <div class="col-12 col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
       <h2 class="display-5 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Innovación y Diseño a tu Alcance</h2>
       <p class="lead">En VORIA, redefinimos el mobiliario para el futuro. Nuestros muebles autónomos combinan la más alta tecnología con un diseño exquisito, adaptándose a tus necesidades y transformando cualquier espacio en un entorno inteligente y multifuncional.</p>
       <p>Desde la optimización del espacio hasta la integración de sistemas inteligentes, cada pieza VORIA es una declaración de lujo, eficiencia y vanguardia. Creemos que tu hogar o oficina debe evolucionar contigo.</p>
@@ -209,7 +211,7 @@
       </div>
     </div>
     <!-- Modelos 3D (derecha) -->
-    <div class="col-lg-6" data-aos="fade-left">
+    <div class="col-12 col-lg-6" data-aos="fade-left">
       <div class="d-none d-lg-block mb-4">
         <img src="assets/mueble-interior.png" alt="Mueble VORIA en interior" class="img-fluid rounded shadow-lg">
       </div>
@@ -220,7 +222,7 @@
           <div class="carousel-item active">
             <div class="d-flex justify-content-center">
               <model-viewer 
-                src="assets/modelo3d.glbassets/modelo4d.glb"
+                src="assets/modelo3d.glb"
                 ar
                 ar-modes="webxr scene-viewer quick-look"
                 camera-controls
@@ -228,7 +230,7 @@
                 poster="assets/showroom-3.jpg"
                 shadow-intensity="1"
                 exposure="1"
-                style="width:100%; height:45vh; max-width:100vw; background:#222; border-radius:24px; display:block;">
+                style="width:100%; max-width:100vw; height:45vh; background:#222; border-radius:24px; display:block;">
                 <div class="progress-bar hide" slot="progress-bar">
                   <div class="update-bar"></div>
                 </div>
@@ -252,7 +254,7 @@
                 poster="assets/showroom-2.jpg"
                 shadow-intensity="1"
                 exposure="1"
-                style="width:100%; height:45vh; max-width:100vw; background:#222; border-radius:24px; display:block;">
+                style="width:100%; max-width:100vw; height:45vh; background:#222; border-radius:24px; display:block;">
                 <div class="progress-bar hide" slot="progress-bar">
                   <div class="update-bar"></div>
                 </div>
@@ -276,7 +278,7 @@
                 poster="assets/showroom-1.jpg"
                 shadow-intensity="1"
                 exposure="1"
-                style="width:100%; height:45vh; max-width:100vw; background:#222; border-radius:24px; display:block;">
+                style="width:100%; max-width:100vw; height:45vh; background:#222; border-radius:24px; display:block;">
                 <div class="progress-bar hide" slot="progress-bar">
                   <div class="update-bar"></div>
                 </div>
@@ -303,102 +305,31 @@
   </div>
 </section>
 
-<!-- SIMA -->
-<section class="container-fluid py-5 my-5 position-relative" id="sima-gallery" style="background: #181818; border-radius: 2.5rem;">
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-12 text-center">
-        <h2 class="display-4 fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: var(--gold);">
-          Recuerdos de nuestra exposición en IFEMA — SIMA 2025
-        </h2>
-        <p class="lead text-light" style="font-family: 'Inter', sans-serif;">
-          Descubre algunos de los momentos más especiales de nuestra participación en el evento inmobiliario más importante del año.
-        </p>
-      </div>
-    </div>
-    <div id="simaGalleryCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner rounded-5 shadow-lg">
-        <div class="carousel-item active">
-          <img src="assets/SIMA/Captura de pantalla 2025-06-10 161917.jpg" class="d-block w-100" alt="SIMA 2025 Recuerdo 1" style="object-fit:cover; max-height:600px;">
-          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
-            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Stand VORIA en SIMA 2025</h5>
-            <p>Innovación, diseño y tecnología en el mayor evento inmobiliario de España.</p>
-          </div>
-        </div>
-        
-        <div class="carousel-item">
-          <img src="assets/SIMA/FundadoryamigosSIMA.jpg" class="d-block w-100" alt="SIMA 2025 Recuerdo 2" style="object-fit:cover; max-height:600px;">
-          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
-            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Personas</h5>
-            <p>Es lo que te llevas de eventos así</p>
-          </div>
-        </div>
-
-           <div class="carousel-item">
-          <img src="assets/SIMA/WhatsApp Image 2025-06-10 at 16.20.36 (1).jpeg" class="d-block w-100" alt="SIMA 2025 Recuerdo 2" style="object-fit:cover; max-height:600px;">
-          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
-            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Aprendizajes</h5>
-            <p>Aprendimos muchísimo de los profesionales del sector</p>
-          </div>
-        </div>
-
-           <div class="carousel-item">
-          <img src="assets/SIMA/WhatsApp Image 2025-06-10 at 16.20.36.jpeg" class="d-block w-100" alt="SIMA 2025 Recuerdo 2" style="object-fit:cover; max-height:600px;">
-          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
-            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">SIMA 2026</h5>
-            <p>Deseando un SIMA 2026/p>
-          </div>
-        </div>
-
-           <div class="carousel-item">
-  <video class="d-block w-100" style="object-fit:cover; max-height:600px;" controls poster="assets/SIMA/poster-video.jpg">
-    <source src="assets/SIMA/WhatsApp Video 2025-06-10 at 16.20.35.mp4" type="video/mp4">
-  </video>
-  <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
-    <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Vídeo en SIMA 2025</h5>
-    <p>Recuerdo en movimiento de exposiciones en IFEMA.</p>
-  </div>
-</div>
-      
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#simaGalleryCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#simaGalleryCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- CRYPTO API de public api visto en clase, DEMO VIRTUAL API mucho más customizada y con más sentido que en la web y JUEGO desarrollado con GEMINI para aprender y experimentar-->
-
 <section class="container-fluid py-5 my-5 position-relative" id="crypto-demo-currency"
   style="border-radius: 2.5rem; overflow: hidden;">
+  <!-- Video de fondo -->
   <video autoplay loop muted playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index:0; min-height:100%; object-fit:cover;">
     <source src="assets/videointer.mp4" type="video/mp4">
     Tu navegador no soporta el video en HTML5.
   </video>
+  <!-- Overlay dorado y oscuro -->
   <div class="position-absolute top-0 start-0 w-100 h-100"
     style="background: linear-gradient(120deg, rgba(24,24,24,0.85) 60%, rgba(212,175,55,0.13) 100%); z-index:1;"></div>
   <div class="container position-relative" style="z-index:2; max-width: 1800px;">
     <div class="row justify-content-center align-items-stretch gx-5 gy-5">
-      <div class="col-12 col-lg-8 d-flex align-items-stretch order-lg-1 order-2" style="min-width: 420px;">
+      <!-- Virtual Demo (70%) -->
+      <div class="col-12 col-lg-8 d-flex align-items-stretch order-lg-1 order-2">
         <div class="crypto-static-card p-5 rounded-5 shadow-lg text-center w-100 d-flex flex-column justify-content-between align-items-center mx-auto position-relative bg-gradient"
           data-aos="fade-right"
-          style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 48px; min-height: 650px;">
+          style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 48px;">
           <header class="mb-4">
             <h2 class="display-2 fw-bold mb-2" style="font-family: 'Playfair Display', serif;">Demo Virtual</h2>
             <p class="lead fs-2 mb-0" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
               Previsualiza y simula el pago de tu mueble autónomo.
             </p>
           </header>
-          <div class="embed-responsive embed-responsive-16by9 mb-4 w-100"
-            style="height: 520px; border-radius: 32px; overflow: hidden; box-shadow: 0 0 40px #bfa14a88;">
-            <iframe class="embed-responsive-item" src="demovirtual/index.html" width="100%" height="100%" style="border:none;"
-              allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+          <div class="ratio ratio-16x9 mb-4 w-100 rounded-4 overflow-hidden shadow" style="box-shadow: 0 0 40px #bfa14a88;">
+            <iframe src="demovirtual/index.html" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups" style="border:none;"></iframe>
           </div>
           <footer>
             <p class="text-center mt-2 text-muted fs-5" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
@@ -407,13 +338,11 @@
           </footer>
         </div>
       </div>
-
-
-
-      <div class="col-12 col-lg-4 d-flex align-items-stretch order-lg-2 order-1" style="min-width: 320px;">
+      <!-- Crypto Gateway (30%) -->
+      <div class="col-12 col-lg-4 d-flex align-items-stretch order-lg-2 order-1">
         <div class="crypto-display-card p-5 rounded-5 shadow-lg text-center w-100 d-flex flex-column justify-content-between align-items-center mx-auto position-relative bg-gradient"
           data-aos="fade-left"
-          style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 48px; min-height: 650px;">
+          style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 48px;">
           <header class="mb-4">
             <h2 class="display-4 fw-bold mb-2" style="font-family: 'Playfair Display', serif;">Pago Criptomonedas</h2>
             <p class="lead fs-5 mb-0" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
@@ -455,35 +384,286 @@
   </div>
 </section>
 
-<!-- SECCIÓN VIDEOJUEGO VORIA -->
-<section class="container-fluid py-5 my-5 position-relative" id="voria-game" style="background: #181818; border-radius: 2.5rem; overflow: hidden;">
-  <div class="container text-center">
-    <h2 class="display-4 fw-bold mb-4" style="font-family: 'Playfair Display', serif; color: var(--gold);">
-      Juego VORIA: ¡Optimiza tu Espacio!
-    </h2>
-    <p class="lead mb-4" style="font-family: 'Inter', sans-serif;">
-      ¿Eres capaz de organizar un espacio inteligente y eficiente? Arrastra los muebles VORIA y crea la mejor distribución posible. ¡Demuestra tu ingenio!
-    </p>
-    <div id="game-container" class="mx-auto mb-4"
-  style="max-width:600px; width:100%; background:#e6e6e6; border-radius:1.5rem; box-shadow:0 0 32px #bfa14a55; position:relative; overflow:hidden;">
-      <!-- canvas aquí -->
+<!-- 
+Pricing -->
+<section class="container-fluid my-5 py-5" id="gallery1">
+  <div class="gallery1-wrapper" data-aos="fade-up">
+    <h2 class="text-center mb-5 display-3 fw-bold" style="font-family: 'Playfair Display', serif;">Galería de Proyectos</h2>
+    <div class="row justify-content-center gx-5">
+      <div class="col-12 col-md-6 col-xl-3 d-flex">
+        <div class="gallery1-card w-100 rounded-5 shadow-lg overflow-hidden position-relative">
+          <img src="assets/gallery1/gallery11.jpg" class="img-fluid d-block w-100 object-fit-cover" alt="Proyecto 1">
+          <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-4 position-absolute bottom-0 start-0 w-100">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Salón Inteligente</h5>
+            <p>Integración de mueble VORIA en un salón moderno, optimizando espacio y tecnología.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3 d-flex">
+        <div class="gallery1-card w-100 rounded-5 shadow-lg overflow-hidden position-relative">
+          <img src="assets/gallery1/gallery12.jpg" class="img-fluid d-block w-100 object-fit-cover" alt="Proyecto 2">
+          <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-4 position-absolute bottom-0 start-0 w-100">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Oficina Minimalista</h5>
+            <p>Espacio de trabajo eficiente con mobiliario multifuncional y elegante.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3 d-flex">
+        <div class="gallery1-card w-100 rounded-5 shadow-lg overflow-hidden position-relative">
+          <img src="assets/gallery1/gallery13.jpg" class="img-fluid d-block w-100 object-fit-cover" alt="Proyecto 3">
+          <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-4 position-absolute bottom-0 start-0 w-100">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Dormitorio Premium</h5>
+            <p>Soluciones inteligentes para el descanso y la organización personal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3 d-flex">
+        <div class="gallery1-card w-100 rounded-5 shadow-lg overflow-hidden position-relative">
+          <img src="assets/gallery1/gallery14.jpg" class="img-fluid d-block w-100 object-fit-cover" alt="Proyecto 4">
+          <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-4 position-absolute bottom-0 start-0 w-100">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Zona de Ocio</h5>
+            <p>Entretenimiento y confort con integración de tecnología y diseño.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <button class="btn btn-gold btn-lg" style="color: #e6e6e6;" onclick="startVoriaGame()">
-      <i class="fas fa-play me-2"></i>Jugar de Nuevo
-    </button>
-    <p class="mt-3" style="font-family: 'Inter', sans-serif; color: #e6e6e6;">Arrastra los muebles dorados a las zonas óptimas y evita obstáculos. ¡Consigue la máxima puntuación!</p>
   </div>
 </section>
 
 
-<!-- SECCIÓN DE PRECIOS PROFESIONAL Y CORPORATIVA -->
-<section class="container-fluid py-5" id="pricing" style="background: linear-gradient(120deg, #232323 60%, #bfa14a 100%);">
+
+
+<section class="container-fluid py-5 my-5 position-relative" id="sima-gallery" style="background: #181818; border-radius: 2.5rem;">
   <div class="container">
-    <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif; color: #fff;">Planes VORIA</h2>
-    <div class="row g-4">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="display-4 fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: var(--gold);">
+          Recuerdos de nuestra exposición en IFEMA — SIMA 2025
+        </h2>
+        <p class="lead text-light" style="font-family: 'Inter', sans-serif;">
+          Descubre algunos de los momentos más especiales de nuestra participación en el evento inmobiliario más importante del año.
+        </p>
+      </div>
+    </div>
+    <div id="simaGalleryCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner rounded-5 shadow-lg">
+        <div class="carousel-item active">
+          <img src="assets/SIMA/Captura de pantalla 2025-06-10 161917.jpg" class="img-fluid d-block w-100 object-fit-cover" alt="SIMA 2025 Recuerdo 1" style="max-height:600px;">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Stand VORIA en SIMA 2025</h5>
+            <p>Innovación, diseño y tecnología en el mayor evento inmobiliario de España.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/SIMA/FundadoryamigosSIMA.jpg" class="img-fluid d-block w-100 object-fit-cover" alt="SIMA 2025 Recuerdo 2" style="max-height:600px;">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Personas</h5>
+            <p>Es lo que te llevas de eventos así</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/SIMA/WhatsApp Image 2025-06-10 at 16.20.36 (1).jpeg" class="img-fluid d-block w-100 object-fit-cover" alt="SIMA 2025 Recuerdo 3" style="max-height:600px;">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Aprendizajes</h5>
+            <p>Aprendimos muchísimo de los profesionales del sector</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/SIMA/WhatsApp Image 2025-06-10 at 16.20.36.jpeg" class="img-fluid d-block w-100 object-fit-cover" alt="SIMA 2025 Recuerdo 4" style="max-height:600px;">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">SIMA 2026</h5>
+            <p>Deseando un SIMA 2026</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <video class="img-fluid d-block w-100 object-fit-cover" style="max-height:600px;" controls poster="assets/SIMA/poster-video.jpg">
+            <source src="assets/SIMA/WhatsApp Video 2025-06-10 at 16.20.35.mp4" type="video/mp4">
+          </video>
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-3">
+            <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Vídeo en SIMA 2025</h5>
+            <p>Recuerdo en movimiento de nuestra exposición en IFEMA.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#simaGalleryCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#simaGalleryCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid py-5 my-5 position-relative" id="showroom-vr-gallery"
+  style="border-radius: 2.5rem; overflow: hidden; min-height: 700px;">
+  <video autoplay loop muted playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index:0; min-height:700px; object-fit:cover;">
+    <source src="assets/seccionVRshowroom.mp4" type="video/mp4">
+  </video>
+  <div class="container position-relative" style="z-index:2; max-width: 1800px;">
+    <div class="row justify-content-center align-items-center" style="min-height: 700px;">
+      <div class="col-12 mb-5 text-center">
+        <h2 class="display-2 fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: #bfa14a;" data-aos="fade-up">
+          Showroom VR de Nuestros Proyectos
+        </h2>
+        <p class="lead text-light mb-0" style="font-family: 'Inter', sans-serif;" data-aos="fade-up" data-aos-delay="100">
+          Descubre, explora y vive la innovación de VORIA en espacios reales y virtuales.
+        </p>
+      </div>
+      <!-- Galería en carrusel + VR + Showroom físico en formato row horizontal -->
+      <div class="col-12 d-flex flex-column flex-lg-row flex-wrap justify-content-center align-items-stretch gap-4" style="z-index:2;">
+        <!-- Galería de Proyectos en Carrusel -->
+        <div class="bg-dark bg-opacity-75 rounded-5 shadow-lg p-4 d-flex flex-column align-items-center justify-content-center flex-fill"
+          style="min-width: 0; max-width: 500px; width: 100%;">
+          <h3 class="fw-bold mb-3 text-center" style="font-family: 'Playfair Display', serif; color: #d4af37;">
+            Galería de Proyectos
+          </h3>
+          <div id="galleryCarousel" class="carousel slide w-100" data-bs-ride="carousel">
+            <div class="carousel-inner rounded-4 shadow-lg">
+              <div class="carousel-item active">
+                <img src="assets/gallery1/gallery11.jpg" class="img-fluid d-block w-100" alt="Proyecto 1">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-3">
+                  <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Salón Inteligente</h5>
+                  <p>Integración de mueble VORIA en un salón moderno, optimizando espacio y tecnología.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="assets/gallery1/gallery12.jpg" class="img-fluid d-block w-100" alt="Proyecto 2">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-3">
+                  <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Oficina Minimalista</h5>
+                  <p>Espacio de trabajo eficiente con mobiliario multifuncional y elegante.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="assets/gallery1/gallery13.jpg" class="img-fluid d-block w-100" alt="Proyecto 3">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-3">
+                  <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Dormitorio Premium</h5>
+                  <p>Soluciones inteligentes para el descanso y la organización personal.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="assets/gallery1/gallery14.jpg" class="img-fluid d-block w-100" alt="Proyecto 4">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded-4 p-3">
+                  <h5 class="fw-bold" style="font-family: 'Playfair Display', serif;">Zona de Ocio</h5>
+                  <p>Entretenimiento y confort con integración de tecnología y diseño.</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </div>
+        <!-- Espacios VR -->
+        <div class="bg-dark bg-opacity-75 rounded-5 shadow-lg p-4 d-flex flex-column align-items-center justify-content-center flex-fill"
+          style="min-width: 0; max-width: 500px; width: 100%;">
+          <h3 class="fw-bold mb-3 text-center" style="font-family: 'Playfair Display', serif; color: #d4af37;">
+            Espacios en Realidad Virtual
+          </h3>
+          <p class="lead mb-3 text-center" style="font-family: 'Inter', sans-serif;">
+            Sumérgete en nuestros espacios y proyectos con una experiencia inmersiva en realidad virtual. Visualiza cada detalle y recorre ambientes VORIA desde cualquier lugar.
+          </p>
+          <div class="rounded-4 shadow-lg overflow-hidden mb-3 w-100" style="aspect-ratio: 16/9; min-height: 220px; background: #111;">
+            <video autoplay loop muted playsinline class="w-100 h-100 object-fit-cover" style="object-fit:cover;">
+              <source src="assets/seccionVRshowroom.mp4" type="video/mp4">
+              Tu navegador no soporta el video en HTML5.
+            </video>
+          </div>
+          <a href="#contact-voria" class="btn btn-gold btn-lg mt-2 align-self-center">
+            <i class="fas fa-vr-cardboard me-2"></i>Solicitar Demo VR
+          </a>
+        </div>
+        <!-- Showroom físico -->
+        <div class="bg-dark bg-opacity-75 rounded-5 shadow-lg p-4 d-flex flex-column align-items-center justify-content-center flex-fill"
+          style="min-width: 0; max-width: 500px; width: 100%;">
+          <h3 class="fw-bold mb-3 text-center" style="font-family: 'Playfair Display', serif; color: #d4af37;">
+            Visita Nuestro Showroom
+          </h3>
+          <p class="lead mb-3 text-center" style="font-family: 'Inter', sans-serif;">
+            Descubre la innovación de VORIA en persona en Valdemoro, Madrid. Interactúa con nuestros muebles inteligentes y recibe asesoría personalizada.
+          </p>
+          <div class="rounded-5 shadow-lg overflow-hidden mb-3 w-100" style="height: 220px;">
+            <img src="assets/showroom-1.jpg" class="img-fluid d-block w-100 h-100 object-fit-cover" alt="Showroom VORIA" style="object-fit: cover;">
+          </div>
+          <a href="#contact-voria" class="btn btn-gold btn-lg mt-2 align-self-center">
+            <i class="fas fa-map-marker-alt me-2"></i>Solicitar Visita
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container my-5 py-5" id="partners-carousel">
+  <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;">Empresas Colaboradoras</h2>
+  <div id="logosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+      <!-- Grupo 1 -->
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+          <img src="assets/logosempresas/GM 120x90 (1).png" alt="Colaborador 1" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+          <img src="assets/logosempresas/gmb-sima.jpg" alt="Colaborador 2" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+          <img src="assets/logosempresas/images.png" alt="Colaborador 3" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+        </div>
+      </div>
+      <!-- Grupo 2 -->
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+          <img src="assets/logosempresas/logo 2 copia 2.png" alt="Colaborador 4" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+          <img src="assets/logosempresas/Logo-sin-punto.png" alt="Colaborador 5" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+          <img src="assets/logosempresas/Logo-Transparante-Negro-768x596.png" alt="Colaborador 6" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+        </div>
+      </div>
+      <!-- Grupo 3 -->
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3">
+          <img src="assets/logosempresas/logo-vector-tecnocasa-franchising-network.jpg" alt="Colaborador 7" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+          <img src="assets/logosempresas/PNG OFICIAL.png" alt="Colaborador 8" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+          <img src="assets/logosempresas/Recurso 16 copia.png" alt="Colaborador 9" class="img-fluid" style="max-width: 180px; width: 100%; height: auto; object-fit:contain;">
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#logosCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#logosCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+</section>
+
+
+
+
+<section class="container-fluid py-5 my-5 position-relative" id="pricing">
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="display-3 fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: var(--gold);" data-aos="fade-up">
+          Planes y Tarifas VORIA
+        </h2>
+        <p class="lead text-light mb-0" style="font-family: 'Inter', sans-serif;" data-aos="fade-up" data-aos-delay="100">
+          Elige el plan que mejor se adapta a tu espacio y necesidades. Todos incluyen asesoría personalizada y garantía premium.
+        </p>
+      </div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <!-- Plan 1 -->
       <div class="col-12 col-md-6 col-xl-4 d-flex">
-        <article class="card voria-gradient-card h-100 w-100 shadow-lg p-3">
-          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+        <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
+          data-aos="fade-up" data-aos-delay="100"
+          style="backdrop-filter: blur(2px); background: linear-gradient(135deg, #232323 60%, #bfa14a22 100%);">
+          <img src="assets/pricing-essential.jpg" alt="VORIA Essential" class="card-img-top rounded-top-5 img-fluid" style="object-fit:cover; height:220px;">
+          <div class="card-body d-flex flex-column align-items-center text-center p-5">
             <div class="icon-bg mb-3">
               <i class="fas fa-cube fa-2x icon-gold"></i>
             </div>
@@ -498,96 +678,71 @@
               <li><i class="fas fa-check text-gold me-2"></i> Garantía 2 años</li>
             </ul>
             <div class="display-5 fw-bold mb-3 text-gold">6.900€</div>
-            <a href="#contact" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
+            <a href="#contact-voria" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
           </div>
         </article>
       </div>
+      <!-- Plan 2 -->
       <div class="col-12 col-md-6 col-xl-4 d-flex">
-        <article class="card voria-gradient-card h-100 w-100 shadow-lg p-3">
-          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+        <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
+          data-aos="fade-up" data-aos-delay="200"
+          style="backdrop-filter: blur(2px); border: 2px solid #bfa14a; background: linear-gradient(135deg, #bfa14a 0%, #232323 90%);">
+          <img src="assets/pricing-premium.jpg" alt="VORIA Premium" class="card-img-top rounded-top-5 img-fluid" style="object-fit:cover; height:220px;">
+          <div class="card-body d-flex flex-column align-items-center text-center p-5">
             <div class="icon-bg mb-3">
               <i class="fas fa-gem fa-2x icon-gold"></i>
             </div>
             <h5 class="fw-bold mb-2" style="font-family: 'Playfair Display', serif;">VORIA Premium</h5>
             <p class="mb-3" style="font-family: 'Inter', sans-serif;">
-              Solución avanzada con personalización completa.
+              Experiencia avanzada con máxima personalización y tecnología de vanguardia.
             </p>
             <ul class="list-unstyled mb-4" style="font-family: 'Inter', sans-serif;">
+              <li><i class="fas fa-check text-gold me-2"></i> Automatización avanzada</li>
               <li><i class="fas fa-check text-gold me-2"></i> Integración domótica</li>
               <li><i class="fas fa-check text-gold me-2"></i> Diseño a medida</li>
               <li><i class="fas fa-check text-gold me-2"></i> Garantía 5 años</li>
             </ul>
             <div class="display-5 fw-bold mb-3 text-gold">17.500€</div>
-            <a href="#contact" class="btn btn-gold btn-lg px-5 pulse">Solicitar Info</a>
+            <a href="#contact-voria" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
           </div>
         </article>
       </div>
+      <!-- Plan 3 -->
       <div class="col-12 col-md-6 col-xl-4 d-flex">
-        <article class="card voria-gradient-card h-100 w-100 shadow-lg p-3">
-          <div class="card-body d-flex flex-column align-items-center text-center p-4">
+        <article class="card h-100 shadow-lg border-0 rounded-5 text-light pricing-card"
+          data-aos="fade-up" data-aos-delay="300"
+          style="backdrop-filter: blur(2px); background: linear-gradient(135deg, #232323 60%, #bfa14a 100%);">
+          <img src="assets/pricing-bespoke.jpg" alt="VORIA Bespoke" class="card-img-top rounded-top-5 img-fluid" style="object-fit:cover; height:220px;">
+          <div class="card-body d-flex flex-column align-items-center text-center p-5">
             <div class="icon-bg mb-3">
               <i class="fas fa-crown fa-2x icon-gold"></i>
             </div>
             <h5 class="fw-bold mb-2" style="font-family: 'Playfair Display', serif;">VORIA Bespoke</h5>
             <p class="mb-3" style="font-family: 'Inter', sans-serif;">
-              Para clientes únicos con necesidades exclusivas.
+              Proyecto exclusivo llave en mano para clientes y espacios únicos.
             </p>
             <ul class="list-unstyled mb-4" style="font-family: 'Inter', sans-serif;">
               <li><i class="fas fa-check text-gold me-2"></i> Consultoría personalizada</li>
-              <li><i class="fas fa-check text-gold me-2"></i> Acabados exclusivos</li>
+              <li><i class="fas fa-check text-gold me-2"></i> Integración total IoT/IA</li>
+              <li><i class="fas fa-check text-gold me-2"></i> Materiales y acabados exclusivos</li>
               <li><i class="fas fa-check text-gold me-2"></i> Garantía extendida</li>
             </ul>
             <div class="display-5 fw-bold mb-3 text-gold">A medida</div>
-            <a href="#contact" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
+            <a href="#contact-voria" class="btn btn-gold btn-lg px-5">Solicitar Info</a>
           </div>
         </article>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- SECCIÓN ESTADÍSTICAS VORIA -->
-<section class="container py-5" id="stats">
-  <div class="row g-4 text-center">
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 text-white shadow"
-        style="background: linear-gradient(135deg, #232323 60%, #bfa14a 100%); border: none;">
-        <div class="card-body">
-          <h3 class="display-5 fw-bold">3200+</h3>
-          <p class="mb-0">Clientes</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 text-white shadow"
-        style="background: linear-gradient(135deg, #232323 60%, #bfa14a 100%); border: none;">
-        <div class="card-body">
-          <h3 class="display-5 fw-bold">98</h3>
-          <p class="mb-0">Proyectos IA</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 text-white shadow"
-        style="background: linear-gradient(135deg, #232323 60%, #bfa14a 100%); border: none;">
-        <div class="card-body">
-          <h3 class="display-5 fw-bold">12</h3>
-          <p class="mb-0">Países</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 text-white shadow"
-        style="background: linear-gradient(135deg, #232323 60%, #bfa14a 100%); border: none;">
-        <div class="card-body">
-          <h3 class="display-5 fw-bold">27</h3>
-          <p class="mb-0">Premios</p>
-        </div>
+    <div class="row mt-5">
+      <div class="col text-center">
+        <p class="text-light-50" style="font-family: 'Inter', sans-serif;">
+          ¿Buscas una solución diferente? <a href="#contact-voria" class="text-gold fw-bold">Contacta con nosotros</a> para un presupuesto personalizado.
+        </p>
       </div>
     </div>
   </div>
 </section>
+
 
 
 <!-- SECCIÓN CARRERAS VORIA: ÚNETE AL EQUIPO -->
@@ -626,7 +781,7 @@
             <li class="mb-2"><i class="fas fa-check-circle icon-gold me-2"></i> Flexibilidad y desarrollo profesional</li>
             <li class="mb-2"><i class="fas fa-check-circle icon-gold me-2"></i> Entorno de innovación y tecnología premium</li>
           </ul>
-          <img src="assets/carrers.png" alt="Equipo VORIA" class="rounded-4 shadow-lg w-100" style="max-width:340px; object-fit:cover;">
+          <img src="assets/team-voria.jpg" alt="Equipo VORIA" class="img-fluid rounded-4 shadow-lg w-100" style="max-width:340px; object-fit:cover;">
         </div>
       </div>
     </div>
@@ -636,50 +791,50 @@
 
 <!-- ImagenHud -->
 <section class="position-relative w-100 d-flex justify-content-center align-items-center" style="min-height: 40vh;">
-  <div class="position-relative" style="width:66%; border-radius:2rem; overflow:hidden;">
-    <img src="assets/HUDvoria.png" alt="HUD VORIA" class="w-100 h-100 object-fit-cover" style="min-height:27vh; max-height:66vh; object-fit:cover; border-radius:2rem;">
+  <div class="position-relative mx-auto" style="width:100%; max-width:700px; border-radius:2rem; overflow:hidden;">
+    <img src="assets/HUDvoria.png" alt="HUD VORIA" class="img-fluid w-100 object-fit-cover" style="min-height:27vh; max-height:66vh; object-fit:cover; border-radius:2rem;">
     <!-- Texto inspirador arriba a la derecha -->
-    <div class="position-absolute top-0 end-0 p-4" style="background: rgba(0,0,0,0.18); border-bottom-left-radius: 1rem;">
-      <span style="color: #fff; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; text-shadow: 0 2px 8px #000;">
+    <div class="position-absolute top-0 end-0 p-2 p-md-4" style="background: rgba(0,0,0,0.18); border-bottom-left-radius: 1rem; max-width: 80%;">
+      <span style="color: #fff; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; text-shadow: 0 2px 8px #000;">
         “La innovación es el arte de transformar lo cotidiano en extraordinario”
       </span>
     </div>
     <!-- Texto original abajo a la derecha -->
-    <div class="position-absolute bottom-0 end-0 p-4" style="background: rgba(0,0,0,0.35); border-top-left-radius: 1rem;">
-      <span style="color: #fff; font-family: 'Playfair Display', serif; font-size: 1.25rem; text-shadow: 0 2px 8px #000;">
+    <div class="position-absolute bottom-0 end-0 p-2 p-md-4" style="background: rgba(0,0,0,0.35); border-top-left-radius: 1rem; max-width: 80%;">
+      <span style="color: #fff; font-family: 'Playfair Display', serif; font-size: 1rem; text-shadow: 0 2px 8px #000;">
         Innovación y control en cada detalle
       </span>
     </div>
   </div>
 </section>
 
-<!-- VISITA NUESTRAS INSTALACIONES Y FÁBRICAS -->
-<section class="container-fluid my-5 py-5 position-relative" id="visit-factory" data-aos="fade-up">
-  <div class="position-absolute top-0 start-0 w-100 h-100"
-    style="background: linear-gradient(120deg, rgba(24,24,24,0.85) 60%, rgba(212,175,55,0.13) 100%); border-radius: 2.5rem; z-index:1;"></div>
-  <div class="row justify-content-center align-items-center position-relative" style="z-index:2;">
-    <div class="col-12 col-lg-5 mb-4 mb-lg-0">
-      <div class="p-4">
-        <h2 class="display-4 fw-bold mb-3" style="font-family: 'Playfair Display', serif; color: #bfa14a;">
-          Visita nuestras instalaciones y fábricas
-        </h2>
-        <p class="lead" style="font-family: 'Inter', sans-serif;">
-          Descubre dónde nace la innovación de VORIA. Te invitamos a conocer nuestras instalaciones y fábricas, donde la tecnología y el diseño se unen para crear muebles autónomos únicos. Solicita tu visita y vive la experiencia VORIA en persona.
-        </p>
-        <a href="#contact" class="btn btn-gold btn-lg mt-3 px-5">Solicitar Visita</a>
+<section id="visit" class="py-5" style="background: linear-gradient(120deg, #232323 60%, #bfa14a 100%);">
+  <div class="container">
+    <h2 class="text-center mb-5 display-4 fw-bold text-white" style="font-family: 'Playfair Display', serif;">Visita nuestras instalaciones</h2>
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-md-6 mb-4 mb-md-0">
+        <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg" style="box-shadow: 0 0 40px #bfa14a88;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=..."
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación VORIA"></iframe>
+        </div>
       </div>
-    </div>
-    <div class="col-12 col-lg-7">
-      <div class="rounded-5 shadow-lg overflow-hidden w-100">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=..."
-    class="w-100"
-    style="min-height:400px; border:0; border-radius:2rem;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+      <div class="col-12 col-md-6">
+        <div class="bg-carbon text-white rounded-4 shadow-lg p-4 h-100 d-flex flex-column justify-content-center">
+          <p class="lead mb-4 fs-5">
+            Ven a conocernos y descubre cómo podemos transformar tu espacio.
+          </p>
+          <ul class="list-unstyled mb-0">
+            <li><i class="fas fa-map-marker-alt text-gold me-2"></i> Calle Ejemplo 123, Ciudad</li>
+            <li><i class="fas fa-phone text-gold me-2"></i> +34 900 000 000</li>
+            <li><i class="fas fa-envelope text-gold me-2"></i> info@voria.com</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -705,9 +860,6 @@
           <li class="mb-3"><i class="fas fa-leaf icon-gold me-2"></i> <strong>ISO 14001</strong> — Gestión ambiental</li>
           <li class="mb-3"><i class="fas fa-user-shield icon-gold me-2"></i> <strong>Compromiso ético y social</strong></li>
         </ul>
-        <span class="badge rounded-pill bg-gold text-dark fs-6 px-4 py-2 mt-2" style="font-family: 'Inter', sans-serif;">
-          Calidad, Seguridad y Sostenibilidad
-        </span>
       </div>
       <!-- Habilidades y servicios -->
       <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center" data-aos="fade-left">
@@ -721,7 +873,6 @@
             <li class="mb-2"><i class="fas fa-network-wired icon-gold me-2"></i> Consultoría en espacios inteligentes</li>
             <li class="mb-2"><i class="fas fa-globe icon-gold me-2"></i> Proyectos internacionales llave en mano</li>
           </ul>
-          
         </div>
       </div>
     </div>
@@ -730,7 +881,7 @@
 
 
 
- <!-- Contacto -->
+
 <section class="container-fluid py-5 my-5 position-relative" id="contact-voria" style="background: #181818; border-radius: 2.5rem; overflow: hidden;">
   <div class="container">
     <div class="row align-items-stretch">
@@ -783,11 +934,11 @@
         </form>
       </div>
       <!-- Fotografía de avatares a la derecha -->
-      <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center">
-        <div class="w-100 h-100 position-relative" style="min-height:400px;">
-          <img src="assets/equipo.png" alt="Equipo VORIA" class="w-100 h-100 object-fit-cover" style="min-height:400px; max-height:600px; object-fit:cover; border-radius: 2rem;">
-          <div class="position-absolute bottom-0 end-0 p-4" style="background: rgba(0,0,0,0.45); border-top-left-radius: 1rem;">
-            <span style="color: #fff; font-family: 'Playfair Display', serif; font-size: 1.25rem; text-shadow: 0 2px 8px #000;">
+      <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center mt-4 mt-lg-0">
+        <div class="w-100 position-relative" style="min-height:300px;">
+          <img src="assets/equipo.png" alt="Equipo VORIA" class="img-fluid w-100 rounded-4 shadow-lg" style="object-fit:cover; border-radius: 2rem; min-height:200px; max-height:500px;">
+          <div class="position-absolute bottom-0 end-0 p-3 p-md-4" style="background: rgba(0,0,0,0.45); border-top-left-radius: 1rem; max-width: 90%;">
+            <span style="color: #fff; font-family: 'Playfair Display', serif; font-size: 1.1rem; text-shadow: 0 2px 8px #000;">
               Atención al cliente 24/7 con IA y avatares artificiales.<br>
               Respuestas inmediatas, personalizadas y humanas.
             </span>
@@ -801,30 +952,44 @@
 <section class="container my-5" id="descargas">
   <h2 class="text-center mb-4 display-5 fw-bold" style="font-family: 'Playfair Display', serif; color: #e6e6e6;">Descargas</h2>
   <div class="text-center">
-    <a href="assets/VORIA-Mobiliario-Multifuncional-de-Lujo.pdf" class="btn btn-gold btn-lg" style="color: #e6e6e6;" download>
-      <i class="fas fa-file-pdf me-2" style="color: #e6e6e6;"></i>Descargar Catálogo PDF
+    <a href="assets/VORIA-Mobiliario-Multifuncional-de-Lujo.pdf" class="btn btn-gold btn-lg text-light" download>
+      <i class="fas fa-file-pdf me-2"></i>Descargar Catálogo PDF
     </a>
   </div>
 </section>
 
-
-
-<div id="cookieConsent" class="position-fixed bottom-0 start-50 translate-middle-x w-100 bg-dark bg-opacity-90 text-light p-3 shadow-lg"
-     style="z-index:2000; max-width: 98vw; box-sizing: border-box; display: block;">
-  <div class="container-fluid px-2">
-    <div class="row align-items-center justify-content-between g-2">
-      <div class="col-12 col-md text-center text-md-start mb-2 mb-md-0" style="font-size:1rem;">
-        <strong style="color:#bfa14a;">VORIA</strong> utiliza cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico.
-        Consulta nuestra
-        <a href="#privacidad" class="text-gold fw-bold" style="text-decoration:underline;">Política de Privacidad</a> y
-        <a href="#cookies" class="text-gold fw-bold" style="text-decoration:underline;">Política de Cookies</a>.
+<section class="container-fluid py-5 my-5 position-relative" id="voria-game" style="background: #181818; border-radius: 2.5rem; overflow: hidden;">
+  <div class="container text-center">
+    <h2 class="display-4 fw-bold mb-4" style="font-family: 'Playfair Display', serif; color: var(--gold);">
+      Juego VORIA: ¡Optimiza tu Espacio!
+    </h2>
+    <p class="lead mb-4" style="font-family: 'Inter', sans-serif;">
+      ¿Eres capaz de organizar un espacio inteligente y eficiente? Arrastra los muebles VORIA y crea la mejor distribución posible. ¡Demuestra tu ingenio!
+    </p>
+    <div id="game-container" class="mx-auto mb-4" style="width:100%; max-width:600px; aspect-ratio:3/2; background: #e6e6e6; border-radius: 1.5rem; box-shadow: 0 0 32px #bfa14a55; position: relative; overflow: hidden;">
+      <canvas id="voriaGameCanvas" width="600" height="400" style="width:100%; height:100%; border-radius: 1.5rem; background: linear-gradient(135deg, #181818 80%, #bfa14a22 100%);"></canvas>
+      <div id="game-ui" style="position:absolute;top:10px;left:10px;z-index:2;">
+        <span id="score" style="color:#bfa14a;font-family:'Playfair Display',serif;font-size:1.3rem;">Puntuación: 0</span>
       </div>
-      <div class="col-12 col-md-auto text-center text-md-end">
-        <div class="d-flex flex-column flex-md-row gap-2 justify-content-center">
-          <button id="acceptCookies" class="btn btn-gold px-4">Aceptar</button>
-          <button id="moreInfoCookies" class="btn btn-outline-light px-4">Más información</button>
-        </div>
-      </div>
+    </div>
+    <button class="btn btn-gold btn-lg text-light" onclick="startVoriaGame()">
+      <i class="fas fa-play me-2"></i>Jugar de Nuevo
+    </button>
+    <p class="mt-3" style="font-family: 'Inter', sans-serif; color: #e6e6e6;">Arrastra los muebles dorados a las zonas óptimas y evita obstáculos. ¡Consigue la máxima puntuación!</p>
+  </div>
+</section>
+
+<!-- POP-UP COOKIES Y PRIVACIDAD -->
+<div id="cookieConsent" class="position-fixed bottom-0 start-0 w-100 bg-dark bg-opacity-90 text-light p-4 shadow-lg" style="z-index:2000; display:none;">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <div class="text-center text-md-start">
+      <strong style="color:#bfa14a;">VORIA</strong> utiliza cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Consulta nuestra
+      <a href="#privacidad" class="text-gold fw-bold" style="text-decoration:underline;">Política de Privacidad</a> y
+      <a href="#cookies" class="text-gold fw-bold" style="text-decoration:underline;">Política de Cookies</a>.
+    </div>
+    <div class="d-flex gap-2 mt-3 mt-md-0 justify-content-center">
+      <button id="acceptCookies" class="btn btn-gold px-4">Aceptar</button>
+      <button id="moreInfoCookies" class="btn btn-outline-light px-4">Más información</button>
     </div>
   </div>
 </div>
@@ -853,7 +1018,8 @@
 </div>
 
 <!-- CTA FLOTANTE FIJO -->
-<a href="#contact-voria" class="btn btn-gold btn-lg px-5 position-fixed pulse d-none d-md-block" style="bottom:120px;right:40px;z-index:1500;box-shadow:0 0 24px #bfa14a55; color: #fff;">
+<a href="#contact-voria" class="btn btn-gold btn-lg px-5 position-fixed pulse d-none d-md-block"
+   style="bottom:120px;right:40px;z-index:1500;box-shadow:0 0 24px #bfa14a55; max-width:90vw;">
   <i class="fas fa-comments me-2"></i>¡Solicita tu asesoría gratuita!
 </a>
 
@@ -862,12 +1028,12 @@
   <div class="container h-100 d-flex flex-column justify-content-between align-items-center">
     <div class="row justify-content-center text-center gy-4">
       <!-- Logo y breve -->
-      <div class="col-md-3 mb-3 mb-md-0 d-flex flex-column align-items-center">
-        <img src="assets/logo-voria.png" alt="VORIA Logo" style="width:90px;" class="mb-3">
+      <div class="col-12 col-md-3 mb-3 mb-md-0 d-flex flex-column align-items-center">
+        <img src="assets/logo-voria.png" alt="VORIA Logo" style="width:90px; max-width:100%;" class="mb-3 img-fluid">
         <p class="small mb-0">VORIA — Muebles autónomos y automáticos para el futuro de tu espacio.</p>
       </div>
       <!-- Enlaces rápidos -->
-      <div class="col-md-3 d-flex flex-column align-items-center">
+      <div class="col-12 col-md-3 d-flex flex-column align-items-center">
         <h6 class="fw-bold mb-3">Enlaces</h6>
         <ul class="list-unstyled small">
           <li><a href="#about" class="footer-link" style="color:#bfa14a;">Sobre Nosotros</a></li>
@@ -878,7 +1044,7 @@
         </ul>
       </div>
       <!-- Información legal -->
-      <div class="col-md-3 d-flex flex-column align-items-center">
+      <div class="col-12 col-md-3 d-flex flex-column align-items-center">
         <h6 class="fw-bold mb-3">Legal</h6>
         <ul class="list-unstyled small">
           <li><a href="#" class="footer-link" style="color:#bfa14a;">Política de Privacidad</a></li>
@@ -887,7 +1053,7 @@
         </ul>
       </div>
       <!-- Contacto y redes -->
-      <div class="col-md-3 d-flex flex-column align-items-center">
+      <div class="col-12 col-md-3 d-flex flex-column align-items-center">
         <h6 class="fw-bold mb-3">Contacto</h6>
         <p class="small mb-1"><i class="fas fa-envelope me-2 text-gold"></i> <a href="mailto:voria@admin.es" class="footer-link" style="color:#fff;">voria@admin.es</a></p>
         <div class="mb-2">
@@ -910,23 +1076,23 @@
 </footer>
 
 <!-- Spotify Player oculto -->
-<div id="spotify-player-container" style="display:none; position:fixed; bottom:30px; right:30px; z-index:9999;">
+<div id="spotify-player-container" style="display:none; position:fixed; bottom:30px; right:30px; z-index:9999; max-width:90vw;">
   <iframe id="spotify-player"
     src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
-    width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    width="300" height="80" style="max-width:100%;" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
 
-<!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <script src="index.js"></script>
-  <script src="demovirtual/demo.js"></script>
-  <!-- Botón scroll arriba -->
-<button id="backToTop" class="btn btn-gold rounded-circle shadow" style="position:fixed;bottom:40px;right:40px;z-index:999;display:none;width:56px;height:56px;font-size:2rem;">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script src="index.js"></script>
+<script src="demovirtual/demo.js"></script>
+<!-- Botón scroll arriba -->
+<button id="backToTop" class="btn btn-gold rounded-circle shadow"
+  style="position:fixed;bottom:40px;right:40px;z-index:999;display:none;width:56px;height:56px;font-size:2rem;max-width:90vw;">
   <i class="fas fa-arrow-up"></i>
 </button>
 </body>
+
 </html>

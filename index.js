@@ -126,15 +126,24 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Juego VORIA: arrastra muebles a zonas objetivo
+// Juego VORIA: arrastra muebles a zonas objetivo adaptado a canvas responsive
+
 let game, ctx, dragging = null, offsetX = 0, offsetY = 0, score = 0, targets = [];
 
+// Proporciones relativas al tamaño del canvas
+const MUEBLE_W = 0.12, MUEBLE_H = 0.07, TARGET_R = 0.06;
+
 function randomPos(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.random() * (max - min) + min;
+}
+
+function getCanvasSize() {
+  const canvas = document.getElementById('voriaGameCanvas');
+  return { w: canvas.width, h: canvas.height };
 }
 
 function setupLevel() {
-  // Genera posiciones aleatorias para muebles y targets, evitando solapamientos básicos
+  const { w, h } = getCanvasSize();
   const used = [];
   function getFreePos(xmin, xmax, ymin, ymax, r) {
     let tries = 0;
@@ -151,15 +160,20 @@ function setupLevel() {
   }
   game = {
     muebles: Array.from({length: 3}, () => {
-      let pos = getFreePos(40, 180, 40, 320, 40);
+      let pos = getFreePos(0.07*w, 0.3*w, 0.07*h, 0.8*h, TARGET_R*w);
       return {
-        x: pos.x, y: pos.y, w: 70, h: 40, color: '#bfa14a', dragging: false, placed: false
+        x: pos.x, y: pos.y,
+        w: MUEBLE_W * w,
+        h: MUEBLE_H * h,
+        color: '#bfa14a', dragging: false, placed: false
       }
     }),
     targets: Array.from({length: 3}, () => {
-      let pos = getFreePos(400, 540, 60, 340, 35);
+      let pos = getFreePos(0.7*w, 0.9*w, 0.15*h, 0.85*h, TARGET_R*w);
       return {
-        x: pos.x, y: pos.y, r: 35, filled: false
+        x: pos.x, y: pos.y,
+        r: TARGET_R * w,
+        filled: false
       }
     })
   };
@@ -167,60 +181,6 @@ function setupLevel() {
   drawGame();
 }
 
-$(document).ready(function() {
-  $('.navbar-nav a.nav-link').on('click', function(e) {
-    const target = $(this).attr('href');
-    if (target.startsWith('#') && $(target).length) {
-      e.preventDefault();
-      $('html, body').animate({
-        scrollTop: $(target).offset().top - 80 // Ajusta el offset según tu navbar
-      }, 700);
-    }
-  });
-});
-
-$(document).ready(function() {
-  $('.navbar-nav a.nav-link').on('click', function(e) {
-    const target = $(this).attr('href');
-    if (target.startsWith('#') && $(target).length) {
-      e.preventDefault();
-      $('html, body').animate({
-        scrollTop: $(target).offset().top - 80 // Ajusta el offset según tu navbar
-      }, 700);
-    }
-  });
-});
-
-$('[data-tooltip]').hover(function(e) {
-  const tip = $('<div class="custom-tooltip"></div>').text($(this).data('tooltip')).appendTo('body');
-  $(this).on('mousemove', function(e) {
-    tip.css({ left: e.pageX + 10, top: e.pageY + 10 });
-  });
-}, function() {
-  $('.custom-tooltip').remove();
-});
-
-$('.pricing-card').hover(
-  function() { $(this).addClass('shadow-lg').css('transform', 'scale(1.03)'); },
-  function() { $(this).removeClass('shadow-lg').css('transform', 'scale(1)'); }
-);
-
-$(window).on('scroll', function() {
-  $('.fade-section').each(function() {
-    if ($(this).offset().top < $(window).scrollTop() + $(window).height() - 100) {
-      $(this).addClass('visible');
-    }
-  });
-});
-
-
-
-$('.faq-question').on('click', function() {
-  $(this).next('.faq-answer').slideToggle();
-  $(this).toggleClass('open');
-});
-
-// Modifica startVoriaGame para usar setupLevel
 function startVoriaGame() {
   const canvas = document.getElementById('voriaGameCanvas');
   ctx = canvas.getContext('2d');
@@ -238,60 +198,35 @@ function startVoriaGame() {
   canvas.onmouseleave = onMouseUp;
 }
 
-// Responsive canvas para el juego VORIA
-function resizeGameCanvas() {
-  const canvas = document.getElementById('voriaGameCanvas');
-  if (!canvas) return;
-  const parent = canvas.parentElement;
-  let width = parent.offsetWidth;
-  let height = width * 0.6667; // 16:9 ratio (600x400)
-  if (width > 600) { width = 600; height = 400; }
-  canvas.width = width;
-  canvas.height = height;
-  if (typeof drawGame === 'function') drawGame();
-}
-window.addEventListener('resize', resizeGameCanvas);
-document.addEventListener('DOMContentLoaded', resizeGameCanvas);
-
-// Asegúrate de que drawGame use canvas.width y canvas.height dinámicamente
 function drawGame() {
-  const canvas = document.getElementById('voriaGameCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Calcula escalas respecto al tamaño original (600x400)
-  const scaleX = canvas.width / 600;
-  const scaleY = canvas.height / 400;
-
-  // Dibuja zonas objetivo
+  const { w, h } = getCanvasSize();
+  ctx.clearRect(0, 0, w, h);
+  // Zonas objetivo
   for (const t of game.targets) {
-    ctx.save();
     ctx.beginPath();
-    ctx.arc(t.x * scaleX, t.y * scaleY, t.r * scaleX, 0, 2 * Math.PI);
+    ctx.arc(t.x, t.y, t.r, 0, 2 * Math.PI);
     ctx.fillStyle = t.filled ? '#bfa14a' : '#444';
     ctx.globalAlpha = 0.25;
     ctx.fill();
     ctx.globalAlpha = 1;
-    ctx.lineWidth = 4 * scaleX;
+    ctx.lineWidth = 4;
     ctx.strokeStyle = '#bfa14a';
     ctx.stroke();
-    ctx.restore();
   }
-  // Dibuja muebles
+  // Muebles
   for (const m of game.muebles) {
     ctx.save();
     ctx.fillStyle = m.color;
     ctx.shadowColor = '#bfa14a';
-    ctx.shadowBlur = 12 * scaleX;
-    ctx.fillRect(m.x * scaleX, m.y * scaleY, m.w * scaleX, m.h * scaleY);
+    ctx.shadowBlur = 12;
+    ctx.fillRect(m.x, m.y, m.w, m.h);
     ctx.restore();
     ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2 * scaleX;
-    ctx.strokeRect(m.x * scaleX, m.y * scaleY, m.w * scaleX, m.h * scaleY);
-    ctx.font = `${Math.round(1.1 * scaleY * 16)}px 'Playfair Display', serif`;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(m.x, m.y, m.w, m.h);
+    ctx.font = `${Math.round(m.h/2)}px 'Playfair Display', serif`;
     ctx.fillStyle = "#fff";
-    ctx.fillText("VORIA", (m.x + 10) * scaleX, (m.y + m.h / 2 + 6) * scaleY);
+    ctx.fillText("VORIA", m.x + 10, m.y + m.h/2 + 6);
   }
 }
 
@@ -319,7 +254,6 @@ function onMouseMove(e) {
 
 function onMouseUp(e) {
   if (!dragging) return;
-  // ¿Está sobre una zona objetivo?
   for (const t of game.targets) {
     if (!t.filled && Math.abs((dragging.x + dragging.w/2) - t.x) < t.r && Math.abs((dragging.y + dragging.h/2) - t.y) < t.r) {
       dragging.x = t.x - dragging.w/2;
@@ -333,10 +267,8 @@ function onMouseUp(e) {
   }
   dragging = null;
   drawGame();
-  // ¿Juego terminado?
   if (game.muebles.every(m => m.placed)) {
     setTimeout(() => {
-      // En vez de alert, sube de nivel y cambia posiciones
       if (typeof window.level === 'undefined') window.level = 2;
       else window.level++;
       if (document.getElementById('level')) {
@@ -347,23 +279,36 @@ function onMouseUp(e) {
   }
 }
 
-// Iniciar juego al cargar la sección
-document.addEventListener('DOMContentLoaded', () => {
+// --- Canvas responsive ---
+function resizeCanvas() {
+  const canvas = document.getElementById('voriaGameCanvas');
+  const container = document.getElementById('game-container');
+  // Ajusta el tamaño real del canvas al tamaño visible
+  canvas.width = container.offsetWidth;
+  canvas.height = container.offsetHeight;
+  if (ctx) setupLevel();
+}
+
+window.addEventListener('resize', resizeCanvas);
+window.addEventListener('DOMContentLoaded', () => {
+  resizeCanvas();
   startVoriaGame();
 });
 
-
+// --- Música Spotify ---
 document.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById('musicToggleBtn');
   const player = document.getElementById('spotify-player-container');
   let visible = false;
 
-  btn.addEventListener('click', function () {
-    visible = !visible;
-    player.style.display = visible ? 'block' : 'none';
-    btn.classList.toggle('active', visible);
-    btn.innerHTML = visible
-      ? '<i class="fas fa-pause"></i> Música'
-      : '<i class="fas fa-music"></i> Música';
-  });
+  if (btn && player) {
+    btn.addEventListener('click', function () {
+      visible = !visible;
+      player.style.display = visible ? 'block' : 'none';
+      btn.classList.toggle('active', visible);
+      btn.innerHTML = visible
+        ? '<i class="fas fa-pause"></i> Música'
+        : '<i class="fas fa-music"></i> Música';
+    });
+  }
 });
