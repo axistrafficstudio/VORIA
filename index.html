@@ -16,6 +16,19 @@
   <link rel="stylesheet" href="stylesheet.css">
 
   <link rel="icon" href="assets/logo-voria.png">
+
+  <style>
+  body {
+    padding-top: 90px; 
+  }
+
+  @media (max-width: 368px) {
+    body {
+      padding-top: 100px;
+    }
+  }
+</style>
+
 </head>
 
 <body class="bg-dark text-light" style="
@@ -596,6 +609,8 @@
   </div>
 </section>
 
+
+ <!-- Ajusta los tamaños de los logos directamente en el HTML usando style en el tag <img> -->
 <section class="container my-5 py-5" id="partners-carousel">
   <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;">Empresas Colaboradoras</h2>
   <div id="logosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
@@ -603,25 +618,28 @@
       <!-- Grupo 1 -->
       <div class="carousel-item active">
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-          <img src="assets/logosempresas/GM 120x90 (1).png" alt="Colaborador 1" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/gmb-sima.jpg" alt="Colaborador 2" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/images.png" alt="Colaborador 3" class="partner-logo img-fluid">
+          <img src="assets/logosempresas/GM 120x90 (1).png" alt="Colaborador 1" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/gmb-sima.jpg" alt="Colaborador 2" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/images.png" alt="Colaborador 3" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
         </div>
       </div>
       <!-- Grupo 2 -->
       <div class="carousel-item">
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-          <img src="assets/logosempresas/logo 2 copia 2.png" alt="Colaborador 4" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/Logo-sin-punto.png" alt="Colaborador 5" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/Logo-Transparante-Negro-768x596.png" alt="Colaborador 6" class="partner-logo img-fluid">
+          <!-- Urban Craft -->
+          <img src="assets/logosempresas/logo 2 copia 2.png" alt="Urban Craft" class="partner-logo img-fluid" style="max-height:80px;max-width:70px;">
+          <!-- Telor -->
+          <img src="assets/logosempresas/Logo-sin-punto.png" alt="Telor" class="partner-logo img-fluid" style="max-height:80px;max-width:70px;">
+          <!-- Green Corporate -->
+          <img src="assets/logosempresas/Logo-Transparante-Negro-768x596.png" alt="Green Corporate" class="partner-logo img-fluid" style="max-height:80px;max-width:70px;">
         </div>
       </div>
       <!-- Grupo 3 -->
       <div class="carousel-item">
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-          <img src="assets/logosempresas/logo-vector-tecnocasa-franchising-network.jpg" alt="Colaborador 7" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/PNG OFICIAL.png" alt="Colaborador 8" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/Recurso 16 copia.png" alt="Colaborador 9" class="partner-logo img-fluid">
+          <img src="assets/logosempresas/logo-vector-tecnocasa-franchising-network.jpg" alt="Colaborador 7" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/PNG OFICIAL.png" alt="Colaborador 8" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/Recurso 16 copia.png" alt="Colaborador 9" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
         </div>
       </div>
     </div>
@@ -780,7 +798,7 @@
 
 
 <!-- Imagen HUD -->
-<section class="position-relative w-100 d-flex justify-content-center align-items-center" style="min-height: 40vh;">
+<section class="position-relative w-100 py-5 d-flex justify-content-center align-items-center" style="min-height: 40vh;">
   <div class="position-relative mx-auto" style="width:100%; max-width:700px; border-radius:2rem; overflow:hidden;">
     <img src="assets/HUDvoria.png" alt="HUD VORIA" class="img-fluid w-100 object-fit-cover hud-img" style="min-height:27vh; max-height:66vh; object-fit:cover; border-radius:2rem;">
     <!-- Texto inspirador arriba a la derecha -->
