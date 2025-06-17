@@ -632,3 +632,61 @@ section, .section {
     border-radius: 1.2rem !important;
   }
 }
+
+@media (max-width: 600px) {
+  #cookieConsent {
+    border-radius: 1.2rem 1.2rem 0 0 !important;
+    padding: 1.2rem 0.7rem !important;
+  }
+  #cookieConsent .container {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    text-align: center !important;
+  }
+  #cookieConsent .btn,
+  #cookieConsent .btn-close {
+    font-size: 1rem !important;
+    padding: 0.9em 1.2em !important;
+    border-radius: 1.2rem !important;
+    width: 100%;
+  }
+  #cookieConsent .btn-close {
+    width: 2.2rem;
+    height: 2.2rem;
+    top: 0.3rem !important;
+    right: 0.3rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .crypto-static-card {
+    border-radius: 1.2rem !important;
+    padding: 1.2rem 0.5rem !important;
+    min-width: 0 !important;
+    max-width: 98vw !important;
+  }
+  .demo-virtual-iframe-wrapper {
+    aspect-ratio: 1/1 !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+  .demo-virtual-iframe {
+    min-width: 0 !important;
+    width: 99vw !important;
+    max-width: 99vw !important;
+    height: 420px !important;
+    min-height: 340px !important;
+    border-radius: 1.2rem !important;
+    display: block;
+    margin: 0 auto;
+  }
+  .crypto-static-card h2 {
+    font-size: 1.3rem !important;
+  }
+  .crypto-static-card p,
+  .crypto-static-card footer {
+    font-size: 1rem !important;
+  }
+}

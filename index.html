@@ -16,6 +16,19 @@
   <link rel="stylesheet" href="stylesheet.css">
 
   <link rel="icon" href="assets/logo-voria.png">
+
+  <style>
+  body {
+    padding-top: 90px; 
+  }
+
+  @media (max-width: 368px) {
+    body {
+      padding-top: 100px;
+    }
+  }
+</style>
+
 </head>
 
 <body class="bg-dark text-light" style="
@@ -242,7 +255,7 @@
           <div class="carousel-item">
             <div class="d-flex justify-content-center">
               <model-viewer 
-                src="assets/modelo4d.glb"
+                src="assets/modern_kitchen.glb"
                 ar
                 ar-modes="webxr scene-viewer quick-look"
                 camera-controls
@@ -313,27 +326,26 @@
     style="background: linear-gradient(120deg, rgba(24,24,24,0.85) 60%, rgba(212,175,55,0.13) 100%); z-index:1;"></div>
   <div class="container position-relative" style="z-index:2; max-width: 1800px;">
     <div class="row justify-content-center align-items-stretch gx-5 gy-5">
-      <!-- Virtual Demo (70%) -->
-      <div class="col-12 col-lg-8 d-flex align-items-stretch order-lg-1 order-2">
-        <div class="crypto-static-card p-5 rounded-5 shadow-lg text-center w-100 d-flex flex-column justify-content-between align-items-center mx-auto position-relative bg-gradient"
-          data-aos="fade-right"
-          style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 48px;">
-          <header class="mb-4">
-            <h2 class="display-2 fw-bold mb-2" style="font-family: 'Playfair Display', serif;">Demo Virtual</h2>
-            <p class="lead fs-2 mb-0" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
-              Previsualiza y simula el pago de tu mueble autónomo.
-            </p>
-          </header>
-          <div class="ratio ratio-16x9 mb-4 w-100 rounded-4 overflow-hidden shadow" style="box-shadow: 0 0 40px #bfa14a88;">
-            <iframe src="demovirtual/index.html" allowfullscreen sandbox="allow-scripts allow-same-origin allow-popups" style="border:none;"></iframe>
-          </div>
-          <footer>
-            <p class="text-center mt-2 text-muted fs-5" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
-              Asegúrate de tener la carpeta 'demovirtual' con sus archivos en la raíz de tu proyecto.
-            </p>
-          </footer>
-        </div>
-      </div>
+  <!-- Virtual Demo (70%) -->
+<div class="col-12 col-lg-8 d-flex align-items-stretch order-lg-1 order-2">
+  <div class="crypto-static-card p-4 p-md-5 rounded-5 shadow-lg text-center w-100 d-flex flex-column justify-content-between align-items-center mx-auto position-relative bg-gradient"
+    data-aos="fade-right"
+    style="background: linear-gradient(135deg, #232323 0%, #bfa14a22 100%); border-radius: 48px; min-width:0;">
+    <header class="mb-4">
+      <h2 class="display-2 fw-bold mb-2" style="font-family: 'Playfair Display', serif;">Demo Virtual</h2>
+      <p class="lead fs-2 mb-0" style="font-family: 'Inter', sans-serif; color: #bfa14a;">
+        Previsualiza y simula el pago de tu mueble autónomo.
+      </p>
+    </header>
+    <div class="demo-virtual-iframe-wrapper ratio ratio-16x9 mb-4 w-100 rounded-4 overflow-hidden shadow" style="box-shadow: 0 0 40px #bfa14a88; min-width:0;">
+      <iframe src="demovirtual/index.html"
+        allowfullscreen
+        sandbox="allow-scripts allow-same-origin allow-popups"
+        class="demo-virtual-iframe"
+        style="border:none; width:100%; min-width:0; height:420px; max-height:70vw;"></iframe>
+    </div>
+  </div>
+</div>
       <!-- Crypto Gateway (30%) -->
       <div class="col-12 col-lg-4 d-flex align-items-stretch order-lg-2 order-1">
         <div class="crypto-display-card p-5 rounded-5 shadow-lg text-center w-100 d-flex flex-column justify-content-between align-items-center mx-auto position-relative bg-gradient"
@@ -568,7 +580,7 @@
           <div class="rounded-4 shadow-lg overflow-hidden mb-3 w-100 showroom-vr-video" style="aspect-ratio: 16/9; min-height: 220px; background: #111;">
             <video autoplay loop muted playsinline class="w-100 h-100 object-fit-cover" style="object-fit:cover;">
               <source src="assets/seccionVRshowroom.mp4" type="video/mp4">
-              Tu navegador no soporta el video en HTML5.
+              
             </video>
           </div>
           <a href="#contact-voria" class="btn btn-gold btn-lg mt-2 align-self-center">
@@ -596,6 +608,8 @@
   </div>
 </section>
 
+
+ <!-- Ajusta los tamaños de los logos directamente en el HTML usando style en el tag <img> -->
 <section class="container my-5 py-5" id="partners-carousel">
   <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;">Empresas Colaboradoras</h2>
   <div id="logosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
@@ -603,25 +617,28 @@
       <!-- Grupo 1 -->
       <div class="carousel-item active">
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-          <img src="assets/logosempresas/GM 120x90 (1).png" alt="Colaborador 1" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/gmb-sima.jpg" alt="Colaborador 2" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/images.png" alt="Colaborador 3" class="partner-logo img-fluid">
+          <img src="assets/logosempresas/GM 120x90 (1).png" alt="Colaborador 1" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/gmb-sima.jpg" alt="Colaborador 2" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/images.png" alt="Colaborador 3" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
         </div>
       </div>
       <!-- Grupo 2 -->
       <div class="carousel-item">
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-          <img src="assets/logosempresas/logo 2 copia 2.png" alt="Colaborador 4" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/Logo-sin-punto.png" alt="Colaborador 5" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/Logo-Transparante-Negro-768x596.png" alt="Colaborador 6" class="partner-logo img-fluid">
+          <!-- Urban Craft -->
+          <img src="assets/logosempresas/logo 2 copia 2.png" alt="Urban Craft" class="partner-logo img-fluid" style="max-height:80px;max-width:70px;">
+          <!-- Telor -->
+          <img src="assets/logosempresas/Logo-sin-punto.png" alt="Telor" class="partner-logo img-fluid" style="max-height:80px;max-width:70px;">
+          <!-- Green Corporate -->
+          <img src="assets/logosempresas/Logo-Transparante-Negro-768x596.png" alt="Green Corporate" class="partner-logo img-fluid" style="max-height:80px;max-width:70px;">
         </div>
       </div>
       <!-- Grupo 3 -->
       <div class="carousel-item">
         <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-          <img src="assets/logosempresas/logo-vector-tecnocasa-franchising-network.jpg" alt="Colaborador 7" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/PNG OFICIAL.png" alt="Colaborador 8" class="partner-logo img-fluid">
-          <img src="assets/logosempresas/Recurso 16 copia.png" alt="Colaborador 9" class="partner-logo img-fluid">
+          <img src="assets/logosempresas/logo-vector-tecnocasa-franchising-network.jpg" alt="Colaborador 7" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/PNG OFICIAL.png" alt="Colaborador 8" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
+          <img src="assets/logosempresas/Recurso 16 copia.png" alt="Colaborador 9" class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
         </div>
       </div>
     </div>
@@ -780,7 +797,7 @@
 
 
 <!-- Imagen HUD -->
-<section class="position-relative w-100 d-flex justify-content-center align-items-center" style="min-height: 40vh;">
+<section class="position-relative w-100 py-5 d-flex justify-content-center align-items-center" style="min-height: 40vh;">
   <div class="position-relative mx-auto" style="width:100%; max-width:700px; border-radius:2rem; overflow:hidden;">
     <img src="assets/HUDvoria.png" alt="HUD VORIA" class="img-fluid w-100 object-fit-cover hud-img" style="min-height:27vh; max-height:66vh; object-fit:cover; border-radius:2rem;">
     <!-- Texto inspirador arriba a la derecha -->
@@ -806,7 +823,7 @@
       <div class="col-12 col-md-6 mb-4 mb-md-0">
         <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg" style="box-shadow: 0 0 40px #bfa14a88; min-width:0;">
           <iframe
-            src="https://www.google.com/maps/embed?pb=..."
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.964857456219!2d-3.678746684606837!3d40.1908590793937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4221e8e6e6b6b3%3A0x5e2e7e5e7e5e7e5e!2sValdemoro%2C%20Madrid!5e0!3m2!1ses!2ses!4v1718570000000!5m2!1ses!2ses"
             style="border:0; width:100%; height:100%; min-width:0;"
             allowfullscreen=""
             loading="lazy"
@@ -820,7 +837,7 @@
             Ven a conocernos y descubre cómo podemos transformar tu espacio.
           </p>
           <ul class="list-unstyled mb-0">
-            <li><i class="fas fa-map-marker-alt text-gold me-2"></i> Calle Ejemplo 123, Ciudad</li>
+            <li><i class="fas fa-map-marker-alt text-gold me-2"></i> Calle Febo, Valdemor, Ciudad</li>
             <li><i class="fas fa-phone text-gold me-2"></i> +34 900 000 000</li>
             <li><i class="fas fa-envelope text-gold me-2"></i> info@voria.com</li>
           </ul>
@@ -971,14 +988,17 @@
 
 <!-- POP-UP COOKIES Y PRIVACIDAD -->
 <div id="cookieConsent" class="position-fixed bottom-0 start-0 w-100 bg-dark bg-opacity-90 text-light p-4 shadow-lg"
-  style="z-index:2000; display:none; border-radius:1.2rem 1.2rem 0 0;">
-  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+  style="z-index:2000; border-radius:1.2rem 1.2rem 0 0; display:none;">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 position-relative">
+    <!-- Botón cerrar arriba a la derecha en móvil y escritorio -->
+    <button type="button" id="closeCookies" aria-label="Cerrar"
+      class="btn-close btn-close-white position-absolute end-0 top-0 m-2" style="z-index:2;"></button>
     <div class="text-center text-md-start" style="font-size:1rem;">
       <strong style="color:#bfa14a;">VORIA</strong> utiliza cookies propias y de terceros para mejorar tu experiencia y analizar el tráfico. Consulta nuestra
       <a href="#privacidad" class="text-gold fw-bold" style="text-decoration:underline;">Política de Privacidad</a> y
       <a href="#cookies" class="text-gold fw-bold" style="text-decoration:underline;">Política de Cookies</a>.
     </div>
-    <div class="d-flex gap-2 mt-3 mt-md-0 justify-content-center">
+    <div class="d-flex gap-2 mt-3 mt-md-0 justify-content-center flex-wrap">
       <button id="acceptCookies" class="btn btn-gold px-4">Aceptar</button>
       <button id="moreInfoCookies" class="btn btn-outline-light px-4" data-bs-toggle="modal" data-bs-target="#legalModal">Más información</button>
     </div>

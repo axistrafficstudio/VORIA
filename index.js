@@ -111,6 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = new bootstrap.Modal(document.getElementById('legalModal'));
     modal.show();
   };
+  document.getElementById('closeCookies').onclick = function() {
+    document.getElementById('cookieConsent').style.display = 'none';
+  };
 
   // CTA pulse animación
   document.querySelectorAll('.pulse').forEach(btn => {
