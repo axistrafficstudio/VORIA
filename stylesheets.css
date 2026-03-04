@@ -610,3 +610,26 @@ body.bg-black ::-webkit-scrollbar-thumb {
 }
 
 /* LIMPIEZA COMPLETADA - Fin de archivo */
+
+/* ANIMACIONES */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  50% {
+    transform: translateY(8px) translateX(-50%);
+  }
+}

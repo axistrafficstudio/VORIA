@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = new bootstrap.Modal(document.getElementById('legalModal'));
     modal.show();
   };
-  document.getElementById('closeCookies').onclick = function() {
+  document.getElementById('closeCookies').onclick = function () {
     document.getElementById('cookieConsent').style.display = 'none';
   };
 
@@ -152,18 +152,18 @@ function setupLevel() {
     let tries = 0;
     while (tries < 50) {
       let x = randomPos(xmin, xmax), y = randomPos(ymin, ymax);
-      let overlap = used.some(u => Math.abs(u.x - x) < r*2 && Math.abs(u.y - y) < r*2);
+      let overlap = used.some(u => Math.abs(u.x - x) < r * 2 && Math.abs(u.y - y) < r * 2);
       if (!overlap) {
-        used.push({x, y});
-        return {x, y};
+        used.push({ x, y });
+        return { x, y };
       }
       tries++;
     }
-    return {x: randomPos(xmin, xmax), y: randomPos(ymin, ymax)};
+    return { x: randomPos(xmin, xmax), y: randomPos(ymin, ymax) };
   }
   game = {
-    muebles: Array.from({length: 3}, () => {
-      let pos = getFreePos(0.07*w, 0.3*w, 0.07*h, 0.8*h, TARGET_R*w);
+    muebles: Array.from({ length: 3 }, () => {
+      let pos = getFreePos(0.07 * w, 0.3 * w, 0.07 * h, 0.8 * h, TARGET_R * w);
       return {
         x: pos.x, y: pos.y,
         w: MUEBLE_W * w,
@@ -171,8 +171,8 @@ function setupLevel() {
         color: '#bfa14a', dragging: false, placed: false
       }
     }),
-    targets: Array.from({length: 3}, () => {
-      let pos = getFreePos(0.7*w, 0.9*w, 0.15*h, 0.85*h, TARGET_R*w);
+    targets: Array.from({ length: 3 }, () => {
+      let pos = getFreePos(0.7 * w, 0.9 * w, 0.15 * h, 0.85 * h, TARGET_R * w);
       return {
         x: pos.x, y: pos.y,
         r: TARGET_R * w,
@@ -227,9 +227,9 @@ function drawGame() {
     ctx.strokeStyle = '#fff';
     ctx.lineWidth = 2;
     ctx.strokeRect(m.x, m.y, m.w, m.h);
-    ctx.font = `${Math.round(m.h/2)}px 'Playfair Display', serif`;
+    ctx.font = `${Math.round(m.h / 2)}px 'Playfair Display', serif`;
     ctx.fillStyle = "#fff";
-    ctx.fillText("VORIA", m.x + 10, m.y + m.h/2 + 6);
+    ctx.fillText("VORIA", m.x + 10, m.y + m.h / 2 + 6);
   }
 }
 
@@ -258,9 +258,9 @@ function onMouseMove(e) {
 function onMouseUp(e) {
   if (!dragging) return;
   for (const t of game.targets) {
-    if (!t.filled && Math.abs((dragging.x + dragging.w/2) - t.x) < t.r && Math.abs((dragging.y + dragging.h/2) - t.y) < t.r) {
-      dragging.x = t.x - dragging.w/2;
-      dragging.y = t.y - dragging.h/2;
+    if (!t.filled && Math.abs((dragging.x + dragging.w / 2) - t.x) < t.r && Math.abs((dragging.y + dragging.h / 2) - t.y) < t.r) {
+      dragging.x = t.x - dragging.w / 2;
+      dragging.y = t.y - dragging.h / 2;
       dragging.placed = true;
       t.filled = true;
       score += 100;
@@ -317,109 +317,135 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // --- Lógica del nuevo Checkout Cripto / Fiat (Nativo) ---
 document.addEventListener('DOMContentLoaded', () => {
-    const cryptoSelect = document.getElementById('cryptoSelect');
-    if (!cryptoSelect) return;
+  const cryptoSelect = document.getElementById('cryptoSelect');
+  if (!cryptoSelect) return;
 
-    let currentPriceEur = 8900;
-    const fiatTotalDisplay = document.getElementById('fiatTotalDisplay');
-    const cryptoTotalDisplay = document.getElementById('cryptoTotalDisplay');
-    const cryptoAddressDisplay = document.getElementById('cryptoAddressDisplay');
-    const cryptoQrCode = document.getElementById('cryptoQrCode');
-    const modelButtons = document.querySelectorAll('.model-select-btn');
+  let currentPriceEur = 8900;
+  const fiatTotalDisplay = document.getElementById('fiatTotalDisplay');
+  const cryptoTotalDisplay = document.getElementById('cryptoTotalDisplay');
+  const cryptoAddressDisplay = document.getElementById('cryptoAddressDisplay');
+  const cryptoQrCode = document.getElementById('cryptoQrCode');
+  const modelButtons = document.querySelectorAll('.model-select-btn');
 
-    // 1. Selector de Modelo
-    modelButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            modelButtons.forEach(b => {
-                b.classList.remove('active-model', 'bg-light');
-                b.classList.add('bg-white');
-            });
-            const target = e.currentTarget;
-            target.classList.add('active-model', 'bg-light');
-            target.classList.remove('bg-white');
-            currentPriceEur = parseInt(target.dataset.price);
-            fiatTotalDisplay.textContent = `€${currentPriceEur.toLocaleString()}`;
-            updateCryptoPrice();
-        });
+  // 1. Selector de Modelo
+  modelButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      modelButtons.forEach(b => {
+        b.classList.remove('active-model', 'bg-light');
+        b.classList.add('bg-white');
+      });
+      const target = e.currentTarget;
+      target.classList.add('active-model', 'bg-light');
+      target.classList.remove('bg-white');
+      currentPriceEur = parseInt(target.dataset.price);
+      fiatTotalDisplay.textContent = `€${currentPriceEur.toLocaleString()}`;
+      updateCryptoPrice();
     });
+  });
 
-    // 2. Selector de Cripto
-    cryptoSelect.addEventListener('change', updateCryptoPrice);
+  // 2. Selector de Cripto
+  cryptoSelect.addEventListener('change', updateCryptoPrice);
 
-    // 3. Obtener Precios y Actualizar Vista
-    async function updateCryptoPrice() {
-        cryptoTotalDisplay.textContent = "Calculando...";
-        const cryptoId = cryptoSelect.value;
-        const tickerMap = { 'bitcoin': 'BTC', 'ethereum': 'ETH', 'litecoin': 'LTC' };
-        const ticker = tickerMap[cryptoId];
+  // 3. Obtener Precios y Actualizar Vista
+  async function updateCryptoPrice() {
+    cryptoTotalDisplay.textContent = "Calculando...";
+    const cryptoId = cryptoSelect.value;
+    const tickerMap = { 'bitcoin': 'BTC', 'ethereum': 'ETH', 'litecoin': 'LTC' };
+    const ticker = tickerMap[cryptoId];
 
-        try {
-            const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=eur`);
-            const data = await res.json();
-            const rate = data[cryptoId].eur;
-            
-            const cryptoAmount = (currentPriceEur / rate).toFixed(6);
-            cryptoTotalDisplay.innerHTML = `<i class="fab fa-${cryptoId === 'bitcoin' ? 'bitcoin' : 'ethereum'} me-1"></i> ${cryptoAmount} ${ticker}`;
-            
-            // Generar Mock Address y QR
-            const mockupAddresses = {
-                'bitcoin': 'bc1qva29m7xr7y7j7...g90h8',
-                'ethereum': '0x71C7656EC7ab88b098...B3E29',
-                'litecoin': 'ltc1qcxm9j...4p8x0k'
-            };
-            cryptoAddressDisplay.textContent = mockupAddresses[cryptoId];
-            
-            // Actualizar QR
-            const qrData = `${cryptoId}:${mockupAddresses[cryptoId]}?amount=${cryptoAmount}`;
-            cryptoQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(qrData)}`;
+    try {
+      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=eur`);
+      const data = await res.json();
+      const rate = data[cryptoId].eur;
 
-        } catch (error) {
-            console.error("Error obteniendo precio cripto:", error);
-            cryptoTotalDisplay.textContent = "Error de conexión";
-        }
+      const cryptoAmount = (currentPriceEur / rate).toFixed(6);
+      cryptoTotalDisplay.innerHTML = `<i class="fab fa-${cryptoId === 'bitcoin' ? 'bitcoin' : 'ethereum'} me-1"></i> ${cryptoAmount} ${ticker}`;
+
+      // Generar Mock Address y QR
+      const mockupAddresses = {
+        'bitcoin': 'bc1qva29m7xr7y7j7...g90h8',
+        'ethereum': '0x71C7656EC7ab88b098...B3E29',
+        'litecoin': 'ltc1qcxm9j...4p8x0k'
+      };
+      cryptoAddressDisplay.textContent = mockupAddresses[cryptoId];
+
+      // Actualizar QR
+      const qrData = `${cryptoId}:${mockupAddresses[cryptoId]}?amount=${cryptoAmount}`;
+      cryptoQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(qrData)}`;
+
+    } catch (error) {
+      console.error("Error obteniendo precio cripto:", error);
+      cryptoTotalDisplay.textContent = "Error de conexión";
     }
+  }
 
-    // Inicializar cálculo
-    updateCryptoPrice();
+  // Inicializar cálculo
+  updateCryptoPrice();
 });
 
 // Función Global para Copiar Dirección
-window.copyCryptoAddress = window.copyCryptoAddress || function() {
-    const text = document.getElementById('cryptoAddressDisplay').textContent;
-    navigator.clipboard.writeText(text).then(() => {
-        const btn = event.currentTarget;
-        const icon = btn.querySelector('i');
-        icon.className = 'fas fa-check text-success';
-        setTimeout(() => { icon.className = 'far fa-copy text-muted'; }, 2000);
-    });
+window.copyCryptoAddress = window.copyCryptoAddress || function () {
+  const text = document.getElementById('cryptoAddressDisplay').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.currentTarget;
+    const icon = btn.querySelector('i');
+    icon.className = 'fas fa-check text-success';
+    setTimeout(() => { icon.className = 'far fa-copy text-muted'; }, 2000);
+  });
 };
 
-// --- Before / After Slider ---
-document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.getElementById('ba-slider');
-  if (!slider) return;
+// --- Before / After Slider (range bar) ---
+(function initBASlider() {
+  function setup() {
+    const beforeDiv = document.getElementById('ba-before');
+    const handle = document.getElementById('ba-handle');
+    const range = document.getElementById('ba-range');
+    if (!beforeDiv || !handle || !range) return;
 
-  const before = document.getElementById('ba-before');
-  const handle = document.getElementById('ba-handle');
-  let dragging = false;
+    function setPosition(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      beforeDiv.style.width = pct + '%';
+      handle.style.left = pct + '%';
+    }
 
-  function setPosition(pct) {
-    pct = Math.max(2, Math.min(98, pct));
-    before.style.width = pct + '%';
-    handle.style.left = pct + '%';
+    range.addEventListener('input', function () {
+      setPosition(parseInt(this.value, 10));
+    });
+
+    // Initial position
+    setPosition(parseInt(range.value, 10));
   }
 
-  function getPercent(e) {
-    const rect = slider.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    return ((clientX - rect.left) / rect.width) * 100;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+})();
+
+// --- AR Model Scale Calibration (2.4m real-world height) ---
+(function calibrateARModel() {
+  const TARGET_HEIGHT_M = 2.4; // metros
+
+  function calibrate() {
+    const mv = document.getElementById('ar-model-voria');
+    if (!mv) return;
+
+    mv.addEventListener('load', function () {
+      // getDimensions() devuelve las dimensiones en metros según el glb
+      const dims = mv.getDimensions();
+      if (!dims || !dims.y || dims.y === 0) return;
+
+      const scaleFactor = TARGET_HEIGHT_M / dims.y;
+      const s = scaleFactor.toFixed(6);
+      mv.setAttribute('scale', `${s} ${s} ${s}`);
+    });
   }
 
-  slider.addEventListener('mousedown', (e) => { dragging = true; setPosition(getPercent(e)); e.preventDefault(); });
-  slider.addEventListener('touchstart', (e) => { dragging = true; setPosition(getPercent(e)); }, { passive: true });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', calibrate);
+  } else {
+    calibrate();
+  }
+})();
 
-  document.addEventListener('mousemove', (e) => { if (dragging) setPosition(getPercent(e)); });
-  document.addEventListener('touchmove', (e) => { if (dragging) setPosition(getPercent(e)); }, { passive: true });
-  document.addEventListener('mouseup', () => { dragging = false; });
-  document.addEventListener('touchend', () => { dragging = false; });
-});

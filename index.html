@@ -31,7 +31,7 @@
 ">
 
   <nav class="navbar navbar-expand-lg fixed-top"
-    style="background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    style="background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 1px 16px rgba(0,0,0,0.06);">
     <div class="container py-2">
       <!-- Logo -->
       <a class="navbar-brand me-4" href="#hero-header" style="transition: opacity 0.3s;">
@@ -41,36 +41,32 @@
 
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#voriaNavbar"
         aria-controls="voriaNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        <span class="navbar-toggler-icon"></span>
       </button>
 
       <!-- Links -->
       <div class="collapse navbar-collapse" id="voriaNavbar">
         <ul class="navbar-nav mx-auto gap-4">
           <li class="nav-item">
-            <a class="nav-link text-white-50 hover-white px-0" href="#"
-              style="font-size: 0.95rem; letter-spacing: 0.5px;">Inicio</a>
+            <a class="nav-link fw-medium px-0" href="#"
+              style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white-50 hover-white px-0" href="#about-3dmodels-row"
-              style="font-size: 0.95rem; letter-spacing: 0.5px;">Sobre Nosotros</a>
+            <a class="nav-link fw-medium px-0" href="#about-3dmodels-row"
+              style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Sobre Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white-50 hover-white px-0" href="#pricing"
-              style="font-size: 0.95rem; letter-spacing: 0.5px;">Planes</a>
+            <a class="nav-link fw-medium px-0" href="#showroom-vr-gallery"
+              style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Showroom</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white-50 hover-white px-0" href="#crypto-demo-currency"
-              style="font-size: 0.95rem; letter-spacing: 0.5px;">Demo & Pago</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white-50 hover-white px-0" href="#contact-voria"
-              style="font-size: 0.95rem; letter-spacing: 0.5px;">Contacto</a>
+            <a class="nav-link fw-medium px-0" href="#contact-voria"
+              style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Contacto</a>
           </li>
         </ul>
         <!-- Header CTA Contact Button -->
-        <a href="#contact-voria" class="btn btn-outline-light btn-sm rounded-pill px-4 py-2 fw-medium ms-auto"
-          style="font-size: 0.9rem; border-color: rgba(255,255,255,0.35); letter-spacing: 0.3px; backdrop-filter: blur(6px); display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
+        <a href="#contact-voria" class="btn btn-dark btn-sm rounded-pill px-4 py-2 fw-medium ms-auto"
+          style="font-size: 0.9rem; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; background: #1d1d1f; border: none;">
           <i class="fas fa-comment-dots" style="font-size: 0.8rem;"></i>
           Contactar
         </a>
@@ -211,7 +207,163 @@
     </div>
   </section>
 
+  <!-- ANTES vs DESPUÉS Slider -->
+  <section class="py-5 bg-white" id="before-after" data-aos="fade-up">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold mb-3"
+          style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif; letter-spacing: -1.5px; font-size: 2.8rem; color: #1d1d1f;">
+          Antes &amp; Después</h2>
+        <p class="text-muted" style="font-size: 1.1rem; max-width: 560px; margin: 0 auto;">Arrastra el divisor para
+          descubrir cómo VORIA transforma por completo un espacio.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+          <div id="ba-slider" class="ba-slider rounded-4 overflow-hidden shadow-sm"
+            style="position: relative; user-select: none; max-height: 600px; border: 1px solid rgba(0,0,0,0.08);">
+            <!-- Imagen Después (fondo) -->
+            <img src="assets/Gemini_Generated_Image_c629ymc629ymc629.png" alt="Después VORIA" class="w-100 d-block"
+              style="max-height: 600px; object-fit: cover; display: block;">
+            <!-- Imagen Antes (encima, recortada) -->
+            <div id="ba-before"
+              style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; pointer-events: none;">
+              <img src="assets/Gemini_Generated_Image_siqmibsiqmibsiqm.png" alt="Antes VORIA"
+                style="width: 100vw; max-width: 1000px; height: 100%; max-height: 600px; object-fit: cover; display: block;">
+            </div>
+            <!-- Divisor (línea visual, sin interacción) -->
+            <div id="ba-handle"
+              style="position: absolute; top: 0; left: 50%; margin-left: -1.5px; height: 100%; width: 3px; background: white; pointer-events: none; z-index: 10;">
+            </div>
+            <!-- Labels -->
+            <div
+              style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 11;">
+              Antes</div>
+            <div
+              style="position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 11;">
+              Después</div>
+          </div>
+          <!-- Barra de control debajo -->
+          <div class="mt-4 px-2">
+            <input id="ba-range" type="range" min="2" max="98" value="50" step="1" class="w-100"
+              style="accent-color: #1d1d1f; cursor: pointer; height: 6px;" aria-label="Comparar antes y después">
+            <div class="d-flex justify-content-between mt-2">
+              <span class="text-muted small fw-semibold">Antes</span>
+              <span class="text-muted small fw-semibold">Después</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+
+  <!-- REALIDAD AUMENTADA -->
+  <section id="ar-voria" class="py-5 bg-black text-white" data-aos="fade-up">
+    <div class="container py-5">
+      <!-- Header -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-12 col-md-9 text-center">
+          <span
+            style="display: inline-block; background: linear-gradient(135deg, #bfa14a22, #bfa14a44); border: 1px solid #bfa14a55; color: #bfa14a; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 18px; border-radius: 30px; margin-bottom: 20px;">
+            Nuevo · Realidad Aumentada
+          </span>
+          <h2 class="fw-bold mb-3"
+            style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif; letter-spacing: -1.5px; font-size: 2.8rem;">
+            Colócalo en tu Espacio
+          </h2>
+          <p class="text-white-50" style="font-size: 1.1rem; max-width: 580px; margin: 0 auto;">
+            Visualiza el armario VORIA <strong class="text-white">a escala real (2,4 m de alto)</strong> en tu hogar
+            antes de comprarlo. Rota y ajusta la posición con total libertad.
+          </p>
+        </div>
+      </div>
+
+      <!-- Visor 3D + AR -->
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
+
+          <!-- model-viewer card -->
+          <div class="position-relative rounded-4 overflow-hidden"
+            style="background: linear-gradient(145deg, #111, #1a1a1a); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 24px 80px rgba(0,0,0,0.6);">
+
+            <!-- Badge AR -->
+            <div class="position-absolute top-0 start-0 m-3" style="z-index: 10;">
+              <span
+                style="background: rgba(191,161,74,0.2); border: 1px solid #bfa14a; color: #bfa14a; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px;">
+                <i class="fas fa-cube me-1"></i>3D &amp; AR
+              </span>
+            </div>
+
+            <model-viewer id="ar-model-voria" src="assets/Meshy_AI_Lumina_Wardrobe_Loung_0304132209_texture.glb"
+              alt="Armario VORIA en Realidad Aumentada" ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed"
+              ar-placement="floor" camera-controls touch-action="pan-y" shadow-intensity="1.2" shadow-softness="0.8"
+              exposure="1.1" tone-mapping="neutral" auto-rotate auto-rotate-delay="2000" rotation-per-second="20deg"
+              style="width: 100%; height: 520px; background: transparent; --poster-color: transparent;">
+              <!-- AR Button personalizado -->
+              <button slot="ar-button"
+                style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #bfa14a, #d4b96a); color: #000; border: none; border-radius: 50px; padding: 14px 32px; font-weight: 700; font-size: 1rem; font-family: -apple-system, sans-serif; letter-spacing: 0.3px; cursor: pointer; box-shadow: 0 4px 24px rgba(191,161,74,0.5); display: flex; align-items: center; gap: 10px; white-space: nowrap; z-index: 5; transition: all 0.2s;"
+                onmouseover="this.style.transform='translateX(-50%) scale(1.05)'"
+                onmouseout="this.style.transform='translateX(-50%) scale(1)'">
+                <i class="fas fa-camera" style="font-size: 1.1rem;"></i>
+                Ver en mi Espacio (AR)
+              </button>
+
+              <!-- Loader mientras carga el modelo -->
+              <div slot="progress-bar"
+                style="position: absolute; inset: 0; background: #111; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+                <div
+                  style="width: 56px; height: 56px; border: 3px solid rgba(191,161,74,0.2); border-top-color: #bfa14a; border-radius: 50%; animation: spin 0.9s linear infinite;">
+                </div>
+                <span
+                  style="color: rgba(255,255,255,0.5); font-size: 0.9rem; font-family: -apple-system, sans-serif;">Cargando
+                  modelo 3D…</span>
+              </div>
+            </model-viewer>
+          </div>
+
+          <!-- Controles info -->
+          <div class="row g-3 mt-4">
+            <div class="col-12 col-sm-4">
+              <div class="rounded-3 p-3 text-center h-100"
+                style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                <i class="fas fa-arrows-rotate mb-2" style="color: #bfa14a; font-size: 1.3rem;"></i>
+                <div class="fw-semibold text-white" style="font-size: 0.9rem;">Rotar</div>
+                <div class="text-white-50" style="font-size: 0.8rem;">Arrastra para girar el modelo</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="rounded-3 p-3 text-center h-100"
+                style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                <i class="fas fa-magnifying-glass-plus mb-2" style="color: #bfa14a; font-size: 1.3rem;"></i>
+                <div class="fw-semibold text-white" style="font-size: 0.9rem;">Zoom</div>
+                <div class="text-white-50" style="font-size: 0.8rem;">Pellizca o usa la rueda del ratón</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="rounded-3 p-3 text-center h-100"
+                style="background: rgba(191,161,74,0.08); border: 1px solid rgba(191,161,74,0.25);">
+                <i class="fas fa-mobile-screen mb-2" style="color: #bfa14a; font-size: 1.3rem;"></i>
+                <div class="fw-semibold text-white" style="font-size: 0.9rem;">AR en tu móvil</div>
+                <div class="text-white-50" style="font-size: 0.8rem;">Pulsa el botón dorado para AR</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nota compatibilidad -->
+          <div class="mt-4 rounded-3 p-3 d-flex align-items-center gap-3"
+            style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+            <i class="fas fa-circle-info" style="color: #bfa14a; font-size: 1.1rem; flex-shrink: 0;"></i>
+            <p class="mb-0 text-white-50" style="font-size: 0.85rem; line-height: 1.5;">
+              <strong class="text-white">Compatibilidad AR:</strong> Android con Chrome/Edge (WebXR) · iPhone/iPad con
+              Safari (AR Quick Look). El modelo se proyecta a <strong class="text-white">escala real de 2,4 m</strong>
+              sobre cualquier superficie plana.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="py-5 bg-white text-black" id="about-3dmodels-row"
     style="min-height: 80vh; display: flex; align-items: center;">
@@ -317,120 +469,6 @@
     </div>
   </section>
 
-  <section id="crypto-demo-currency" class="py-5"
-    style="background-color: #f5f5f7; min-height: 80vh; display: flex; align-items: center;">
-    <div class="container py-5" data-aos="fade-up">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold mb-3"
-          style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif; letter-spacing: -1.5px; font-size: 3rem; color: #1d1d1f;">
-          Configura y hazlo tuyo.
-        </h2>
-        <p class="text-muted mx-auto" style="font-size: 1.25rem; max-width: 600px; color: #86868b;">
-          Selecciona tu modelo y procesa tu pago de forma instantánea usando Criptomonedas o Tarjeta de Crédito.
-        </p>
-      </div>
-
-      <div class="row align-items-stretch g-5 justify-content-center">
-        <!-- Columna Izquierda: Configuración del Proyecto -->
-        <div class="col-12 col-lg-6 d-flex">
-          <div class="w-100 bg-white shadow-sm p-4 p-md-5 d-flex flex-column"
-            style="border-radius: 24px; border: 1px solid rgba(0,0,0,0.05);">
-            <h3 class="fw-bold mb-4" style="font-family: -apple-system, sans-serif; font-size: 1.5rem; color: #1d1d1f;">
-              1. Elige tu Modelo</h3>
-
-            <div class="row g-3 mb-4">
-              <div class="col-6">
-                <button class="w-100 p-4 border rounded-4 text-start bg-light model-select-btn active-model"
-                  data-price="8900" style="transition: all 0.2s; border-color: #1d1d1f !important;">
-                  <div class="fw-bold text-dark" style="font-size: 1.1rem;">Classic</div>
-                  <div class="text-muted mt-1">€8,900</div>
-                </button>
-              </div>
-              <div class="col-6">
-                <button class="w-100 p-4 border rounded-4 text-start bg-white model-select-btn" data-price="17500"
-                  style="transition: all 0.2s;">
-                  <div class="fw-bold text-dark" style="font-size: 1.1rem;">Premium</div>
-                  <div class="text-muted mt-1">€17,500</div>
-                </button>
-              </div>
-            </div>
-
-            <h3 class="fw-bold mb-3 mt-4"
-              style="font-family: -apple-system, sans-serif; font-size: 1.5rem; color: #1d1d1f;">2. Moneda de Pago</h3>
-            <select id="cryptoSelect" class="form-select border-0 bg-light py-3 px-4 rounded-4 fw-medium text-dark mb-4"
-              style="font-size: 1.1rem; cursor: pointer;">
-              <option value="bitcoin">Bitcoin (BTC)</option>
-              <option value="ethereum">Ethereum (ETH)</option>
-              <option value="litecoin">Litecoin (LTC)</option>
-            </select>
-
-            <div class="mt-auto pt-4 border-top">
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="text-muted fw-medium">Total Estimado</span>
-                <span id="fiatTotalDisplay" class="fw-bold fs-3 text-dark">€8,900</span>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mt-1">
-                <span class="text-muted small">Tasa de conversión en vivo</span>
-                <span id="cryptoTotalDisplay" class="fw-semibold text-primary"
-                  style="font-family: monospace; font-size: 1.1rem;">Cargando...</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Columna Derecha: Checkout Seguro -->
-        <div class="col-12 col-lg-6 d-flex">
-          <div class="w-100 bg-white shadow-sm p-4 p-md-5 d-flex flex-column justify-content-center"
-            style="border-radius: 24px; border: 1px solid rgba(0,0,0,0.05);">
-            <h3 class="fw-bold mb-2 text-center"
-              style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', sans-serif; font-size: 1.8rem; color: #1d1d1f; letter-spacing: -0.5px;">
-              Completar Compra
-            </h3>
-            <p class="text-center mb-5" style="color: #86868b; font-size: 1rem;">
-              Escanea el QR para pagar con Cripto o usa tu tarjeta.
-            </p>
-
-            <!-- QR Code Area -->
-            <div class="d-flex flex-column align-items-center mb-5">
-              <div class="p-3 bg-white rounded-4 shadow-sm mb-3" style="border: 1px solid rgba(0,0,0,0.08);">
-                <img id="cryptoQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bitcoin:"
-                  alt="Crypto QR Code" class="img-fluid" style="width: 160px; height: 160px; object-fit: contain;">
-              </div>
-              <div class="text-center">
-                <p class="small text-muted mb-1">Dirección de depósito:</p>
-                <div class="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-pill">
-                  <span id="cryptoAddressDisplay" class="font-monospace small text-dark"
-                    style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">bc1q...demo...address</span>
-                  <button class="btn btn-sm btn-link text-decoration-none p-0" onclick="copyCryptoAddress()"
-                    title="Copiar dirección">
-                    <i class="far fa-copy text-muted"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="position-relative text-center my-4">
-              <hr class="text-muted opacity-25">
-              <span
-                class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted small fw-medium">o</span>
-            </div>
-
-            <!-- Stripe Button -->
-            <button id="stripePayBtn"
-              class="btn w-100 py-3 rounded-pill fw-medium text-white shadow-sm hover-opacity d-flex justify-content-center align-items-center gap-2"
-              type="button" style="background-color: #1d1d1f; font-size: 1.1rem; transition: all 0.2s;">
-              <i class="far fa-credit-card"></i> Pagar con Tarjeta
-            </button>
-            <div class="text-center mt-3">
-              <small style="color: #86868b; font-size: 0.8rem;">
-                <i class="fas fa-lock me-1"></i> Pagos encriptados y seguros
-              </small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Posibles Integraciones -->
   <section id="gallery1" class="py-5 bg-white text-black" style="min-height: 70vh;">
@@ -572,17 +610,7 @@
                   <p class="small mb-0 text-white-50">Deseando un SIMA 2026</p>
                 </div>
               </div>
-              <div class="carousel-item" style="aspect-ratio: 16/9;">
-                <video class="d-block w-100 h-100 object-fit-cover" controls poster="assets/SIMA/poster-video.jpg">
-                  <source src="assets/SIMA/WhatsApp Video 2025-06-10 at 16.20.35.mp4" type="video/mp4">
-                </video>
-                <div class="carousel-caption bg-black bg-opacity-50 p-4"
-                  style="backdrop-filter: blur(8px); bottom: 0; left: 0; right: 0;">
-                  <h5 class="fw-bold mb-1" style="font-family: -apple-system, BlinkMacSystemFont, sans-serif;">Vídeo
-                    Resumen</h5>
-                  <p class="small mb-0 text-white-50">Recuerdo en movimiento de nuestra exposición.</p>
-                </div>
-              </div>
+
             </div>
 
             <button class="carousel-control-prev" type="button" data-bs-target="#simaGalleryCarousel"
@@ -616,96 +644,43 @@
       </div>
 
 
-      <div class="col-12 col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
-        <div class="card bg-light border-0 w-100 p-4 d-flex flex-column h-100" style="border-radius: 24px;">
-          <h4 class="fw-bold mb-4 text-center" style="font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
-            Experiencia VR</h4>
-          <p class="text-muted small text-center mb-4">Sumérgete en nuestros espacios con una experiencia inmersiva.
-          </p>
-          <div class="rounded-4 overflow-hidden shadow-sm mb-4" style="aspect-ratio: 16/9;">
-            <video autoplay loop muted playsinline class="w-100 h-100 object-fit-cover">
-              <source src="assets/seccionVRshowroom.mp4" type="video/mp4">
-            </video>
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="card bg-light border-0 w-100 p-4 d-flex flex-column h-100" style="border-radius: 24px;">
+            <h4 class="fw-bold mb-4 text-center" style="font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+              Experiencia VR</h4>
+            <p class="text-muted small text-center mb-4">Sumérgete en nuestros espacios con una experiencia inmersiva.
+            </p>
+            <div class="rounded-4 overflow-hidden shadow-sm mb-4" style="aspect-ratio: 16/9;">
+              <video autoplay loop muted playsinline class="w-100 h-100 object-fit-cover">
+                <source src="assets/seccionVRshowroom.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="mt-auto text-center">
+              <a href="#contact-voria" class="btn btn-dark rounded-pill px-4">Solicitar Demo VR</a>
+            </div>
           </div>
-          <div class="mt-auto text-center">
-            <a href="#contact-voria" class="btn btn-dark rounded-pill px-4">Solicitar Demo VR</a>
+        </div>
+
+        <!-- Showroom físico -->
+        <div class="col-12 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="card bg-light border-0 w-100 p-4 d-flex flex-column h-100" style="border-radius: 24px;">
+            <h4 class="fw-bold mb-4 text-center" style="font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+              Visita el Showroom</h4>
+            <p class="text-muted small text-center mb-4">Descubre la innovación de VORIA en persona en Valdemoro,
+              Madrid.</p>
+            <div class="rounded-4 overflow-hidden shadow-sm mb-4" style="aspect-ratio: 16/9;">
+              <img src="assets/showroom-1.jpg" class="w-100 h-100 object-fit-cover" alt="Showroom VORIA">
+            </div>
+            <div class="mt-auto text-center">
+              <a href="#contact-voria" class="btn btn-outline-dark rounded-pill px-4">Reservar Cita</a>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Showroom físico -->
-      <div class="col-12 col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
-        <div class="card bg-light border-0 w-100 p-4 d-flex flex-column h-100" style="border-radius: 24px;">
-          <h4 class="fw-bold mb-4 text-center" style="font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
-            Visita el Showroom</h4>
-          <p class="text-muted small text-center mb-4">Descubre la innovación de VORIA en persona en Valdemoro,
-            Madrid.</p>
-          <div class="rounded-4 overflow-hidden shadow-sm mb-4" style="aspect-ratio: 16/9;">
-            <img src="assets/showroom-1.jpg" class="w-100 h-100 object-fit-cover" alt="Showroom VORIA">
-          </div>
-          <div class="mt-auto text-center">
-            <a href="#contact-voria" class="btn btn-outline-dark rounded-pill px-4">Reservar Cita</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-
-  <!-- Ajusta los tamaños de los logos directamente en el HTML usando style en el tag <img> -->
-  <section class="container my-5 py-5" id="partners-carousel">
-    <h2 class="text-center mb-5 display-4 fw-bold" style="font-family: 'Playfair Display', serif;">Empresas
-      Colaboradoras</h2>
-    <div id="logosCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-      <div class="carousel-inner">
-        <!-- Grupo 1 -->
-        <div class="carousel-item active">
-          <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-            <img src="assets/logosempresas/GM 120x90 (1).png" alt="Colaborador 1" class="partner-logo img-fluid"
-              style="max-height:80px;max-width:90px;">
-            <img src="assets/logosempresas/gmb-sima.jpg" alt="Colaborador 2" class="partner-logo img-fluid"
-              style="max-height:80px;max-width:90px;">
-            <img src="assets/logosempresas/images.png" alt="Colaborador 3" class="partner-logo img-fluid"
-              style="max-height:80px;max-width:90px;">
-          </div>
-        </div>
-        <!-- Grupo 2 -->
-        <div class="carousel-item">
-          <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-            <!-- Urban Craft -->
-            <img src="assets/logosempresas/logo 2 copia 2.png" alt="Urban Craft" class="partner-logo img-fluid"
-              style="max-height:80px;max-width:70px;">
-            <!-- Telor -->
-            <img src="assets/logosempresas/Logo-sin-punto.png" alt="Telor" class="partner-logo img-fluid"
-              style="max-height:80px;max-width:70px;">
-            <!-- Green Corporate -->
-            <img src="assets/logosempresas/Logo-Transparante-Negro-768x596.png" alt="Green Corporate"
-              class="partner-logo img-fluid" style="max-height:80px;max-width:70px;">
-          </div>
-        </div>
-        <!-- Grupo 3 -->
-        <div class="carousel-item">
-          <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 flex-row flex-md-row">
-            <img src="assets/logosempresas/logo-vector-tecnocasa-franchising-network.jpg" alt="Colaborador 7"
-              class="partner-logo img-fluid" style="max-height:80px;max-width:90px;">
-            <img src="assets/logosempresas/PNG OFICIAL.png" alt="Colaborador 8" class="partner-logo img-fluid"
-              style="max-height:80px;max-width:90px;">
-            <img src="assets/logosempresas/Recurso 16 copia.png" alt="Colaborador 9" class="partner-logo img-fluid"
-              style="max-height:80px;max-width:90px;">
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#logosCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#logosCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
     </div>
   </section>
+
 
 
 
@@ -932,88 +907,6 @@
 
 
 
-  <!-- ANTES vs DESPUÉS Slider -->
-  <section class="py-5 bg-white" id="before-after" data-aos="fade-up">
-    <div class="container py-5">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold mb-3"
-          style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif; letter-spacing: -1.5px; font-size: 2.8rem; color: #1d1d1f;">
-          Antes &amp; Después</h2>
-        <p class="text-muted" style="font-size: 1.1rem; max-width: 560px; margin: 0 auto;">Arrastra el divisor para
-          descubrir cómo VORIA transforma por completo un espacio.</p>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-10">
-          <div id="ba-slider" class="ba-slider rounded-4 overflow-hidden shadow-sm"
-            style="position: relative; user-select: none; cursor: col-resize; max-height: 600px; border: 1px solid rgba(0,0,0,0.08);">
-            <!-- Imagen Después (fondo) -->
-            <img src="assets/Gemini_Generated_Image_c629ymc629ymc629.png" alt="Después VORIA" class="w-100 d-block"
-              style="max-height: 600px; object-fit: cover; display: block;">
-            <!-- Imagen Antes (encima, recortada) -->
-            <div id="ba-before"
-              style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; pointer-events: none;">
-              <img src="assets/Gemini_Generated_Image_siqmibsiqmibsiqm.png" alt="Antes VORIA"
-                style="width: 100vw; max-width: 1000px; height: 100%; max-height: 600px; object-fit: cover; display: block;">
-            </div>
-            <!-- Divisor -->
-            <div id="ba-handle"
-              style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%; width: 3px; background: white; pointer-events: none; z-index: 10;">
-              <div
-                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; background: white; border-radius: 50%; box-shadow: 0 2px 12px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; pointer-events: none;">
-                <i class="fas fa-arrows-left-right" style="color: #1d1d1f; font-size: 1.1rem;"></i>
-              </div>
-            </div>
-            <!-- Labels -->
-            <div
-              style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 11;">
-              Antes</div>
-            <div
-              style="position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 11;">
-              Después</div>
-          </div>
-          <p class="text-center text-muted small mt-3"><i class="fas fa-hand-point-left me-1"></i> Arrastra para
-            comparar <i class="fas fa-hand-point-right ms-1"></i></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="container my-5" id="descargas">
-    <h2 class="text-center mb-4 display-5 fw-bold" style="font-family: 'Playfair Display', serif; color: #e6e6e6;">
-      Descargas</h2>
-    <div class="text-center">
-      <a href="assets/VORIA-Mobiliario-Multifuncional-de-Lujo.pdf" class="btn btn-gold btn-lg text-light" download>
-        <i class="fas fa-file-pdf me-2"></i>Descargar Catálogo PDF
-      </a>
-    </div>
-  </section>
-
-  <section class="container-fluid py-5 my-5 position-relative" id="voria-game"
-    style="background: #181818; border-radius: 2.5rem; overflow: hidden;">
-    <div class="container text-center">
-      <h2 class="display-4 fw-bold mb-4" style="font-family: 'Playfair Display', serif; color: var(--gold);">
-        Juego VORIA: ¡Optimiza tu Espacio!
-      </h2>
-      <p class="lead mb-4" style="font-family: 'Inter', sans-serif;">
-        ¿Eres capaz de organizar un espacio inteligente y eficiente? Arrastra los muebles VORIA y crea la mejor
-        distribución posible. ¡Demuestra tu ingenio!
-      </p>
-      <div id="game-container" class="mx-auto mb-4"
-        style="width:100%; max-width:600px; aspect-ratio:3/2; background: #e6e6e6; border-radius: 1.5rem; box-shadow: 0 0 32px #bfa14a55; position: relative; overflow: hidden;">
-        <canvas id="voriaGameCanvas" width="600" height="400"
-          style="width:100%; height:100%; border-radius: 1.5rem; background: linear-gradient(135deg, #181818 80%, #bfa14a22 100%);"></canvas>
-        <div id="game-ui" style="position:absolute;top:10px;left:10px;z-index:2;">
-          <span id="score" style="color:#bfa14a;font-family:'Playfair Display',serif;font-size:1.3rem;">Puntuación:
-            0</span>
-        </div>
-      </div>
-      <button class="btn btn-gold btn-lg text-light" onclick="startVoriaGame()">
-        <i class="fas fa-play me-2"></i>Jugar de Nuevo
-      </button>
-      <p class="mt-3" style="font-family: 'Inter', sans-serif; color: #e6e6e6;">Arrastra los muebles dorados a las zonas
-        óptimas y evita obstáculos. ¡Consigue la máxima puntuación!</p>
-    </div>
-  </section>
 
   <!-- POP-UP COOKIES Y PRIVACIDAD -->
   <div id="cookieConsent" class="position-fixed bottom-0 start-0 w-100 bg-dark bg-opacity-90 text-light p-4 shadow-lg"
@@ -1065,59 +958,65 @@
 
 
   <!-- FOOTER CORPORATIVO -->
-  <footer class="footer-voria mt-5 pt-5 pb-3"
-    style="background: linear-gradient(rgba(61, 61, 61, 0.7), rgba(5, 5, 5, 0.7)); border-radius:1.5rem 1.5rem 0 0;">
-    <div class="container h-100 d-flex flex-column justify-content-between align-items-center">
-      <div class="row justify-content-center text-center gy-4">
-        <!-- Logo y breve -->
-        <div class="col-12 col-md-3 mb-3 mb-md-0 d-flex flex-column align-items-center">
-          <img src="assets/logo-voria.png" alt="VORIA Logo" style="width:90px; max-width:100%;" class="mb-3 img-fluid">
-          <p class="small mb-0">VORIA — Muebles autónomos y automáticos para el futuro de tu espacio.</p>
-        </div>
-        <!-- Enlaces rápidos -->
-        <div class="col-12 col-md-3 d-flex flex-column align-items-center">
-          <h6 class="fw-bold mb-3">Enlaces</h6>
-          <ul class="list-unstyled small">
-            <li><a href="#about" class="footer-link" style="color:#bfa14a;">Sobre Nosotros</a></li>
-            <li><a href="#pricing" class="footer-link" style="color:#bfa14a;">Planes</a></li>
-            <li><a href="#3dmodels" class="footer-link" style="color:#bfa14a;">Modelos 3D</a></li>
-            <li><a href="#showroom" class="footer-link" style="color:#bfa14a;">Showroom</a></li>
-            <li><a href="#contact" class="footer-link" style="color:#bfa14a;">Contacto</a></li>
-          </ul>
-        </div>
-        <!-- Información legal -->
-        <div class="col-12 col-md-3 d-flex flex-column align-items-center">
-          <h6 class="fw-bold mb-3">Legal</h6>
-          <ul class="list-unstyled small">
-            <li><a href="#" class="footer-link" style="color:#bfa14a;">Política de Privacidad</a></li>
-            <li><a href="#" class="footer-link" style="color:#bfa14a;">Política de Cookies</a></li>
-            <li><a href="#" class="footer-link" style="color:#bfa14a;">Aviso Legal</a></li>
-          </ul>
-        </div>
-        <!-- Contacto y redes -->
-        <div class="col-12 col-md-3 d-flex flex-column align-items-center">
-          <h6 class="fw-bold mb-3">Contacto</h6>
-          <p class="small mb-1"><i class="fas fa-envelope me-2 text-gold"></i> <a href="mailto:voria@admin.es"
-              class="footer-link" style="color:#fff;">voria@admin.es</a></p>
-          <div class="mb-2">
-            <a href="https://instagram.com" target="_blank" class="me-2 footer-social" style="color:#fff;"><i
-                class="fab fa-instagram fa-lg"></i></a>
-            <a href="https://facebook.com" target="_blank" class="me-2 footer-social" style="color:#fff;"><i
-                class="fab fa-facebook fa-lg"></i></a>
-            <a href="https://twitter.com" target="_blank" class="me-2 footer-social" style="color:#fff;"><i
-                class="fab fa-x-twitter fa-lg"></i></a>
-            <a href="https://linkedin.com" target="_blank" class="footer-social" style="color:#fff;"><i
-                class="fab fa-linkedin fa-lg"></i></a>
+  <footer class="footer-voria mt-5 pt-5 pb-4" style="background: #f5f5f7; border-top: 1px solid rgba(0,0,0,0.08);">
+    <div class="container">
+      <div class="row g-5 mb-5">
+        <!-- Brand -->
+        <div class="col-12 col-md-4">
+          <img src="assets/logo-voria.png" alt="VORIA Logo" style="height: 38px; width: auto; filter: brightness(0);"
+            class="mb-3">
+          <p class="text-muted small mb-3" style="max-width: 260px;">Muebles autónomos y automáticos para el futuro de
+            tu espacio.</p>
+          <div class="d-flex gap-3">
+            <a href="https://www.instagram.com/voriadesign" target="_blank" style="color: #1d1d1f; font-size: 1.1rem;"
+              title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" style="color: #1d1d1f; font-size: 1.1rem;"
+              title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/34651374624" target="_blank" style="color: #1d1d1f; font-size: 1.1rem;"
+              title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
-          <p class="small text-muted mb-0">Powered by Álvaro Rodríguez</p>
+        </div>
+        <!-- Nav links -->
+        <div class="col-6 col-md-2">
+          <h6 class="fw-bold text-dark mb-3"
+            style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">Navegar</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="#hero-header" style="color: #6e6e73; text-decoration: none;">Inicio</a></li>
+            <li class="mb-2"><a href="#about-3dmodels-row" style="color: #6e6e73; text-decoration: none;">Sobre
+                Nosotros</a></li>
+            <li class="mb-2"><a href="#showroom-vr-gallery" style="color: #6e6e73; text-decoration: none;">Showroom</a>
+            </li>
+            <li class="mb-2"><a href="#contact-voria" style="color: #6e6e73; text-decoration: none;">Contacto</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div class="col-6 col-md-3">
+          <h6 class="fw-bold text-dark mb-3"
+            style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">Contacto</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2" style="color: #6e6e73;"><i class="fas fa-map-marker-alt me-2"
+                style="color: #bfa14a;"></i>Valdemoro, Madrid</li>
+            <li class="mb-2"><a href="tel:+34651374624" style="color: #6e6e73; text-decoration: none;"><i
+                  class="fas fa-phone me-2" style="color: #bfa14a;"></i>+34 651 37 46 24</a></li>
+            <li class="mb-2"><a href="mailto:r.munoz@voriahome.com" style="color: #6e6e73; text-decoration: none;"><i
+                  class="fas fa-envelope me-2" style="color: #bfa14a;"></i>r.munoz@voriahome.com</a></li>
+          </ul>
+        </div>
+        <!-- Legal -->
+        <div class="col-6 col-md-2">
+          <h6 class="fw-bold text-dark mb-3"
+            style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">Legal</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="#" style="color: #6e6e73; text-decoration: none;">Privacidad</a></li>
+            <li class="mb-2"><a href="#" style="color: #6e6e73; text-decoration: none;">Cookies</a></li>
+            <li class="mb-2"><a href="#" style="color: #6e6e73; text-decoration: none;">Aviso Legal</a></li>
+          </ul>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col text-center">
-          <p class="small text-muted mb-0">
-            Este sitio utiliza cookies para mejorar la experiencia de usuario.
-          </p>
-        </div>
+      <div style="border-top: 1px solid rgba(0,0,0,0.08);"
+        class="pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="small text-muted mb-0">© 2026 VORIA. Todos los derechos reservados.</p>
+        <p class="small text-muted mb-0">Web realizada por <a href="https://www.solidqubit.com">Solid Qubit</a></p>
       </div>
     </div>
   </footer>
