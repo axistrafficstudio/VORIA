@@ -6,19 +6,22 @@ const themeMap = {
   'bg-light': 'navbar-light'
 };
 
-document.getElementById('themeToggle').addEventListener('click', () => {
-  const body = document.body;
-  const navbar = document.querySelector('.navbar');
-  body.classList.toggle('bg-light');
-  body.classList.toggle('bg-dark');
-  if (body.classList.contains('bg-light')) {
-    navbar.classList.remove('navbar-dark');
-    navbar.classList.add('navbar-light');
-  } else {
-    navbar.classList.remove('navbar-light');
-    navbar.classList.add('navbar-dark');
-  }
-});
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const body = document.body;
+    const navbar = document.querySelector('.navbar');
+    body.classList.toggle('bg-light');
+    body.classList.toggle('bg-dark');
+    if (body.classList.contains('bg-light')) {
+      navbar.classList.remove('navbar-dark');
+      navbar.classList.add('navbar-light');
+    } else {
+      navbar.classList.remove('navbar-light');
+      navbar.classList.add('navbar-dark');
+    }
+  });
+}
 
 async function getCryptoPrices() {
   const eurPriceInput = document.getElementById('basePriceInput');
@@ -394,22 +397,23 @@ window.copyCryptoAddress = window.copyCryptoAddress || function () {
   });
 };
 
-// --- Before / After Slider (range bar) ---
+// --- Before / After Slider (CSS Clip-Path) ---
 (function initBASlider() {
   function attachSlider() {
-    var beforeDiv = document.getElementById('ba-before');
+    var beforeImg = document.getElementById('ba-before');
     var handle = document.getElementById('ba-handle');
     var range = document.getElementById('ba-range');
 
-    if (!beforeDiv || !handle || !range) {
+    if (!beforeImg || !handle || !range) {
       setTimeout(attachSlider, 100);
       return;
     }
 
     function setPosition(pct) {
-      pct = Math.max(2, Math.min(98, Number(pct)));
-      beforeDiv.style.width = pct + '%';
-      handle.style.left = pct + '%';
+      // Usamos clip-path en la imagen en lugar de width
+      beforeImg.style.clipPath = 'polygon(0 0, ' + pct + '% 0, ' + pct + '% 100%, 0 100%)';
+      // Mueve la línea divisoria
+      handle.style.marginLeft = 'calc(' + pct + '% - 2px)';
     }
 
     range.addEventListener('input', function () {
@@ -419,6 +423,32 @@ window.copyCryptoAddress = window.copyCryptoAddress || function () {
     setPosition(range.value || 50);
   }
   attachSlider();
+})();
+
+// --- AR QR Code Generator for Local Testing ---
+(function initARTestQR() {
+  function attachQRBtn() {
+    var btn = document.getElementById('test-ar-qr-btn');
+    var container = document.getElementById('ar-qr-container');
+    if (!btn || !container) {
+      setTimeout(attachQRBtn, 500);
+      return;
+    }
+
+    btn.addEventListener('click', function () {
+      // Usamos api de qrserver
+      var qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(window.location.href);
+
+      container.innerHTML = `
+        <div class="mt-4 p-3 bg-white rounded-3 d-inline-block text-center shadow">
+          <img src="${qrUrl}" alt="QR" style="width:180px; height:180px; display:block; margin:0 auto;">
+          <small class="text-dark fw-bold d-block mt-3" style="font-size:0.95rem;">Escanea con la cámara de tu móvil</small>
+        </div>
+      `;
+      btn.style.display = 'none'; // Ocultar el botón tras generar
+    });
+  }
+  attachQRBtn();
 })();
 
 // --- AR Model Scale Calibration (2.4m real-world height) ---

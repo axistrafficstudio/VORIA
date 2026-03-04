@@ -32,21 +32,24 @@
 
   <nav class="navbar navbar-expand-lg fixed-top"
     style="background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 1px 16px rgba(0,0,0,0.06);">
-    <div class="container py-2">
-      <!-- Logo -->
-      <a class="navbar-brand me-4" href="#hero-header" style="transition: opacity 0.3s;">
-        <img src="assets/logo-voria.png" alt="VORIA Logo" style="height: 36px; width: auto;"
-          class="img-fluid opacity-hover">
-      </a>
+    <div class="container py-2 d-flex align-items-center position-relative">
 
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#voriaNavbar"
-        aria-controls="voriaNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- Lado Izquierdo: Logo (ocupando el mismo espacio que el lado derecho para centrar el medio) -->
+      <div class="d-flex align-items-center" style="flex: 1 1 0%; min-width: 0;">
+        <a class="navbar-brand m-0" href="#hero-header" style="transition: opacity 0.3s;">
+          <img src="assets/logo-voria.png" alt="VORIA Logo" style="height: 36px; width: auto;"
+            class="img-fluid opacity-hover">
+        </a>
+      </div>
+
+      <button class="navbar-toggler border-0 ms-auto" type="button" data-bs-toggle="collapse"
+        data-bs-target="#voriaNavbar" aria-controls="voriaNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="voriaNavbar">
-        <ul class="navbar-nav mx-auto gap-4">
+      <!-- Centro: Links de Navegación -->
+      <div class="collapse navbar-collapse justify-content-center" id="voriaNavbar" style="flex: 0 0 auto;">
+        <ul class="navbar-nav gap-4 text-center">
           <li class="nav-item">
             <a class="nav-link fw-medium px-0" href="#"
               style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Inicio</a>
@@ -64,13 +67,17 @@
               style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Contacto</a>
           </li>
         </ul>
-        <!-- Header CTA Contact Button -->
-        <a href="#contact-voria" class="btn btn-dark btn-sm rounded-pill px-4 py-2 fw-medium ms-auto"
+      </div>
+
+      <!-- Lado Derecho: Botón Contactar -->
+      <div class="d-none d-lg-flex justify-content-end" style="flex: 1 1 0%; min-width: 0;">
+        <a href="#contact-voria" class="btn btn-dark btn-sm rounded-pill px-4 py-2 fw-medium"
           style="font-size: 0.9rem; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; background: #1d1d1f; border: none;">
           <i class="fas fa-comment-dots" style="font-size: 0.8rem;"></i>
           Contactar
         </a>
       </div>
+
     </div>
   </nav>
 
@@ -219,38 +226,36 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
-          <div id="ba-slider" class="ba-slider rounded-4 overflow-hidden shadow-sm"
-            style="position: relative; user-select: none; max-height: 600px; border: 1px solid rgba(0,0,0,0.08);">
-            <!-- Imagen Después (fondo) -->
-            <img src="assets/Gemini_Generated_Image_c629ymc629ymc629.png" alt="Después VORIA" class="w-100 d-block"
-              style="max-height: 600px; object-fit: cover; display: block;">
+          <div id="ba-slider" class="ba-slider rounded-4 overflow-hidden shadow-sm position-relative"
+            style="max-height: 600px; border: 1px solid rgba(0,0,0,0.08); display: grid; place-items: center;">
+
+            <!-- Imagen Después (fondo, estática) -->
+            <img src="assets/Gemini_Generated_Image_c629ymc629ymc629.png" alt="Después VORIA" class="w-100"
+              style="grid-area: 1/1; max-height: 600px; object-fit: cover; display: block; user-select: none; pointer-events: none;">
+
             <!-- Imagen Antes (encima, recortada) -->
-            <div id="ba-before"
-              style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; pointer-events: none;">
-              <img src="assets/Gemini_Generated_Image_siqmibsiqmibsiqm.png" alt="Antes VORIA"
-                style="width: 100vw; max-width: 1000px; height: 100%; max-height: 600px; object-fit: cover; display: block;">
-            </div>
-            <!-- Divisor (línea visual, sin interacción) -->
+            <img id="ba-before" src="assets/Gemini_Generated_Image_siqmibsiqmibsiqm.png" alt="Antes VORIA" class="w-100"
+              style="grid-area: 1/1; max-height: 600px; object-fit: cover; display: block; user-select: none; pointer-events: none; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+
+            <!-- Divisor Blanco -->
             <div id="ba-handle"
-              style="position: absolute; top: 0; left: 50%; margin-left: -1.5px; height: 100%; width: 3px; background: white; pointer-events: none; z-index: 10;">
+              style="grid-area: 1/1; justify-self: start; height: 100%; width: 4px; background: white; pointer-events: none; margin-left: calc(50% - 2px);">
             </div>
+
+            <!-- Rango interactivo invisible superpuesto -->
+            <input id="ba-range" type="range" min="0" max="100" value="50"
+              style="grid-area: 1/1; justify-self: center; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: col-resize; z-index: 20;">
+
             <!-- Labels -->
             <div
-              style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 11;">
+              style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 10;">
               Antes</div>
             <div
-              style="position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 11;">
+              style="position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 10;">
               Después</div>
           </div>
-          <!-- Barra de control debajo -->
-          <div class="mt-4 px-2">
-            <input id="ba-range" type="range" min="2" max="98" value="50" step="1" class="w-100"
-              style="accent-color: #1d1d1f; cursor: pointer; height: 6px;" aria-label="Comparar antes y después">
-            <div class="d-flex justify-content-between mt-2">
-              <span class="text-muted small fw-semibold">Antes</span>
-              <span class="text-muted small fw-semibold">Después</span>
-            </div>
-          </div>
+          <p class="text-center text-muted small mt-3"><i class="fas fa-hand-point-left me-1"></i> Arrastra la imagen
+            para comparar <i class="fas fa-hand-point-right ms-1"></i></p>
         </div>
       </div>
     </div>
@@ -307,6 +312,17 @@
                 <i class="fas fa-camera" style="font-size: 1.1rem;"></i>
                 Ver en mi Espacio (AR)
               </button>
+
+              <!-- Loader mientras carga el modelo -->
+              <div slot="progress-bar"
+                style="position: absolute; inset: 0; background: #111; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+                <div
+                  style="width: 56px; height: 56px; border: 3px solid rgba(191,161,74,0.2); border-top-color: #bfa14a; border-radius: 50%; animation: spin 0.9s linear infinite;">
+                </div>
+                <span
+                  style="color: rgba(255,255,255,0.5); font-size: 0.9rem; font-family: -apple-system, sans-serif;">Cargando
+                  modelo 3D…</span>
+              </div>
             </model-viewer>
           </div>
 
@@ -349,6 +365,14 @@
             </p>
           </div>
 
+          <!-- AR Testing Local -->
+          <div class="mt-4 text-center" id="ar-qr-container">
+            <button id="test-ar-qr-btn" class="btn btn-outline-light rounded-pill px-4 py-2"
+              style="font-size: 0.9rem; border-color: rgba(255,255,255,0.2);">
+              <i class="fas fa-qrcode me-2"></i> Probar en mi móvil (Generar QR local)
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -386,71 +410,23 @@
             </div>
 
             <!-- MODELOS 3D GALERÍA -->
-            <div id="model3dCarousel" class="carousel slide bg-light rounded-4 overflow-hidden p-4"
-              data-bs-ride="carousel" style="border-radius: 24px !important;">
-              <div class="carousel-inner">
-                <!-- Modelo 1 -->
-                <div class="carousel-item active">
-                  <div class="d-flex flex-column flex-sm-row align-items-center gap-4">
-                    <model-viewer src="assets/modelo3d.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
-                      tone-mapping="neutral" poster="assets/showroom-3.jpg" shadow-intensity="1" exposure="1"
-                      style="width: 100%; max-width: 300px; height: 300px; background: transparent; display: block;">
-                    </model-viewer>
-                    <div>
-                      <h5 class="fw-bold mb-2"
-                        style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;">
-                        Modelo Casa Interior</h5>
-                      <p class="text-muted small mb-0">Un interior de casa en low poly para visualizar espacios
-                        modernos.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modelo 2 -->
-                <div class="carousel-item">
-                  <div class="d-flex flex-column flex-sm-row align-items-center gap-4">
-                    <model-viewer src="assets/modern_kitchen.glb" ar ar-modes="webxr scene-viewer quick-look"
-                      camera-controls tone-mapping="neutral" poster="assets/showroom-2.jpg" shadow-intensity="1"
-                      exposure="1"
-                      style="width: 100%; max-width: 300px; height: 300px; background: transparent; display: block;">
-                    </model-viewer>
-                    <div>
-                      <h5 class="fw-bold mb-2"
-                        style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;">
-                        Modelo Mueble Moderno</h5>
-                      <p class="text-muted small mb-0">Visualiza nuestro mueble multifuncional en 3D.</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modelo 3 -->
-                <div class="carousel-item">
-                  <div class="d-flex flex-column flex-sm-row align-items-center gap-4">
-                    <model-viewer src="assets/modelo5d.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
-                      tone-mapping="neutral" poster="assets/showroom-1.jpg" shadow-intensity="1" exposure="1"
-                      style="width: 100%; max-width: 300px; height: 300px; background: transparent; display: block;">
-                    </model-viewer>
-                    <div>
-                      <h5 class="fw-bold mb-2"
-                        style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;">
-                        Modelo Salón Premium</h5>
-                      <p class="text-muted small mb-0">Un salón premium para experimentar la integración de tecnología.
-                      </p>
-                    </div>
-                  </div>
+            <!-- MODELO 3D ÚNICO (LISTO PARA PRODUCCIÓN) -->
+            <div class="bg-light rounded-4 overflow-hidden p-4 shadow-sm" style="border-radius: 24px !important;">
+              <div class="d-flex flex-column flex-sm-row align-items-center gap-4">
+                <model-viewer src="assets/Meshy_AI_Lumina_Wardrobe_Loung_0304132209_texture.glb" ar
+                  ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" shadow-intensity="1"
+                  exposure="1"
+                  style="width: 100%; max-width: 300px; height: 300px; background: transparent; display: block;">
+                </model-viewer>
+                <div>
+                  <h5 class="fw-bold mb-2"
+                    style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;">
+                    Lumina Wardrobe Lounge</h5>
+                  <p class="text-muted small mb-0">Experimenta nuestro armario inteligente en tu propio espacio con
+                    tecnología de Realidad Aumentada. Diseñado para ofrecer la máxima optimización de almacenamiento y
+                    estética minimalista.</p>
                 </div>
               </div>
-
-              <!-- Controles -->
-              <div class="d-flex justify-content-end gap-2 mt-3 mt-sm-0 position-absolute bottom-0 end-0 p-4">
-                <button class="btn btn-outline-dark rounded-circle p-2" type="button" data-bs-target="#model3dCarousel"
-                  data-bs-slide="prev" style="width: 40px; height: 40px;">
-                  <i class="fas fa-arrow-left"></i>
-                </button>
-                <button class="btn btn-dark rounded-circle p-2" type="button" data-bs-target="#model3dCarousel"
-                  data-bs-slide="next" style="width: 40px; height: 40px;">
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-              </div>
-
             </div>
           </div>
         </div>
