@@ -393,3 +393,33 @@ window.copyCryptoAddress = window.copyCryptoAddress || function() {
         setTimeout(() => { icon.className = 'far fa-copy text-muted'; }, 2000);
     });
 };
+
+// --- Before / After Slider ---
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('ba-slider');
+  if (!slider) return;
+
+  const before = document.getElementById('ba-before');
+  const handle = document.getElementById('ba-handle');
+  let dragging = false;
+
+  function setPosition(pct) {
+    pct = Math.max(2, Math.min(98, pct));
+    before.style.width = pct + '%';
+    handle.style.left = pct + '%';
+  }
+
+  function getPercent(e) {
+    const rect = slider.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  slider.addEventListener('mousedown', (e) => { dragging = true; setPosition(getPercent(e)); e.preventDefault(); });
+  slider.addEventListener('touchstart', (e) => { dragging = true; setPosition(getPercent(e)); }, { passive: true });
+
+  document.addEventListener('mousemove', (e) => { if (dragging) setPosition(getPercent(e)); });
+  document.addEventListener('touchmove', (e) => { if (dragging) setPosition(getPercent(e)); }, { passive: true });
+  document.addEventListener('mouseup', () => { dragging = false; });
+  document.addEventListener('touchend', () => { dragging = false; });
+});
