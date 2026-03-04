@@ -396,56 +396,57 @@ window.copyCryptoAddress = window.copyCryptoAddress || function () {
 
 // --- Before / After Slider (range bar) ---
 (function initBASlider() {
-  function setup() {
-    const beforeDiv = document.getElementById('ba-before');
-    const handle = document.getElementById('ba-handle');
-    const range = document.getElementById('ba-range');
-    if (!beforeDiv || !handle || !range) return;
+  function attachSlider() {
+    var beforeDiv = document.getElementById('ba-before');
+    var handle = document.getElementById('ba-handle');
+    var range = document.getElementById('ba-range');
+
+    if (!beforeDiv || !handle || !range) {
+      setTimeout(attachSlider, 100);
+      return;
+    }
 
     function setPosition(pct) {
-      pct = Math.max(2, Math.min(98, pct));
+      pct = Math.max(2, Math.min(98, Number(pct)));
       beforeDiv.style.width = pct + '%';
       handle.style.left = pct + '%';
     }
 
     range.addEventListener('input', function () {
-      setPosition(parseInt(this.value, 10));
+      setPosition(this.value);
     });
 
-    // Initial position
-    setPosition(parseInt(range.value, 10));
+    setPosition(range.value || 50);
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setup);
-  } else {
-    setup();
-  }
+  attachSlider();
 })();
 
 // --- AR Model Scale Calibration (2.4m real-world height) ---
 (function calibrateARModel() {
-  const TARGET_HEIGHT_M = 2.4; // metros
+  function attachCalibrator() {
+    var mv = document.getElementById('ar-model-voria');
+    if (!mv) {
+      setTimeout(attachCalibrator, 250);
+      return;
+    }
 
-  function calibrate() {
-    const mv = document.getElementById('ar-model-voria');
-    if (!mv) return;
+    var TARGET_HEIGHT_M = 2.4;
 
-    mv.addEventListener('load', function () {
-      // getDimensions() devuelve las dimensiones en metros según el glb
-      const dims = mv.getDimensions();
+    function applyScale() {
+      if (typeof mv.getDimensions !== 'function') return;
+      var dims = mv.getDimensions();
       if (!dims || !dims.y || dims.y === 0) return;
+      var s = (TARGET_HEIGHT_M / dims.y).toFixed(6);
+      mv.setAttribute('scale', s + ' ' + s + ' ' + s);
+    }
 
-      const scaleFactor = TARGET_HEIGHT_M / dims.y;
-      const s = scaleFactor.toFixed(6);
-      mv.setAttribute('scale', `${s} ${s} ${s}`);
-    });
+    if (mv.loaded) {
+      applyScale();
+    } else {
+      mv.addEventListener('load', applyScale);
+    }
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', calibrate);
-  } else {
-    calibrate();
-  }
+  attachCalibrator();
 })();
+
 
