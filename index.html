@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="stylesheets.css">
 
   <link rel="icon" href="assets/logo-voria.png">
 
@@ -43,28 +43,36 @@
       </div>
 
       <button class="navbar-toggler border-0 ms-auto" type="button" data-bs-toggle="collapse"
-        data-bs-target="#voriaNavbar" aria-controls="voriaNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        data-bs-target="#voriaNavbar" aria-controls="voriaNavbar" aria-expanded="false" aria-label="Toggle navigation"
+        style="padding: 6px 10px;">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <!-- Centro: Links de Navegación -->
       <div class="collapse navbar-collapse justify-content-center" id="voriaNavbar" style="flex: 0 0 auto;">
-        <ul class="navbar-nav gap-4 text-center">
+        <ul class="navbar-nav gap-4 text-center py-3 py-lg-0">
           <li class="nav-item">
-            <a class="nav-link fw-medium px-0" href="#"
+            <a class="nav-link fw-medium px-0 nav-close-mobile" href="#"
               style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium px-0" href="#about-3dmodels-row"
+            <a class="nav-link fw-medium px-0 nav-close-mobile" href="#about-3dmodels-row"
               style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Sobre Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium px-0" href="#showroom-vr-gallery"
+            <a class="nav-link fw-medium px-0 nav-close-mobile" href="#showroom-vr-gallery"
               style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Showroom</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium px-0" href="#contact-voria"
+            <a class="nav-link fw-medium px-0 nav-close-mobile" href="#contact-voria"
               style="font-size: 0.95rem; letter-spacing: 0.5px; color: #1d1d1f;">Contacto</a>
+          </li>
+          <!-- Botón contactar visible solo en móvil -->
+          <li class="nav-item d-lg-none mt-2">
+            <a href="#contact-voria" class="btn btn-dark rounded-pill px-4 py-2 fw-medium nav-close-mobile"
+              style="font-size: 0.9rem; background: #1d1d1f; border: none; display: inline-flex; align-items: center; gap: 6px;">
+              <i class="fas fa-comment-dots" style="font-size: 0.8rem;"></i> Contactar
+            </a>
           </li>
         </ul>
       </div>
@@ -226,6 +234,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
+          <!-- Imagen comparadora -->
           <div id="ba-slider" class="ba-slider rounded-4 overflow-hidden shadow-sm position-relative"
             style="max-height: 600px; border: 1px solid rgba(0,0,0,0.08); display: grid; place-items: center;">
 
@@ -237,25 +246,33 @@
             <img id="ba-before" src="assets/Gemini_Generated_Image_siqmibsiqmibsiqm.png" alt="Antes VORIA" class="w-100"
               style="grid-area: 1/1; max-height: 600px; object-fit: cover; display: block; user-select: none; pointer-events: none; clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
 
-            <!-- Divisor Blanco -->
-            <div id="ba-handle"
-              style="grid-area: 1/1; justify-self: start; height: 100%; width: 4px; background: white; pointer-events: none; margin-left: calc(50% - 2px);">
+            <!-- Divisor: línea + círculo handle -->
+            <div id="ba-handle" style="grid-area: 1/1; justify-self: start; height: 100%; width: 3px; background: white; pointer-events: none; margin-left: calc(50% - 1.5px); position: relative; z-index: 15;">
+              <div id="ba-handle-knob" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.25);">
+                <i class="fas fa-arrows-left-right" style="color: #1d1d1f; font-size: 0.9rem;"></i>
+              </div>
             </div>
 
-            <!-- Rango interactivo invisible superpuesto -->
+            <!-- Rango interactivo invisible superpuesto (desktop drag) -->
             <input id="ba-range" type="range" min="0" max="100" value="50"
               style="grid-area: 1/1; justify-self: center; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: col-resize; z-index: 20;">
 
             <!-- Labels -->
-            <div
-              style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 10;">
-              Antes</div>
-            <div
-              style="position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 10;">
-              Después</div>
+            <div style="position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 10;">Antes</div>
+            <div style="position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.55); color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; pointer-events: none; z-index: 10;">Después</div>
           </div>
-          <p class="text-center text-muted small mt-3"><i class="fas fa-hand-point-left me-1"></i> Arrastra la imagen
-            para comparar <i class="fas fa-hand-point-right ms-1"></i></p>
+
+          <!-- Barra física visible (mobile-first) -->
+          <div class="ba-visible-slider-wrap mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="ba-label-before"><i class="fas fa-circle-half-stroke me-1"></i>Antes</span>
+              <span class="ba-label-center">Mover para comparar</span>
+              <span class="ba-label-after">Después<i class="fas fa-image ms-1"></i></span>
+            </div>
+            <div class="ba-track-wrap">
+              <input id="ba-range-visible" type="range" min="0" max="100" value="50" class="ba-range-visible" aria-label="Comparador Antes y Después">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -299,17 +316,30 @@
               </span>
             </div>
 
-            <model-viewer id="ar-model-voria" src="assets/Meshy_AI_Lumina_Wardrobe_Loung_0304132209_texture.glb"
-              alt="Armario VORIA en Realidad Aumentada" ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed"
-              ar-placement="floor" camera-controls touch-action="pan-y" shadow-intensity="1.2" shadow-softness="0.8"
-              exposure="1.1" tone-mapping="neutral" auto-rotate auto-rotate-delay="2000" rotation-per-second="20deg"
-              style="width: 100%; height: 520px; background: transparent; --poster-color: transparent;">
+            <model-viewer id="ar-model-voria"
+              src="assets/Meshy_AI_Lumina_Wardrobe_Loung_0304132209_texture.glb"
+              poster="assets/Poster.jpeg"
+              alt="Armario VORIA en Realidad Aumentada"
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              ar-placement="floor"
+              camera-controls
+              touch-action="pan-y"
+              shadow-intensity="1.2"
+              shadow-softness="0.8"
+              exposure="1.1"
+              tone-mapping="neutral"
+              auto-rotate
+              auto-rotate-delay="2000"
+              rotation-per-second="20deg"
+              style="width: 100%; aspect-ratio: 4/3; min-height: 280px; max-height: 560px; display: block; background: transparent; --poster-color: transparent;">
+
               <!-- AR Button personalizado -->
               <button slot="ar-button"
-                style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #bfa14a, #d4b96a); color: #000; border: none; border-radius: 50px; padding: 14px 32px; font-weight: 700; font-size: 1rem; font-family: -apple-system, sans-serif; letter-spacing: 0.3px; cursor: pointer; box-shadow: 0 4px 24px rgba(191,161,74,0.5); display: flex; align-items: center; gap: 10px; white-space: nowrap; z-index: 5; transition: all 0.2s;"
+                style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #bfa14a, #d4b96a); color: #000; border: none; border-radius: 50px; padding: 12px 28px; font-weight: 700; font-size: 0.95rem; font-family: -apple-system, sans-serif; letter-spacing: 0.3px; cursor: pointer; box-shadow: 0 4px 24px rgba(191,161,74,0.5); display: flex; align-items: center; gap: 8px; white-space: nowrap; z-index: 5; transition: all 0.2s;"
                 onmouseover="this.style.transform='translateX(-50%) scale(1.05)'"
                 onmouseout="this.style.transform='translateX(-50%) scale(1)'">
-                <i class="fas fa-camera" style="font-size: 1.1rem;"></i>
+                <i class="fas fa-camera" style="font-size: 1rem;"></i>
                 Ver en mi Espacio (AR)
               </button>
 
@@ -355,13 +385,14 @@
           </div>
 
           <!-- Nota compatibilidad -->
-          <div class="mt-4 rounded-3 p-3 d-flex align-items-center gap-3"
+          <div class="mt-4 rounded-3 p-3 d-flex align-items-start gap-3"
             style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
-            <i class="fas fa-circle-info" style="color: #bfa14a; font-size: 1.1rem; flex-shrink: 0;"></i>
+            <i class="fas fa-circle-info" style="color: #bfa14a; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px;"></i>
             <p class="mb-0 text-white-50" style="font-size: 0.85rem; line-height: 1.5;">
-              <strong class="text-white">Compatibilidad AR:</strong> Android con Chrome/Edge (WebXR) · iPhone/iPad con
-              Safari (AR Quick Look). El modelo se proyecta a <strong class="text-white">escala real de 2,4 m</strong>
-              sobre cualquier superficie plana.
+              <strong class="text-white">Compatibilidad AR:</strong>
+              <span class="d-block mt-1">📱 <strong class="text-white">Android</strong> — Chrome o Edge: el botón dorado activa AR directamente.</span>
+              <span class="d-block mt-1">🍎 <strong class="text-white">iPhone / iPad</strong> — Safari: pulsa el botón dorado y confirma en AR Quick Look.</span>
+              <span class="d-block mt-1">🖥️ <strong class="text-white">Escritorio</strong> — Visor 3D interactivo; el botón AR aparece solo en móvil compatible.</span>
             </p>
           </div>
 
@@ -416,7 +447,8 @@
                 <model-viewer src="assets/Meshy_AI_Lumina_Wardrobe_Loung_0304132209_texture.glb" ar
                   ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" shadow-intensity="1"
                   exposure="1"
-                  style="width: 100%; max-width: 300px; height: 300px; background: transparent; display: block;">
+                  class="about-model-viewer"
+                  style="background: transparent;">
                 </model-viewer>
                 <div>
                   <h5 class="fw-bold mb-2"
@@ -450,8 +482,13 @@
         </div>
       </div>
 
-      <div class="row g-4">
-        <div class="col-12 col-md-6 col-xl-3 d-flex" data-aos="fade-up" data-aos-delay="100">
+      <!-- Mobile: slider horizontal con scroll snap / Desktop: grid 4 columnas -->
+      <div class="gallery-slider-wrapper">
+        <!-- indicador scroll solo móvil -->
+        <p class="text-center text-muted small d-md-none mb-3"><i class="fas fa-hand-point-right me-1"></i> Desliza para ver más</p>
+        <div class="gallery-slider-track">
+
+        <div class="gallery-slider-item" data-aos="fade-up" data-aos-delay="100">
           <div class="card bg-transparent border-0 w-100 group">
             <div class="rounded-4 overflow-hidden mb-3" style="aspect-ratio: 4/3;">
               <img src="assets/gallery1/gallery11.jpg"
@@ -467,7 +504,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 col-xl-3 d-flex" data-aos="fade-up" data-aos-delay="200">
+        <div class="gallery-slider-item" data-aos="fade-up" data-aos-delay="200">
           <div class="card bg-transparent border-0 w-100 group">
             <div class="rounded-4 overflow-hidden mb-3" style="aspect-ratio: 4/3;">
               <img src="assets/gallerybig/big1.jpeg" class="img-fluid w-100 h-100 object-fit-cover transition-transform"
@@ -481,7 +518,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 col-xl-3 d-flex" data-aos="fade-up" data-aos-delay="300">
+        <div class="gallery-slider-item" data-aos="fade-up" data-aos-delay="300">
           <div class="card bg-transparent border-0 w-100 group">
             <div class="rounded-4 overflow-hidden mb-3" style="aspect-ratio: 4/3;">
               <img src="assets/gallerybig/big2.jpg" class="img-fluid w-100 h-100 object-fit-cover transition-transform"
@@ -495,7 +532,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 col-xl-3 d-flex" data-aos="fade-up" data-aos-delay="400">
+        <div class="gallery-slider-item" data-aos="fade-up" data-aos-delay="400">
           <div class="card bg-transparent border-0 w-100 group">
             <div class="rounded-4 overflow-hidden mb-3" style="aspect-ratio: 4/3;">
               <img src="assets/gallerybig/big3.jpg" class="img-fluid w-100 h-100 object-fit-cover transition-transform"
@@ -507,7 +544,9 @@
             <p class="text-muted small mb-0">Entretenimiento y confort con integración de tecnología y diseño.</p>
           </div>
         </div>
-      </div>
+
+        </div><!-- /.gallery-slider-track -->
+      </div><!-- /.gallery-slider-wrapper -->
     </div>
   </section>
 
@@ -998,7 +1037,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
   <script src="index.js"></script>
   <script src="demovirtual/demo.js"></script>
   <!-- Botón scroll arriba -->

@@ -449,84 +449,98 @@ body.bg-black ::-webkit-scrollbar-thumb {
     height: auto !important;
     border-radius: 1rem;
   }
+}
 
-  /* AJUSTES RESPONSIVOS MINIMALISTAS */
-  @media (max-width: 991px) {
-    body {
-      padding-top: 70px;
-    }
-
-    h1,
-    .display-1 {
-      font-size: 2.5rem;
-    }
-
-    h2,
-    .display-2 {
-      font-size: 2rem;
-    }
-
-    h3,
-    .display-3 {
-      font-size: 1.75rem;
-    }
-
-    h4,
-    .display-4 {
-      font-size: 1.5rem;
-    }
-
-    .hero-header {
-      min-height: 80vh;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-    }
+/* AJUSTES RESPONSIVOS MINIMALISTAS */
+@media (max-width: 991px) {
+  body {
+    padding-top: 70px;
   }
 
-  @media (max-width: 576px) {
-
-    h1,
-    .display-1 {
-      font-size: 2rem;
-    }
-
-    h2,
-    .display-2 {
-      font-size: 1.75rem;
-    }
-
-    section {
-      padding: 3rem 0;
-    }
-
-    .card {
-      padding: 1.5rem !important;
-    }
+  h1,
+  .display-1 {
+    font-size: 2.5rem;
   }
 
-  /* COMPONENTES ESPECÍFICOS */
-  model-viewer {
-    width: 100%;
-    height: 300px;
-    background-color: transparent;
-    --poster-color: transparent;
+  h2,
+  .display-2 {
+    font-size: 2rem;
   }
 
-  /* PARTNERS LOGO */
-  .partner-logo {
-    max-height: 32px;
-    width: auto;
-    opacity: 0.6;
-    filter: grayscale(100%);
-    transition: var(--transition);
+  h3,
+  .display-3 {
+    font-size: 1.75rem;
   }
 
-  .partner-logo:hover {
-    opacity: 1;
-    filter: grayscale(0%);
+  h4,
+  .display-4 {
+    font-size: 1.5rem;
   }
+
+  .hero-header {
+    min-height: 80vh;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+
+  h1,
+  .display-1 {
+    font-size: 2rem;
+  }
+
+  h2,
+  .display-2 {
+    font-size: 1.75rem;
+  }
+
+  section {
+    padding: 3rem 0;
+  }
+
+  .card {
+    padding: 1.5rem !important;
+  }
+}
+
+/* COMPONENTES ESPECÍFICOS */
+model-viewer {
+  width: 100%;
+  background-color: transparent;
+  --poster-color: transparent;
+}
+
+/* model-viewer en sección about */
+.about-model-viewer {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .about-model-viewer {
+    max-width: 100%;
+    height: 260px;
+  }
+}
+
+/* PARTNERS LOGO */
+.partner-logo {
+  max-height: 32px;
+  width: auto;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: var(--transition);
+}
+
+.partner-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
 }
 
 .partner-logo[src*="green"] {
@@ -610,6 +624,219 @@ body.bg-black ::-webkit-scrollbar-thumb {
 }
 
 /* LIMPIEZA COMPLETADA - Fin de archivo */
+
+/* ====================================================
+   GALLERY SLIDER — scroll snap horizontal en móvil
+   ==================================================== */
+.gallery-slider-wrapper {
+  overflow: hidden;
+}
+
+/* Desktop: layout en grid de 4 columnas */
+.gallery-slider-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.gallery-slider-item {
+  min-width: 0;
+}
+
+/* Móvil: slider horizontal con scroll snap */
+@media (max-width: 767px) {
+  .gallery-slider-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox */
+    padding-bottom: 8px;
+  }
+  .gallery-slider-wrapper::-webkit-scrollbar {
+    display: none;                   /* Chrome / Safari */
+  }
+  .gallery-slider-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+    padding: 0 1rem 0.5rem;
+  }
+  .gallery-slider-item {
+    flex: 0 0 80vw;
+    max-width: 80vw;
+    scroll-snap-align: start;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .gallery-slider-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ====================================================
+   NAVBAR MOBILE — menú desplegable mejorado
+   ==================================================== */
+@media (max-width: 991px) {
+  #voriaNavbar {
+    background: rgba(255,255,255,0.98);
+    border-top: 1px solid rgba(0,0,0,0.07);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    padding: 0 1rem 1rem;
+    margin-top: 4px;
+  }
+
+  #voriaNavbar .navbar-nav {
+    gap: 0 !important;
+  }
+
+  #voriaNavbar .nav-link {
+    padding: 0.75rem 0.5rem !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    text-align: left !important;
+    color: #1d1d1f !important;
+    font-size: 1rem !important;
+  }
+
+  #voriaNavbar .nav-item:last-child .nav-link {
+    border-bottom: none;
+  }
+
+  #voriaNavbar .nav-item.d-lg-none {
+    margin-top: 0.75rem !important;
+    text-align: left;
+  }
+}
+
+/* ====================================================
+   HERO  — tipografía responsive
+   ==================================================== */
+@media (max-width: 575px) {
+  #hero-header h1 {
+    font-size: 2.2rem !important;
+    letter-spacing: -1px !important;
+    line-height: 1.15 !important;
+  }
+  #hero-header .lead {
+    font-size: 1rem !important;
+  }
+  #hero-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ====================================================
+   AR SECTION — model-viewer responsive
+   ==================================================== */
+#ar-model-voria {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+@media (max-width: 575px) {
+  #ar-model-voria {
+    min-height: 320px !important;
+  }
+}
+
+/* ====================================================
+   BEFORE / AFTER — slider visible + responsive
+   ==================================================== */
+@media (max-width: 575px) {
+  #ba-slider {
+    max-height: 320px !important;
+  }
+}
+
+/* Contenedor del slider visible */
+.ba-visible-slider-wrap {
+  background: #f5f5f7;
+  border-radius: 16px;
+  padding: 16px 20px 20px;
+  border: 1px solid rgba(0,0,0,0.07);
+}
+
+/* Etiquetas laterales */
+.ba-label-before,
+.ba-label-after {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.ba-label-center {
+  font-size: 0.78rem;
+  color: #6e6e73;
+  text-align: center;
+  flex: 1;
+  padding: 0 8px;
+}
+
+/* Pista y thumb del range visible */
+.ba-track-wrap {
+  position: relative;
+}
+
+.ba-range-visible {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 99px;
+  background: linear-gradient(
+    to right,
+    #1d1d1f 0%,
+    #1d1d1f var(--ba-pct, 50%),
+    #d1d1d6 var(--ba-pct, 50%),
+    #d1d1d6 100%
+  );
+  outline: none;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Thumb — Webkit (Chrome, Safari, Edge) */
+.ba-range-visible::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1d1d1f;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+  cursor: grab;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ba-range-visible::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.30);
+}
+
+/* Thumb — Firefox */
+.ba-range-visible::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1d1d1f;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+  cursor: grab;
+  transition: transform 0.15s ease;
+}
+
+.ba-range-visible::-moz-range-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.15);
+}
 
 /* ANIMACIONES */
 @keyframes spin {

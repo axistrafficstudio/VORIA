@@ -400,27 +400,40 @@ window.copyCryptoAddress = window.copyCryptoAddress || function () {
 // --- Before / After Slider (CSS Clip-Path) ---
 (function initBASlider() {
   function attachSlider() {
-    var beforeImg = document.getElementById('ba-before');
-    var handle = document.getElementById('ba-handle');
-    var range = document.getElementById('ba-range');
+    var beforeImg   = document.getElementById('ba-before');
+    var handle      = document.getElementById('ba-handle');
+    var rangeHidden = document.getElementById('ba-range');          // drag invisible sobre imagen
+    var rangeVis    = document.getElementById('ba-range-visible');  // barra física debajo
 
-    if (!beforeImg || !handle || !range) {
+    if (!beforeImg || !handle || !rangeHidden || !rangeVis) {
       setTimeout(attachSlider, 100);
       return;
     }
 
     function setPosition(pct) {
-      // Usamos clip-path en la imagen en lugar de width
+      // Actualiza imagen clip-path
       beforeImg.style.clipPath = 'polygon(0 0, ' + pct + '% 0, ' + pct + '% 100%, 0 100%)';
-      // Mueve la línea divisoria
-      handle.style.marginLeft = 'calc(' + pct + '% - 2px)';
+      // Mueve la línea divisoria + knob
+      handle.style.marginLeft = 'calc(' + pct + '% - 1.5px)';
+      // Sincroniza ambos inputs
+      rangeHidden.value = pct;
+      rangeVis.value    = pct;
+      // Actualiza el relleno de la barra visible mediante CSS custom property
+      rangeVis.style.setProperty('--ba-pct', pct + '%');
     }
 
-    range.addEventListener('input', function () {
+    // El drag invisible sobre la imagen (desktop)
+    rangeHidden.addEventListener('input', function () {
       setPosition(this.value);
     });
 
-    setPosition(range.value || 50);
+    // La barra física de abajo (mobile + desktop)
+    rangeVis.addEventListener('input', function () {
+      setPosition(this.value);
+    });
+
+    // Estado inicial
+    setPosition(rangeHidden.value || 50);
   }
   attachSlider();
 })();
@@ -450,6 +463,26 @@ window.copyCryptoAddress = window.copyCryptoAddress || function () {
   }
   attachQRBtn();
 })();
+
+// --- Navbar: cerrar menú al pulsar un enlace en móvil ---
+document.addEventListener('DOMContentLoaded', function () {
+  const navbarCollapse = document.getElementById('voriaNavbar');
+  if (!navbarCollapse) return;
+
+  document.querySelectorAll('.nav-close-mobile').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.innerWidth < 992) {
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (bsCollapse) {
+          bsCollapse.hide();
+        } else {
+          // Inicializar y ocultar si no existe instancia aún
+          new bootstrap.Collapse(navbarCollapse, { toggle: false }).hide();
+        }
+      }
+    });
+  });
+});
 
 // --- AR Model Scale Calibration (2.4m real-world height) ---
 (function calibrateARModel() {
