@@ -315,3 +315,81 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// --- Lógica del nuevo Checkout Cripto / Fiat (Nativo) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const cryptoSelect = document.getElementById('cryptoSelect');
+    if (!cryptoSelect) return;
+
+    let currentPriceEur = 8900;
+    const fiatTotalDisplay = document.getElementById('fiatTotalDisplay');
+    const cryptoTotalDisplay = document.getElementById('cryptoTotalDisplay');
+    const cryptoAddressDisplay = document.getElementById('cryptoAddressDisplay');
+    const cryptoQrCode = document.getElementById('cryptoQrCode');
+    const modelButtons = document.querySelectorAll('.model-select-btn');
+
+    // 1. Selector de Modelo
+    modelButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            modelButtons.forEach(b => {
+                b.classList.remove('active-model', 'bg-light');
+                b.classList.add('bg-white');
+            });
+            const target = e.currentTarget;
+            target.classList.add('active-model', 'bg-light');
+            target.classList.remove('bg-white');
+            currentPriceEur = parseInt(target.dataset.price);
+            fiatTotalDisplay.textContent = `€${currentPriceEur.toLocaleString()}`;
+            updateCryptoPrice();
+        });
+    });
+
+    // 2. Selector de Cripto
+    cryptoSelect.addEventListener('change', updateCryptoPrice);
+
+    // 3. Obtener Precios y Actualizar Vista
+    async function updateCryptoPrice() {
+        cryptoTotalDisplay.textContent = "Calculando...";
+        const cryptoId = cryptoSelect.value;
+        const tickerMap = { 'bitcoin': 'BTC', 'ethereum': 'ETH', 'litecoin': 'LTC' };
+        const ticker = tickerMap[cryptoId];
+
+        try {
+            const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=eur`);
+            const data = await res.json();
+            const rate = data[cryptoId].eur;
+            
+            const cryptoAmount = (currentPriceEur / rate).toFixed(6);
+            cryptoTotalDisplay.innerHTML = `<i class="fab fa-${cryptoId === 'bitcoin' ? 'bitcoin' : 'ethereum'} me-1"></i> ${cryptoAmount} ${ticker}`;
+            
+            // Generar Mock Address y QR
+            const mockupAddresses = {
+                'bitcoin': 'bc1qva29m7xr7y7j7...g90h8',
+                'ethereum': '0x71C7656EC7ab88b098...B3E29',
+                'litecoin': 'ltc1qcxm9j...4p8x0k'
+            };
+            cryptoAddressDisplay.textContent = mockupAddresses[cryptoId];
+            
+            // Actualizar QR
+            const qrData = `${cryptoId}:${mockupAddresses[cryptoId]}?amount=${cryptoAmount}`;
+            cryptoQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(qrData)}`;
+
+        } catch (error) {
+            console.error("Error obteniendo precio cripto:", error);
+            cryptoTotalDisplay.textContent = "Error de conexión";
+        }
+    }
+
+    // Inicializar cálculo
+    updateCryptoPrice();
+});
+
+// Función Global para Copiar Dirección
+window.copyCryptoAddress = window.copyCryptoAddress || function() {
+    const text = document.getElementById('cryptoAddressDisplay').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.currentTarget;
+        const icon = btn.querySelector('i');
+        icon.className = 'fas fa-check text-success';
+        setTimeout(() => { icon.className = 'far fa-copy text-muted'; }, 2000);
+    });
+};

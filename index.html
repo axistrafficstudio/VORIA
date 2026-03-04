@@ -235,8 +235,8 @@
           <div class="d-flex flex-column gap-4">
             <!-- Imagen Principal -->
             <div class="rounded-4 overflow-hidden shadow-sm" style="border-radius: 24px !important;">
-              <img src="assets/mueble-interior.png" alt="Mueble VORIA en interior"
-                class="img-fluid w-100 object-fit-cover" style="max-height: 400px;">
+              <img src="assets/Isometrica.png" alt="Mueble VORIA Isometrico" class="img-fluid w-100 object-fit-cover"
+                style="max-height: 400px;">
             </div>
 
             <!-- MODELOS 3D GALERÍA -->
@@ -321,69 +321,104 @@
           Configura y hazlo tuyo.
         </h2>
         <p class="text-muted mx-auto" style="font-size: 1.25rem; max-width: 600px; color: #86868b;">
-          Visualiza tu modelo ideal en 3D y procesa tu pago de forma segura y global.
+          Selecciona tu modelo y procesa tu pago de forma instantánea usando Criptomonedas o Tarjeta de Crédito.
         </p>
       </div>
 
       <div class="row align-items-stretch g-5 justify-content-center">
-        <!-- Demo Virtual (Izquierda) -->
-        <div class="col-12 col-lg-7 d-flex">
-          <div class="w-100 bg-white shadow-sm overflow-hidden d-flex flex-column"
+        <!-- Columna Izquierda: Configuración del Proyecto -->
+        <div class="col-12 col-lg-6 d-flex">
+          <div class="w-100 bg-white shadow-sm p-4 p-md-5 d-flex flex-column"
             style="border-radius: 24px; border: 1px solid rgba(0,0,0,0.05);">
-            <div class="p-4 border-bottom" style="background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);">
-              <h3 class="fw-semibold m-0"
-                style="font-family: -apple-system, sans-serif; font-size: 1.25rem; color: #1d1d1f;">Demo Interactiva
-              </h3>
+            <h3 class="fw-bold mb-4" style="font-family: -apple-system, sans-serif; font-size: 1.5rem; color: #1d1d1f;">
+              1. Elige tu Modelo</h3>
+
+            <div class="row g-3 mb-4">
+              <div class="col-6">
+                <button class="w-100 p-4 border rounded-4 text-start bg-light model-select-btn active-model"
+                  data-price="8900" style="transition: all 0.2s; border-color: #1d1d1f !important;">
+                  <div class="fw-bold text-dark" style="font-size: 1.1rem;">Classic</div>
+                  <div class="text-muted mt-1">€8,900</div>
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="w-100 p-4 border rounded-4 text-start bg-white model-select-btn" data-price="17500"
+                  style="transition: all 0.2s;">
+                  <div class="fw-bold text-dark" style="font-size: 1.1rem;">Premium</div>
+                  <div class="text-muted mt-1">€17,500</div>
+                </button>
+              </div>
             </div>
-            <div class="ratio ratio-16x9 w-100 flex-grow-1 bg-light">
-              <iframe src="demovirtual/index.html" allowfullscreen
-                sandbox="allow-scripts allow-same-origin allow-popups" style="border: none; width: 100%; height: 100%;">
-              </iframe>
+
+            <h3 class="fw-bold mb-3 mt-4"
+              style="font-family: -apple-system, sans-serif; font-size: 1.5rem; color: #1d1d1f;">2. Moneda de Pago</h3>
+            <select id="cryptoSelect" class="form-select border-0 bg-light py-3 px-4 rounded-4 fw-medium text-dark mb-4"
+              style="font-size: 1.1rem; cursor: pointer;">
+              <option value="bitcoin">Bitcoin (BTC)</option>
+              <option value="ethereum">Ethereum (ETH)</option>
+              <option value="litecoin">Litecoin (LTC)</option>
+            </select>
+
+            <div class="mt-auto pt-4 border-top">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted fw-medium">Total Estimado</span>
+                <span id="fiatTotalDisplay" class="fw-bold fs-3 text-dark">€8,900</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-1">
+                <span class="text-muted small">Tasa de conversión en vivo</span>
+                <span id="cryptoTotalDisplay" class="fw-semibold text-primary"
+                  style="font-family: monospace; font-size: 1.1rem;">Cargando...</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Panel de Pago (Derecha) -->
-        <div class="col-12 col-lg-5 d-flex">
+        <!-- Columna Derecha: Checkout Seguro -->
+        <div class="col-12 col-lg-6 d-flex">
           <div class="w-100 bg-white shadow-sm p-4 p-md-5 d-flex flex-column justify-content-center"
             style="border-radius: 24px; border: 1px solid rgba(0,0,0,0.05);">
-            <h3 class="fw-bold mb-2"
-              style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', sans-serif; font-size: 2rem; color: #1d1d1f; letter-spacing: -0.5px;">
-              Resumen de compra
+            <h3 class="fw-bold mb-2 text-center"
+              style="font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', sans-serif; font-size: 1.8rem; color: #1d1d1f; letter-spacing: -0.5px;">
+              Completar Compra
             </h3>
-            <p class="mb-4" style="color: #86868b; font-size: 1rem;">
-              Selecciona tu método de pago preferido.
+            <p class="text-center mb-5" style="color: #86868b; font-size: 1rem;">
+              Escanea el QR para pagar con Cripto o usa tu tarjeta.
             </p>
 
-            <form class="mb-4" autocomplete="off">
-              <label class="form-label small fw-semibold mb-2" style="color: #1d1d1f;">Precio Base (€)</label>
-              <input type="number" id="basePriceInputDesktop" class="form-control bg-light border-0 py-3 px-3 rounded-3"
-                style="font-size: 1.25rem; font-weight: 500; color: #1d1d1f;" value="6900" min="100" step="100">
-            </form>
-
-            <div class="crypto-payment-box bg-light p-4 rounded-4 mb-4" style="border: 1px solid rgba(0,0,0,0.02);">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="fw-medium text-muted" style="font-size: 0.95rem;">Valor Cripto</span>
-                <button class="btn btn-sm btn-link text-decoration-none p-0 d-flex align-items-center"
-                  onclick="getCryptoPricesDesktop()" style="color: #0066cc;">
-                  <i class="fas fa-sync-alt me-1"></i> Actualizar
-                </button>
+            <!-- QR Code Area -->
+            <div class="d-flex flex-column align-items-center mb-5">
+              <div class="p-3 bg-white rounded-4 shadow-sm mb-3" style="border: 1px solid rgba(0,0,0,0.08);">
+                <img id="cryptoQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=bitcoin:"
+                  alt="Crypto QR Code" class="img-fluid" style="width: 160px; height: 160px; object-fit: contain;">
               </div>
-              <div id="cryptoPricesDesktop" class="fw-bold"
-                style="font-size: 1.5rem; font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', sans-serif; color: #1d1d1f;">
-                -
+              <div class="text-center">
+                <p class="small text-muted mb-1">Dirección de depósito:</p>
+                <div class="d-flex align-items-center gap-2 bg-light px-3 py-2 rounded-pill">
+                  <span id="cryptoAddressDisplay" class="font-monospace small text-dark"
+                    style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">bc1q...demo...address</span>
+                  <button class="btn btn-sm btn-link text-decoration-none p-0" onclick="copyCryptoAddress()"
+                    title="Copiar dirección">
+                    <i class="far fa-copy text-muted"></i>
+                  </button>
+                </div>
               </div>
-              <p class="small text-muted mt-2 mb-0" style="font-size: 0.8rem;">Soporte para Bitcoin, Ethereum, etc.</p>
             </div>
 
+            <div class="position-relative text-center my-4">
+              <hr class="text-muted opacity-25">
+              <span
+                class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted small fw-medium">o</span>
+            </div>
+
+            <!-- Stripe Button -->
             <button id="stripePayBtn"
-              class="btn w-100 py-3 rounded-pill fw-medium text-white shadow-sm mt-auto hover-opacity" type="button"
-              style="background-color: #1d1d1f; font-size: 1.1rem; transition: all 0.2s;">
-              Pagar con Tarjeta
+              class="btn w-100 py-3 rounded-pill fw-medium text-white shadow-sm hover-opacity d-flex justify-content-center align-items-center gap-2"
+              type="button" style="background-color: #1d1d1f; font-size: 1.1rem; transition: all 0.2s;">
+              <i class="far fa-credit-card"></i> Pagar con Tarjeta
             </button>
             <div class="text-center mt-3">
               <small style="color: #86868b; font-size: 0.8rem;">
-                <i class="fas fa-lock me-1"></i> Pagos cifrados vía Stripe
+                <i class="fas fa-lock me-1"></i> Pagos encriptados y seguros
               </small>
             </div>
           </div>
